@@ -13,6 +13,8 @@ namespace Phlexa\Intent;
 
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Response\Card\Standard;
+use Phlexa\Response\Directives\Display\RenderTemplate;
+use Phlexa\Response\Directives\Display\TextContent;
 use Phlexa\Response\OutputSpeech\SSML;
 
 /**
@@ -39,9 +41,20 @@ class StopIntent extends AbstractIntent
             new SSML($message)
         );
 
-        $this->getAlexaResponse()->setCard(
-            new Standard($title, $message, $smallImageUrl, $largeImageUrl)
-        );
+        if ($this->isDisplaySupported()) {
+            $textContent = new TextContent(
+                '<font size="7"><b>' . $title . '</b></font>',
+                TextContent::TYPE_RICH_TEXT,
+                '<font size="3">' . $message . '</font>',
+                TextContent::TYPE_RICH_TEXT
+            );
+
+            $this->addBodyTemplateDirective(RenderTemplate::TYPE_BODY_TEMPLATE_6, $textContent, 'stop');
+        } else {
+            $this->getAlexaResponse()->setCard(
+                new Standard($title, $message, $smallImageUrl, $largeImageUrl)
+            );
+        }
 
         $this->getAlexaResponse()->endSession();
 
