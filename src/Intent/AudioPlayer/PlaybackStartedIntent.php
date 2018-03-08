@@ -22,7 +22,7 @@ use Phlexa\Response\Directives\AudioPlayer\ClearQueue;
  */
 class PlaybackStartedIntent extends AbstractIntent
 {
-    const NAME = 'AudioPlayer.PlaybackStarted';
+    public const NAME = 'AudioPlayer.PlaybackStarted';
 
     /**
      * @return AlexaResponse

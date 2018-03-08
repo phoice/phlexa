@@ -18,7 +18,7 @@ namespace Phlexa\Request\RequestType;
  */
 class PlaybackControllerPauseCommandIssuedType extends AbstractRequestType
 {
-    const NAME = 'PlaybackController.PauseCommandIssued';
+    public const NAME = 'PlaybackController.PauseCommandIssued';
 
     /** @var string */
     private $type = 'PlaybackController.PauseCommandIssued';

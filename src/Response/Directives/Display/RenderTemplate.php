@@ -21,32 +21,32 @@ use Phlexa\Response\Directives\DirectivesInterface;
 class RenderTemplate implements DirectivesInterface
 {
     /** Type of directive */
-    const DIRECTIVE_TYPE = 'Display.RenderTemplate';
+    public const DIRECTIVE_TYPE = 'Display.RenderTemplate';
 
     /** All template types */
-    const TYPE_LIST_TEMPLATE_1 = 'ListTemplate1';
-    const TYPE_LIST_TEMPLATE_2 = 'ListTemplate2';
-    const TYPE_BODY_TEMPLATE_1 = 'BodyTemplate1';
-    const TYPE_BODY_TEMPLATE_2 = 'BodyTemplate2';
-    const TYPE_BODY_TEMPLATE_3 = 'BodyTemplate3';
-    const TYPE_BODY_TEMPLATE_6 = 'BodyTemplate6';
+    public const TYPE_LIST_TEMPLATE_1 = 'ListTemplate1';
+    public const TYPE_LIST_TEMPLATE_2 = 'ListTemplate2';
+    public const TYPE_BODY_TEMPLATE_1 = 'BodyTemplate1';
+    public const TYPE_BODY_TEMPLATE_2 = 'BodyTemplate2';
+    public const TYPE_BODY_TEMPLATE_3 = 'BodyTemplate3';
+    public const TYPE_BODY_TEMPLATE_6 = 'BodyTemplate6';
 
     /** Allowed template types */
-    const ALLOWED_TYPES
+    public const ALLOWED_TYPES
         = [
             self::TYPE_LIST_TEMPLATE_1, self::TYPE_LIST_TEMPLATE_2, self::TYPE_BODY_TEMPLATE_1,
             self::TYPE_BODY_TEMPLATE_2, self::TYPE_BODY_TEMPLATE_3, self::TYPE_BODY_TEMPLATE_6,
         ];
 
     /** All back button types */
-    const BACK_BUTTON_HIDDEN = 'HIDDEN';
-    const BACK_BUTTON_VISIBLE = 'VISIBLE';
+    public const BACK_BUTTON_HIDDEN = 'HIDDEN';
+    public const BACK_BUTTON_VISIBLE = 'VISIBLE';
 
     /** Allowed template types */
-    const ALLOWED_BACK_BUTTONS = [self::BACK_BUTTON_HIDDEN, self::BACK_BUTTON_VISIBLE,];
+    public const ALLOWED_BACK_BUTTONS = [self::BACK_BUTTON_HIDDEN, self::BACK_BUTTON_VISIBLE,];
 
     /** Maximum length of title attribute */
-    const MAX_TITLE_LENGTH = 200;
+    public const MAX_TITLE_LENGTH = 200;
 
     /** @var string */
     private $type;

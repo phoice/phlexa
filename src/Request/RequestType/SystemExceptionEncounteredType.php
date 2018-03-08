@@ -21,7 +21,7 @@ use Phlexa\Request\RequestType\Error\ErrorInterface;
  */
 class SystemExceptionEncounteredType extends AbstractRequestType
 {
-    const NAME = 'System.ExceptionEncountered';
+    public const NAME = 'System.ExceptionEncountered';
 
     /** @var ErrorInterface */
     private $error;

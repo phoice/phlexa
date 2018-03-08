@@ -18,7 +18,7 @@ namespace Phlexa\Request\RequestType;
  */
 class AudioPlayerPlaybackStartedType extends AbstractAudioPlayerRequestType
 {
-    const NAME = 'AudioPlayer.PlaybackStarted';
+    public const NAME = 'AudioPlayer.PlaybackStarted';
 
     /** @var string */
     private $type = 'AudioPlayer.PlaybackStarted';

@@ -18,7 +18,7 @@ namespace Phlexa\Request\RequestType;
  */
 class PlaybackControllerPreviousCommandIssuedType extends AbstractRequestType
 {
-    const NAME = 'PlaybackController.PreviousCommandIssued';
+    public const NAME = 'PlaybackController.PreviousCommandIssued';
 
     /** @var string */
     private $type = 'PlaybackController.PreviousCommandIssued';

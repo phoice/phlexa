@@ -19,7 +19,7 @@ namespace Phlexa\Response\OutputSpeech;
 class PlainText implements OutputSpeechInterface
 {
     /** Maximum length of text attribute */
-    const MAX_TEXT_LENGTH = 6000;
+    public const MAX_TEXT_LENGTH = 6000;
 
     /** @var string */
     private $text;

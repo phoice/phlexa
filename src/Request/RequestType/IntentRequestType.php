@@ -20,7 +20,7 @@ use Phlexa\Request\RequestType\Intent\IntentInterface;
  */
 class IntentRequestType extends AbstractRequestType
 {
-    const NAME = 'IntentRequest';
+    public const NAME = 'IntentRequest';
 
     /** @var IntentInterface */
     private $intent;

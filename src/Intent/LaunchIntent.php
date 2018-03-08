@@ -22,7 +22,7 @@ use Phlexa\Response\OutputSpeech\SSML;
  */
 class LaunchIntent extends AbstractIntent
 {
-    const NAME = 'AMAZON.LaunchIntent';
+    public const NAME = 'AMAZON.LaunchIntent';
 
     /**
      * @return AlexaResponse

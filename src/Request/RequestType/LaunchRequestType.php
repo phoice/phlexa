@@ -18,7 +18,7 @@ namespace Phlexa\Request\RequestType;
  */
 class LaunchRequestType extends AbstractRequestType
 {
-    const NAME = 'LaunchRequest';
+    public const NAME = 'LaunchRequest';
 
     /** @var string */
     private $type = 'LaunchRequest';

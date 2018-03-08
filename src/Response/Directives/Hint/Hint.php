@@ -21,7 +21,7 @@ use Phlexa\Response\Directives\DirectivesInterface;
 class Hint implements DirectivesInterface
 {
     /** Type of directive */
-    const DIRECTIVE_TYPE = 'Hint';
+    public const DIRECTIVE_TYPE = 'Hint';
 
     /** @var string */
     private $text;

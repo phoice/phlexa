@@ -18,7 +18,7 @@ namespace Phlexa\Request\RequestType;
  */
 class AudioPlayerPlaybackNearlyFinishedType extends AbstractAudioPlayerRequestType
 {
-    const NAME = 'AudioPlayer.PlaybackNearlyFinished';
+    public const NAME = 'AudioPlayer.PlaybackNearlyFinished';
 
     /** @var string */
     private $type = 'AudioPlayer.PlaybackNearlyFinished';

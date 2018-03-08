@@ -21,7 +21,7 @@ use Phlexa\Response\AlexaResponse;
  */
 class ExceptionEncountered extends AbstractIntent
 {
-    const NAME = 'System.ExceptionEncountered';
+    public const NAME = 'System.ExceptionEncountered';
 
     /**
      * @return AlexaResponse

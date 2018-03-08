@@ -21,7 +21,7 @@ use Phlexa\Request\RequestType\Error\ErrorInterface;
  */
 class AudioPlayerPlaybackFailedType extends AbstractRequestType
 {
-    const NAME = 'AudioPlayer.PlaybackFailed';
+    public const NAME = 'AudioPlayer.PlaybackFailed';
 
     /** @var string */
     private $token;

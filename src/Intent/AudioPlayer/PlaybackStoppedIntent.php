@@ -21,7 +21,7 @@ use Phlexa\Response\AlexaResponse;
  */
 class PlaybackStoppedIntent extends AbstractIntent
 {
-    const NAME = 'AudioPlayer.PlaybackStopped';
+    public const NAME = 'AudioPlayer.PlaybackStopped';
 
     /**
      * @return AlexaResponse

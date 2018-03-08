@@ -19,13 +19,13 @@ namespace Phlexa\Response\Card;
 class Standard implements CardInterface
 {
     /** Maximum length of title attribute */
-    const MAX_TITLE_LENGTH = 64;
+    public const MAX_TITLE_LENGTH = 64;
 
     /** Maximum length of text attribute */
-    const MAX_TEXT_LENGTH = 6000;
+    public const MAX_TEXT_LENGTH = 6000;
 
     /** Line break for cards */
-    const BREAK_CARD = "\n \n";
+    public const BREAK_CARD = "\n \n";
 
     /** @var string */
     private $text;

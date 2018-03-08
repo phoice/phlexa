@@ -24,25 +24,25 @@ use Zend\Diactoros\Uri;
  */
 class CertificateValidator implements CertificateValidatorInterface
 {
-    const NAME = 'CertificateValidator';
+    public const NAME = 'CertificateValidator';
 
     /** maximum difference in seconds for timestamp */
-    const MAX_TIMESTAMP_DIFFERENCE = 140;
+    public const MAX_TIMESTAMP_DIFFERENCE = 140;
 
     /** allowed scheme for certificate url */
-    const ALLOWED_SCHEME = 'https';
+    public const ALLOWED_SCHEME = 'https';
 
     /** allowed scheme for certificate host */
-    const ALLOWED_HOST = 's3.amazonaws.com';
+    public const ALLOWED_HOST = 's3.amazonaws.com';
 
     /** allowed scheme for certificate port */
-    const ALLOWED_PORT = '443';
+    public const ALLOWED_PORT = '443';
 
     /** allowed scheme for certificate path */
-    const ALLOWED_PATH = '/echo.api';
+    public const ALLOWED_PATH = '/echo.api';
 
     /** host for amazon echo API */
-    const ECHO_API_AMAZON_COM = 'echo-api.amazon.com';
+    public const ECHO_API_AMAZON_COM = 'echo-api.amazon.com';
 
     /** @var AlexaRequestInterface */
     private $alexaRequest;
@@ -239,7 +239,7 @@ class CertificateValidator implements CertificateValidatorInterface
     /**
      * @throws BadRequest
      */
-    private function validateRequestSignature(): ?bool
+    private function validateRequestSignature()
     {
         if (!$this->validateSignatureFlag) {
             return true;

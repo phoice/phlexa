@@ -20,8 +20,8 @@ use Phlexa\Response\Directives\DirectivesInterface;
  */
 class ClearQueue implements DirectivesInterface
 {
-    const CLEAR_BEHAVIOR_CLEAR_ENQUEUED = 'CLEAR_ENQUEUED';
-    const CLEAR_BEHAVIOR_CLEAR_ALL = 'CLEAR_ALL';
+    public const CLEAR_BEHAVIOR_CLEAR_ENQUEUED = 'CLEAR_ENQUEUED';
+    public const CLEAR_BEHAVIOR_CLEAR_ALL = 'CLEAR_ALL';
 
     /** @var string */
     private $type = 'AudioPlayer.ClearQueue';

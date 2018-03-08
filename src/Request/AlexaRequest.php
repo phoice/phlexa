@@ -23,8 +23,8 @@ use Phlexa\Request\Session\SessionInterface;
  */
 class AlexaRequest implements AlexaRequestInterface
 {
-    const NAME = 'AlexaRequest';
-    const DEFAULT_VERSION = '1.0';
+    public const NAME = 'AlexaRequest';
+    public const DEFAULT_VERSION = '1.0';
 
     /** @var string */
     private $version = '1.0';

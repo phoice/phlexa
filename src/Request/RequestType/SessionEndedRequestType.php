@@ -20,7 +20,7 @@ use Phlexa\Request\RequestType\Error\ErrorInterface;
  */
 class SessionEndedRequestType extends AbstractRequestType
 {
-    const NAME = 'SessionEndedRequest';
+    public const NAME = 'SessionEndedRequest';
 
     /** @var ErrorInterface */
     private $error;

@@ -20,9 +20,9 @@ use Phlexa\Response\Directives\DirectivesInterface;
  */
 class Play implements DirectivesInterface
 {
-    const PLAY_BEHAVIOR_REPLACE_ALL = 'REPLACE_ALL';
-    const PLAY_BEHAVIOR_ENQUEUE = 'ENQUEUE';
-    const PLAY_BEHAVIOR_REPLACE_ENQUEUED = 'REPLACE_ENQUEUED';
+    public const PLAY_BEHAVIOR_REPLACE_ALL = 'REPLACE_ALL';
+    public const PLAY_BEHAVIOR_ENQUEUE = 'ENQUEUE';
+    public const PLAY_BEHAVIOR_REPLACE_ENQUEUED = 'REPLACE_ENQUEUED';
 
     /** @var string */
     private $type = 'AudioPlayer.Play';

@@ -19,10 +19,10 @@ namespace Phlexa\Response\Card;
 class Simple implements CardInterface
 {
     /** Maximum length of title attribute */
-    const MAX_TITLE_LENGTH = 64;
+    public const MAX_TITLE_LENGTH = 64;
 
     /** Maximum length of content attribute */
-    const MAX_CONTENT_LENGTH = 6000;
+    public const MAX_CONTENT_LENGTH = 6000;
 
     /** @var string */
     private $content;

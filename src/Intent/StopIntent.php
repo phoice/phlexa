@@ -22,7 +22,7 @@ use Phlexa\Response\OutputSpeech\SSML;
  */
 class StopIntent extends AbstractIntent
 {
-    const NAME = 'AMAZON.StopIntent';
+    public const NAME = 'AMAZON.StopIntent';
 
     /**
      * @return AlexaResponse

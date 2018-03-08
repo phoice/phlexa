@@ -19,11 +19,11 @@ namespace Phlexa\Response\Directives\Display;
 class TextContent
 {
     /** All back button types */
-    const TYPE_PLAIN_TEXT = 'PlainText';
-    const TYPE_RICH_TEXT = 'RichText';
+    public const TYPE_PLAIN_TEXT = 'PlainText';
+    public const TYPE_RICH_TEXT = 'RichText';
 
     /** Allowed template types */
-    const ALLOWED_TYPES = [self::TYPE_PLAIN_TEXT, self::TYPE_RICH_TEXT];
+    public const ALLOWED_TYPES = [self::TYPE_PLAIN_TEXT, self::TYPE_RICH_TEXT];
 
     /** @var string */
     private $primaryText;

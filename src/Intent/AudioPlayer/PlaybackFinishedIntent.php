@@ -21,7 +21,7 @@ use Phlexa\Response\AlexaResponse;
  */
 class PlaybackFinishedIntent extends AbstractIntent
 {
-    const NAME = 'AudioPlayer.PlaybackFinished';
+    public const NAME = 'AudioPlayer.PlaybackFinished';
 
     /**
      * @return AlexaResponse
