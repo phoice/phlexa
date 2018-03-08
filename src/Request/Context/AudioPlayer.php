@@ -48,7 +48,7 @@ class AudioPlayer implements AudioPlayerInterface
     /**
      * @param string $token
      */
-    public function setToken(string $token)
+    public function setToken(string $token): void
     {
         $this->token = $token;
     }
@@ -64,7 +64,7 @@ class AudioPlayer implements AudioPlayerInterface
     /**
      * @param int $offsetInMilliseconds
      */
-    public function setOffsetInMilliseconds(int $offsetInMilliseconds)
+    public function setOffsetInMilliseconds(int $offsetInMilliseconds): void
     {
         $this->offsetInMilliseconds = $offsetInMilliseconds;
     }

@@ -30,7 +30,7 @@ class Context implements ContextInterface
     /**
      * @param AudioPlayerInterface $audioPlayer
      */
-    public function setAudioPlayer(AudioPlayerInterface $audioPlayer)
+    public function setAudioPlayer(AudioPlayerInterface $audioPlayer): void
     {
         $this->audioPlayer = $audioPlayer;
     }
@@ -46,7 +46,7 @@ class Context implements ContextInterface
     /**
      * @param SystemInterface $system
      */
-    public function setSystem(SystemInterface $system)
+    public function setSystem(SystemInterface $system): void
     {
         $this->system = $system;
     }
@@ -62,7 +62,7 @@ class Context implements ContextInterface
     /**
      * @param DisplayInterface $display
      */
-    public function setDisplay(DisplayInterface $display)
+    public function setDisplay(DisplayInterface $display): void
     {
         $this->display = $display;
     }

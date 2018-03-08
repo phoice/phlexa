@@ -11,13 +11,12 @@
 
 namespace Phlexa\Application;
 
-use Psr\Container\ContainerInterface;
 use Phlexa\Intent\HelpIntent;
 use Phlexa\Intent\IntentInterface;
 use Phlexa\Request\AlexaRequestInterface;
-use Phlexa\Request\Exception\BadRequest;
 use Phlexa\Request\RequestType\IntentRequestType;
 use Phlexa\Response\AlexaResponseInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class AlexaApplication
@@ -56,7 +55,8 @@ class AlexaApplication implements AlexaApplicationInterface
      * Execute the application
      *
      * @return array
-     * @throws BadRequest
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function execute(): array
     {
@@ -69,6 +69,8 @@ class AlexaApplication implements AlexaApplicationInterface
      * Handle the request for all request types
      *
      * @return bool
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     protected function handleRequest(): bool
     {

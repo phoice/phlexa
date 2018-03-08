@@ -62,7 +62,7 @@ class SkillConfiguration implements SkillConfigurationInterface
      *
      * @return void
      */
-    public function setConfig(array $config)
+    public function setConfig(array $config): void
     {
         foreach ($config as $key => $value) {
             $setMethod = 'set' . ucfirst($key);
@@ -84,7 +84,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -100,7 +100,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $applicationId
      */
-    public function setApplicationId(string $applicationId)
+    public function setApplicationId(string $applicationId): void
     {
         $this->applicationId = $applicationId;
     }
@@ -116,7 +116,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $skillTitle
      */
-    public function setSkillTitle(string $skillTitle)
+    public function setSkillTitle(string $skillTitle): void
     {
         $this->skillTitle = $skillTitle;
     }
@@ -132,7 +132,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $applicationClass
      */
-    public function setApplicationClass(string $applicationClass)
+    public function setApplicationClass(string $applicationClass): void
     {
         $this->applicationClass = $applicationClass;
     }
@@ -148,7 +148,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $textHelperClass
      */
-    public function setTextHelperClass(string $textHelperClass)
+    public function setTextHelperClass(string $textHelperClass): void
     {
         $this->textHelperClass = $textHelperClass;
     }
@@ -164,7 +164,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param array $sessionDefaults
      */
-    public function setSessionDefaults(array $sessionDefaults)
+    public function setSessionDefaults(array $sessionDefaults): void
     {
         $this->sessionDefaults = $sessionDefaults;
     }
@@ -180,7 +180,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param array $intents
      */
-    public function setIntents(array $intents)
+    public function setIntents(array $intents): void
     {
         $this->intents = $intents;
     }
@@ -196,7 +196,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param array $texts
      */
-    public function setTexts(array $texts)
+    public function setTexts(array $texts): void
     {
         $this->texts = $texts;
     }
@@ -212,7 +212,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $smallImageUrl
      */
-    public function setSmallImageUrl(string $smallImageUrl)
+    public function setSmallImageUrl(string $smallImageUrl): void
     {
         $this->smallImageUrl = $smallImageUrl;
     }
@@ -228,7 +228,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $largeImageUrl
      */
-    public function setLargeImageUrl(string $largeImageUrl)
+    public function setLargeImageUrl(string $largeImageUrl): void
     {
         $this->largeImageUrl = $largeImageUrl;
     }
@@ -244,7 +244,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $backgroundImageUrl
      */
-    public function setBackgroundImageUrl(string $backgroundImageUrl)
+    public function setBackgroundImageUrl(string $backgroundImageUrl): void
     {
         $this->backgroundImageUrl = $backgroundImageUrl;
     }
@@ -260,7 +260,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param string $backgroundImageTitle
      */
-    public function setBackgroundImageTitle(string $backgroundImageTitle)
+    public function setBackgroundImageTitle(string $backgroundImageTitle): void
     {
         $this->backgroundImageTitle = $backgroundImageTitle;
     }
@@ -276,7 +276,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @param array $customData
      */
-    public function setCustomData(array $customData)
+    public function setCustomData(array $customData): void
     {
         $this->customData = $customData;
     }

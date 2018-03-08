@@ -27,7 +27,7 @@ class Device implements DeviceInterface
     /**
      * @param string $deviceId
      */
-    public function setDeviceId(string $deviceId)
+    public function setDeviceId(string $deviceId): void
     {
         $this->deviceId = $deviceId;
     }
@@ -43,7 +43,7 @@ class Device implements DeviceInterface
     /**
      * @param array $supportedInterfaces
      */
-    public function setSupportedInterfaces(array $supportedInterfaces)
+    public function setSupportedInterfaces(array $supportedInterfaces): void
     {
         $this->supportedInterfaces = $supportedInterfaces;
     }

@@ -115,7 +115,7 @@ class CertificateValidator implements CertificateValidatorInterface
     /**
      * @throws BadRequest
      */
-    public function validate()
+    public function validate(): void
     {
         $this->validateRequestTimestamp();
         $this->validateCertificateUrl();
@@ -128,7 +128,7 @@ class CertificateValidator implements CertificateValidatorInterface
      *
      * @throws BadRequest
      */
-    private function validateRequestTimestamp()
+    private function validateRequestTimestamp(): void
     {
         if (strtotime($this->alexaRequest->getRequest()->getTimestamp())) {
             $timestamp = $this->alexaRequest->getRequest()->getTimestamp();
@@ -151,7 +151,7 @@ class CertificateValidator implements CertificateValidatorInterface
      *
      * @throws BadRequest
      */
-    private function validateCertificateUrl()
+    private function validateCertificateUrl(): void
     {
         $urlNormalizer = new Normalizer($this->certificateUrl);
 
@@ -175,7 +175,7 @@ class CertificateValidator implements CertificateValidatorInterface
      *
      * @throws BadRequest
      */
-    private function validateCertificateParams()
+    private function validateCertificateParams(): void
     {
         $this->loadCertificate();
         $this->parseCertificate();
@@ -186,7 +186,7 @@ class CertificateValidator implements CertificateValidatorInterface
     /**
      *
      */
-    private function loadCertificate()
+    private function loadCertificate(): void
     {
         $this->rawCertificate = $this->certificateLoader->load(
             $this->certificateUrl
@@ -196,7 +196,7 @@ class CertificateValidator implements CertificateValidatorInterface
     /**
      *
      */
-    private function parseCertificate()
+    private function parseCertificate(): void
     {
         $this->parsedCertificate = openssl_x509_parse($this->rawCertificate);
     }
@@ -204,7 +204,7 @@ class CertificateValidator implements CertificateValidatorInterface
     /**
      * @throws BadRequest
      */
-    private function validateCertificateDate()
+    private function validateCertificateDate(): void
     {
         $currentTime = new DateTime();
 
@@ -224,7 +224,7 @@ class CertificateValidator implements CertificateValidatorInterface
     /**
      * @throws BadRequest
      */
-    private function validateCertificateSan()
+    private function validateCertificateSan(): void
     {
         $check = strpos(
             $this->parsedCertificate['extensions']['subjectAltName'],
@@ -239,7 +239,7 @@ class CertificateValidator implements CertificateValidatorInterface
     /**
      * @throws BadRequest
      */
-    private function validateRequestSignature()
+    private function validateRequestSignature(): ?bool
     {
         if (!$this->validateSignatureFlag) {
             return true;

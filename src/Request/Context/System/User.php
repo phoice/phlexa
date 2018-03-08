@@ -48,7 +48,7 @@ class User implements UserInterface
     /**
      * @param string $accessToken
      */
-    public function setAccessToken(string $accessToken)
+    public function setAccessToken(string $accessToken): void
     {
         $this->accessToken = $accessToken;
     }
@@ -64,7 +64,7 @@ class User implements UserInterface
     /**
      * @param string $consentToken
      */
-    public function setConsentToken(string $consentToken)
+    public function setConsentToken(string $consentToken): void
     {
         $this->consentToken = $consentToken;
     }

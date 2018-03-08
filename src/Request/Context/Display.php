@@ -38,7 +38,7 @@ class Display implements DisplayInterface
     /**
      * @param string $templateVersion
      */
-    public function setTemplateVersion(string $templateVersion)
+    public function setTemplateVersion(string $templateVersion): void
     {
         $this->templateVersion = $templateVersion;
     }
@@ -54,7 +54,7 @@ class Display implements DisplayInterface
     /**
      * @param string $markupVersion
      */
-    public function setMarkupVersion(string $markupVersion)
+    public function setMarkupVersion(string $markupVersion): void
     {
         $this->markupVersion = $markupVersion;
     }
@@ -70,7 +70,7 @@ class Display implements DisplayInterface
     /**
      * @param string $token
      */
-    public function setToken(string $token)
+    public function setToken(string $token): void
     {
         $this->token = $token;
     }

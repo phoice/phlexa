@@ -58,7 +58,7 @@ abstract class AbstractIntent implements IntentInterface
     /**
      * @param AlexaRequest $alexaRequest
      */
-    private function setAlexaRequest(AlexaRequest $alexaRequest)
+    private function setAlexaRequest(AlexaRequest $alexaRequest): void
     {
         $this->alexaRequest = $alexaRequest;
     }
@@ -74,7 +74,7 @@ abstract class AbstractIntent implements IntentInterface
     /**
      * @param AlexaResponse $alexaResponse
      */
-    private function setAlexaResponse(AlexaResponse $alexaResponse)
+    private function setAlexaResponse(AlexaResponse $alexaResponse): void
     {
         $this->alexaResponse = $alexaResponse;
     }
@@ -90,7 +90,7 @@ abstract class AbstractIntent implements IntentInterface
     /**
      * @param TextHelperInterface $textHelper
      */
-    private function setTextHelper(TextHelperInterface $textHelper)
+    private function setTextHelper(TextHelperInterface $textHelper): void
     {
         $this->textHelper = $textHelper;
     }
@@ -106,7 +106,7 @@ abstract class AbstractIntent implements IntentInterface
     /**
      * @param SkillConfigurationInterface $skillConfiguration
      */
-    private function setSkillConfiguration(SkillConfigurationInterface $skillConfiguration)
+    private function setSkillConfiguration(SkillConfigurationInterface $skillConfiguration): void
     {
         $this->skillConfiguration = $skillConfiguration;
     }

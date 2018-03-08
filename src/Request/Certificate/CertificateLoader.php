@@ -42,6 +42,7 @@ class CertificateLoader implements CertificateLoaderInterface
      * @param string $certificateUrl
      *
      * @return string
+     * @throws \ErrorException
      */
     public function load(string $certificateUrl): string
     {
@@ -64,6 +65,7 @@ class CertificateLoader implements CertificateLoaderInterface
      * @param string $certificateUrl
      *
      * @return string
+     * @throws \ErrorException
      */
     private function fetchCertificate(string $certificateUrl): string
     {
@@ -87,7 +89,7 @@ class CertificateLoader implements CertificateLoaderInterface
             return false;
         }
 
-        return implode('', file($cacheFileName));
+        return file_get_contents($cacheFileName);
     }
 
     /**
@@ -97,7 +99,7 @@ class CertificateLoader implements CertificateLoaderInterface
     private function cacheCertificate(
         string $certificateUrl,
         string $certificate
-    ) {
+    ): void {
         $cacheFileName = $this->getCacheFileName($certificateUrl);
 
         file_put_contents($cacheFileName, $certificate);
@@ -108,7 +110,7 @@ class CertificateLoader implements CertificateLoaderInterface
      *
      * @return string
      */
-    private function getCacheFileName(string $certificateUrl)
+    private function getCacheFileName(string $certificateUrl): string
     {
         return $this->cacheDir . '/' . basename($certificateUrl);
     }
