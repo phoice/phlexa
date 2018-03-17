@@ -22,6 +22,9 @@ class TextContent
     public const TYPE_PLAIN_TEXT = 'PlainText';
     public const TYPE_RICH_TEXT = 'RichText';
 
+    /** Line break for display */
+    public const BREAK_DISPLAY = '<br/>';
+
     /** Allowed template types */
     public const ALLOWED_TYPES = [self::TYPE_PLAIN_TEXT, self::TYPE_RICH_TEXT];
 
