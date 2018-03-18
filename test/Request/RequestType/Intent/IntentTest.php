@@ -11,8 +11,8 @@
 
 namespace PhlexaTest\Request\RequestType\Intent;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\Intent\Intent;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class IntentTest
@@ -59,6 +59,56 @@ class IntentTest extends TestCase
 
         $this->assertEquals(
             $slots['foo']['value'],
+            $intent->getSlotValue('foo')
+        );
+        $this->assertEquals(
+            $slots['bar']['value'],
+            $intent->getSlotValue('bar')
+        );
+        $this->assertEquals(
+            '',
+            $intent->getSlotValue('foobar')
+        );
+    }
+
+    /**
+     *
+     */
+    public function testComplexSlotValueWithResolutions()
+    {
+        $slots = [
+            'foo' => [
+                'name'        => 'foo',
+                'value'       => 'bar',
+                'resolutions' => [
+                    'resolutionsPerAuthority' => [
+                        [
+                            'authority' => 'amzn1.er-authority.echo-sdk.amzn1.ask.skill',
+                            'status'    => [
+                                'code' => 'ER_SUCCESS_MATCH',
+                            ],
+                            'values'    => [
+                                [
+                                    'value' => [
+                                        'name' => 'bar123',
+                                        'id'   => '123456789abcdef',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ]
+            ],
+            'bar' => [
+                'name'  => 'bar',
+                'value' => 'foo',
+            ],
+        ];
+
+        $intent = new Intent('name', $slots);
+
+        $this->assertEquals(
+            $slots['foo']['resolutions']['resolutionsPerAuthority'][0]['values'][0]['value']['name'],
             $intent->getSlotValue('foo')
         );
         $this->assertEquals(
