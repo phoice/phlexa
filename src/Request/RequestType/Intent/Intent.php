@@ -54,16 +54,17 @@ class Intent implements IntentInterface
 
     /**
      * @param string $key
+     * @param bool   $checkResolution
      *
      * @return string
      */
-    public function getSlotValue(string $key): string
+    public function getSlotValue(string $key, $checkResolution = false): string
     {
         if (!isset($this->slots[$key])) {
             return '';
         }
 
-        if (isset($this->slots[$key]['resolutions'])) {
+        if ($checkResolution && isset($this->slots[$key]['resolutions'])) {
             if (isset($this->slots[$key]['resolutions']['resolutionsPerAuthority'])) {
                 foreach ($this->slots[$key]['resolutions']['resolutionsPerAuthority'] as $resolution) {
                     if (isset($resolution['values'])) {

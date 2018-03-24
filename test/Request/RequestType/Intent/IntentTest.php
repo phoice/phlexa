@@ -24,7 +24,7 @@ class IntentTest extends TestCase
     /**
      *
      */
-    public function testInstantiation()
+    public function testInstantiation(): void
     {
         $slots = [
             'foo' => [
@@ -42,7 +42,7 @@ class IntentTest extends TestCase
     /**
      *
      */
-    public function testSingleSlotValue()
+    public function testSingleSlotValue(): void
     {
         $slots = [
             'foo' => [
@@ -74,7 +74,7 @@ class IntentTest extends TestCase
     /**
      *
      */
-    public function testComplexSlotValueWithResolutions()
+    public function testComplexSlotValueWithResolutions(): void
     {
         $slots = [
             'foo' => [
@@ -99,25 +99,17 @@ class IntentTest extends TestCase
                     ],
                 ]
             ],
-            'bar' => [
-                'name'  => 'bar',
-                'value' => 'foo',
-            ],
         ];
 
         $intent = new Intent('name', $slots);
 
         $this->assertEquals(
             $slots['foo']['resolutions']['resolutionsPerAuthority'][0]['values'][0]['value']['name'],
+            $intent->getSlotValue('foo', true)
+        );
+        $this->assertEquals(
+            $slots['foo']['value'],
             $intent->getSlotValue('foo')
-        );
-        $this->assertEquals(
-            $slots['bar']['value'],
-            $intent->getSlotValue('bar')
-        );
-        $this->assertEquals(
-            '',
-            $intent->getSlotValue('foobar')
         );
     }
 }
