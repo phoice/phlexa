@@ -9,6 +9,8 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace Phlexa\Request\Certificate;
 
 use Phlexa\Request\AlexaRequestInterface;

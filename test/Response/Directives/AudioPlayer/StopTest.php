@@ -9,6 +9,8 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaTest\Response\Directives\AudioPlayer;
 
 use PHPUnit\Framework\TestCase;
