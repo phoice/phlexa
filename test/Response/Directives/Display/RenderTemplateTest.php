@@ -13,10 +13,11 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Directives\Display;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Directives\Display\Image;
+use Phlexa\Response\Directives\Display\ListItem;
 use Phlexa\Response\Directives\Display\RenderTemplate;
 use Phlexa\Response\Directives\Display\TextContent;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class RenderTemplateTest
@@ -28,7 +29,7 @@ class RenderTemplateTest extends TestCase
     /**
      *
      */
-    public function testWithMandatoryOnly()
+    public function testBodyTemplateWithMandatoryOnly()
     {
         $textContent = new TextContent('primary text', null, 'secondary text', 'RichText', 'tertiary text');
 
@@ -63,7 +64,7 @@ class RenderTemplateTest extends TestCase
     /**
      *
      */
-    public function testWithWrongType()
+    public function testBodyTemplateWithWrongType()
     {
         $textContent = new TextContent('primary text');
 
@@ -98,7 +99,7 @@ class RenderTemplateTest extends TestCase
     /**
      *
      */
-    public function testWithBackgroundImage()
+    public function testBodyTemplateWithBackgroundImage()
     {
         $backgroundImage = new Image('background image description');
         $backgroundImage->setUrlSmall('https://image.server/small.png');
@@ -112,10 +113,10 @@ class RenderTemplateTest extends TestCase
         $expected = [
             'type'     => 'Display.RenderTemplate',
             'template' => [
-                'type'        => 'BodyTemplate1',
-                'token'       => 'token',
-                'backButton'  => 'HIDDEN',
-                'textContent' => [
+                'type'            => 'BodyTemplate1',
+                'token'           => 'token',
+                'backButton'      => 'HIDDEN',
+                'textContent'     => [
                     'primaryText'   => [
                         'text' => 'primary text',
                         'type' => 'PlainText',
@@ -151,7 +152,7 @@ class RenderTemplateTest extends TestCase
     /**
      *
      */
-    public function testWithAll()
+    public function testBodyTemplateWithAll()
     {
         $backgroundImage = new Image('background image description');
         $backgroundImage->setUrlSmall('https://image.server/small.png');
@@ -172,10 +173,10 @@ class RenderTemplateTest extends TestCase
         $expected = [
             'type'     => 'Display.RenderTemplate',
             'template' => [
-                'type'        => 'BodyTemplate1',
-                'token'       => 'token',
-                'backButton'  => 'VISIBLE',
-                'textContent' => [
+                'type'            => 'BodyTemplate1',
+                'token'           => 'token',
+                'backButton'      => 'VISIBLE',
+                'textContent'     => [
                     'primaryText'   => [
                         'text' => 'primary text',
                         'type' => 'PlainText',
@@ -202,8 +203,8 @@ class RenderTemplateTest extends TestCase
                         ],
                     ],
                 ],
-                'title' => str_pad('title', 200, 'title'),
-                'image' => [
+                'title'           => str_pad('title', 200, 'title'),
+                'image'           => [
                     'contentDescription' => 'image description',
                     'sources'            => [
                         [
@@ -221,4 +222,130 @@ class RenderTemplateTest extends TestCase
 
         $this->assertEquals($expected, $renderTemplate->toArray());
     }
+
+    /**
+     *
+     */
+    public function testListTemplateWithMandatoryOnly()
+    {
+        $renderTemplate = new RenderTemplate('ListTemplate1', 'token');
+
+        $expected = [
+            'type'     => 'Display.RenderTemplate',
+            'template' => [
+                'type'       => 'ListTemplate1',
+                'token'      => 'token',
+                'backButton' => 'HIDDEN',
+            ],
+        ];
+
+        $this->assertEquals($expected, $renderTemplate->toArray());
+    }
+
+    /**
+     *
+     */
+    public function testListTemplateWithTwoListItems()
+    {
+        $textContent1 = new TextContent('primary text 1', null, 'secondary text 1', 'RichText', 'tertiary text 1');
+
+        $image1 = new Image('image description 1');
+        $image1->setUrlSmall('https://image.server/small.png');
+        $image1->setUrlMedium('https://image.server/medium.png');
+
+        $listItem1 = new ListItem();
+        $listItem1->setToken('token1');
+        $listItem1->setTextContent($textContent1);
+        $listItem1->setImage($image1);
+
+        $textContent2 = new TextContent('primary text 2', null, 'secondary text 2', 'RichText', 'tertiary text 2');
+
+        $image2 = new Image('image description 2');
+        $image2->setUrlSmall('https://image.server/small.png');
+        $image2->setUrlMedium('https://image.server/medium.png');
+
+        $listItem2 = new ListItem();
+        $listItem2->setToken('token2');
+        $listItem2->setTextContent($textContent2);
+        $listItem2->setImage($image2);
+
+        $renderTemplate = new RenderTemplate('ListTemplate1', 'token');
+        $renderTemplate->addListItem($listItem1);
+        $renderTemplate->addListItem($listItem2);
+
+        $expected = [
+            'type'     => 'Display.RenderTemplate',
+            'template' => [
+                'type'       => 'ListTemplate1',
+                'token'      => 'token',
+                'backButton' => 'HIDDEN',
+                'listItems'  => [
+                    [
+                        'token' => 'token1',
+                        'textContent' => [
+                            'primaryText'   => [
+                                'text' => 'primary text 1',
+                                'type' => 'PlainText',
+                            ],
+                            'secondaryText' => [
+                                'text' => 'secondary text 1',
+                                'type' => 'RichText',
+                            ],
+                            'tertiaryText'  => [
+                                'text' => 'tertiary text 1',
+                                'type' => 'PlainText',
+                            ],
+                        ],
+                        'image' => [
+                            'contentDescription' => 'image description 1',
+                            'sources'            => [
+                                [
+                                    'url'  => 'https://image.server/small.png',
+                                    'type' => 'SMALL',
+                                ],
+                                [
+                                    'url'  => 'https://image.server/medium.png',
+                                    'type' => 'MEDIUM',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'token' => 'token2',
+                        'textContent' => [
+                            'primaryText'   => [
+                                'text' => 'primary text 2',
+                                'type' => 'PlainText',
+                            ],
+                            'secondaryText' => [
+                                'text' => 'secondary text 2',
+                                'type' => 'RichText',
+                            ],
+                            'tertiaryText'  => [
+                                'text' => 'tertiary text 2',
+                                'type' => 'PlainText',
+                            ],
+                        ],
+                        'image' => [
+                            'contentDescription' => 'image description 2',
+                            'sources'            => [
+                                [
+                                    'url'  => 'https://image.server/small.png',
+                                    'type' => 'SMALL',
+                                ],
+                                [
+                                    'url'  => 'https://image.server/medium.png',
+                                    'type' => 'MEDIUM',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $this->assertEquals($expected, $renderTemplate->toArray());
+    }
+
+
 }

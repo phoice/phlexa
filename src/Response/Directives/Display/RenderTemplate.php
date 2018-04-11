@@ -71,6 +71,9 @@ class RenderTemplate implements DirectivesInterface
     /** @var Image */
     private $image;
 
+    /** @var array */
+    private $listItems = [];
+
     /**
      * RenderTemplate constructor.
      *
@@ -78,7 +81,7 @@ class RenderTemplate implements DirectivesInterface
      * @param string      $token
      * @param TextContent $textContent
      */
-    public function __construct(string $type, string $token, TextContent $textContent)
+    public function __construct(string $type, string $token, TextContent $textContent = null)
     {
         if (!in_array($type, self::ALLOWED_TYPES)) {
             $type = self::TYPE_BODY_TEMPLATE_1;
@@ -128,6 +131,14 @@ class RenderTemplate implements DirectivesInterface
     }
 
     /**
+     * @param ListItem $listItem
+     */
+    public function addListItem(ListItem $listItem)
+    {
+        $this->listItems[] = $listItem;
+    }
+
+    /**
      * Get the directive type
      *
      * @return string
@@ -150,9 +161,12 @@ class RenderTemplate implements DirectivesInterface
                 'type'        => $this->type,
                 'token'       => $this->token,
                 'backButton'  => $this->backButton,
-                'textContent' => $this->textContent->toArray(),
             ],
         ];
+
+        if ($this->textContent) {
+            $data['template']['textContent'] = $this->textContent->toArray();
+        }
 
         if ($this->backgroundImage) {
             $data['template']['backgroundImage'] = $this->backgroundImage->toArray();
@@ -164,6 +178,15 @@ class RenderTemplate implements DirectivesInterface
 
         if ($this->image) {
             $data['template']['image'] = $this->image->toArray();
+        }
+
+        if (count($this->listItems) > 0) {
+            $data['template']['listItems'] = [];
+
+            /** @var ListItem $listItem */
+            foreach ($this->listItems as $listItem) {
+                $data['template']['listItems'][] = $listItem->toArray();
+            }
         }
 
         return $data;
