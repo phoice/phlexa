@@ -27,13 +27,21 @@ interface IntentInterface
 
     /**
      * @param string $key
+     * @param bool   $checkResolution
      *
      * @return string
      */
-    public function getSlotValue(string $key): string;
+    public function getSlotValue(string $key, $checkResolution = false): string;
 
     /**
      * @return array
      */
     public function getSlots(): array;
+
+    /**
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function hasValidSlotValue(string $key): bool;
 }

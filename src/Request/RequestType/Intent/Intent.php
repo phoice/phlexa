@@ -86,4 +86,34 @@ class Intent implements IntentInterface
 
         return '';
     }
+
+    /**
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function hasValidSlotValue(string $key): bool
+    {
+        if (!isset($this->slots[$key])) {
+            return false;
+        }
+
+        if (!isset($this->slots[$key]['resolutions'])) {
+            return false;
+        }
+
+        $resolutions = $this->slots[$key]['resolutions'];
+
+        if (!isset($resolutions['resolutionsPerAuthority'])) {
+            return false;
+        }
+
+        foreach ($resolutions['resolutionsPerAuthority'] as $resolution) {
+            if (isset($resolution['status']) && isset($resolution['status']['code'])) {
+                return $resolution['status']['code'] === 'ER_SUCCESS_MATCH';
+            }
+        }
+
+        return false;
+    }
 }
