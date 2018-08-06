@@ -55,7 +55,7 @@ class RequestTypeFactory
                 $data['session']['sessionId'],
                 new SessionApplication($data['session']['application']['applicationId']),
                 $data['session']['attributes'] ?? [],
-                new SessionUser($data['session']['user']['userId'])
+                new SessionUser($data['session']['user']['userId'], $data['session']['user']['accessToken'] ?? null)
             );
         } else {
             $session = null;
