@@ -23,10 +23,10 @@ interface UserInterface
     /**
      * @return string
      */
-    public function getAccessToken(): string;
+    public function getUserId(): string;
 
     /**
      * @return string
      */
-    public function getUserId(): string;
+    public function getAccessToken(): ?string;
 }

@@ -23,10 +23,10 @@ class User implements UserInterface
     /** @var string */
     private $userId;
 
-    /** @var string */
+    /** @var string|null */
     private $accessToken;
 
-    /** @var string */
+    /** @var string|null */
     private $consentToken;
 
     /**
@@ -36,7 +36,7 @@ class User implements UserInterface
      */
     public function __construct($userId)
     {
-        $this->userId       = $userId;
+        $this->userId = $userId;
     }
 
     /**
@@ -58,7 +58,7 @@ class User implements UserInterface
     /**
      * @return string|null
      */
-    public function getAccessToken()
+    public function getAccessToken(): ?string
     {
         return $this->accessToken;
     }
@@ -74,7 +74,7 @@ class User implements UserInterface
     /**
      * @return string|null
      */
-    public function getConsentToken()
+    public function getConsentToken(): ?string
     {
         return $this->consentToken;
     }

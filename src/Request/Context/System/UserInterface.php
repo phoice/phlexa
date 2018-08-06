@@ -33,7 +33,7 @@ interface UserInterface
     /**
      * @return string|null
      */
-    public function getAccessToken();
+    public function getAccessToken(): ?string;
 
     /**
      * @param string $consentToken
@@ -43,5 +43,5 @@ interface UserInterface
     /**
      * @return string|null
      */
-    public function getConsentToken();
+    public function getConsentToken(): ?string;
 }

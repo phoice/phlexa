@@ -21,10 +21,10 @@ namespace Phlexa\Request\Session;
 class User implements UserInterface
 {
     /** @var string */
-    private $accessToken;
-
-    /** @var string */
     private $userId;
+
+    /** @var string|null */
+    private $accessToken;
 
     /**
      * User constructor.
@@ -49,7 +49,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getAccessToken(): string
+    public function getAccessToken(): ?string
     {
         return $this->accessToken;
     }
