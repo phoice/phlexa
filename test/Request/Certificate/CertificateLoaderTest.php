@@ -26,7 +26,7 @@ class CertificateLoaderTest extends TestCase
     /**
      * @var string
      */
-    private $certificateUrl = 'https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem';
+    private $certificateUrl = 'https://s3.amazonaws.com/echo.api/echo-api-cert-6-ats.pem';
 
     /**
      *
@@ -36,7 +36,7 @@ class CertificateLoaderTest extends TestCase
         $loader = new CertificateLoader();
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-5.pem'),
+            file(__DIR__ . '/TestAssets/echo-api-cert-6-ats.pem'),
             ''
         );
 
@@ -49,14 +49,14 @@ class CertificateLoaderTest extends TestCase
      */
     public function testLoadCertificateWithInvalidCache()
     {
-        if (file_exists('/tmp/echo-api-cert-5.pem')) {
-            unlink('/tmp/echo-api-cert-5.pem');
+        if (file_exists('/tmp/echo-api-cert-6-ats.pem')) {
+            unlink('/tmp/echo-api-cert-6-ats.pem');
         }
 
         $loader = new CertificateLoader(true, '/tmp');
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-5.pem'),
+            file(__DIR__ . '/TestAssets/echo-api-cert-6-ats.pem'),
             ''
         );
 
@@ -68,23 +68,23 @@ class CertificateLoaderTest extends TestCase
      */
     public function testLoadCertificateWithValidCache()
     {
-        if (file_exists('/tmp/echo-api-cert-5.pem')) {
-            unlink('/tmp/echo-api-cert-5.pem');
+        if (file_exists('/tmp/echo-api-cert-6-ats.pem')) {
+            unlink('/tmp/echo-api-cert-6-ats.pem');
         }
 
-        copy(__DIR__ . '/TestAssets/echo-api-cert-5.pem', '/tmp/echo-api-cert-5.pem');
+        copy(__DIR__ . '/TestAssets/echo-api-cert-6-ats.pem', '/tmp/echo-api-cert-6-ats.pem');
 
         $loader = new CertificateLoader(true, '/tmp');
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-5.pem'),
+            file(__DIR__ . '/TestAssets/echo-api-cert-6-ats.pem'),
             ''
         );
 
         $this->assertEquals($expected, $loader->load($this->certificateUrl));
 
-        if (file_exists('/tmp/echo-api-cert-5.pem')) {
-            unlink('/tmp/echo-api-cert-5.pem');
+        if (file_exists('/tmp/echo-api-cert-6-ats.pem')) {
+            unlink('/tmp/echo-api-cert-6-ats.pem');
         }
     }
 }

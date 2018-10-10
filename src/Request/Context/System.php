@@ -36,6 +36,9 @@ class System implements SystemInterface
     /** @var string */
     private $apiEndpoint;
 
+    /** @var string */
+    private $apiAccessToken;
+
     /**
      * System constructor.
      *
@@ -43,12 +46,14 @@ class System implements SystemInterface
      * @param UserInterface        $user
      * @param DeviceInterface      $device
      * @param string|null          $apiEndpoint
+     * @param string|null          $apiAccessToken
      */
     public function __construct(
         ApplicationInterface $application,
         UserInterface $user,
         DeviceInterface $device,
-        string $apiEndpoint = null
+        string $apiEndpoint = null,
+        string $apiAccessToken = null
     ) {
         $this->application = $application;
         $this->user        = $user;
@@ -56,6 +61,10 @@ class System implements SystemInterface
 
         if ($apiEndpoint) {
             $this->apiEndpoint = $apiEndpoint;
+        }
+
+        if ($apiAccessToken) {
+            $this->apiAccessToken = $apiAccessToken;
         }
     }
 
@@ -89,5 +98,13 @@ class System implements SystemInterface
     public function getApiEndpoint()
     {
         return $this->apiEndpoint;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiAccessToken()
+    {
+        return $this->apiAccessToken;
     }
 }

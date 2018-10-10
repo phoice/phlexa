@@ -43,4 +43,9 @@ interface SystemInterface
      * @return string
      */
     public function getApiEndpoint();
+
+    /**
+     * @return string
+     */
+    public function getApiAccessToken();
 }

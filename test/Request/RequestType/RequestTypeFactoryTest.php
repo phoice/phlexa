@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\RequestType\AbstractAudioPlayerRequestType;
 use Phlexa\Request\RequestType\AudioPlayerPlaybackFailedType;
@@ -31,6 +30,7 @@ use Phlexa\Request\RequestType\RequestTypeFactory;
 use Phlexa\Request\RequestType\RequestTypeInterface;
 use Phlexa\Request\RequestType\SessionEndedRequestType;
 use Phlexa\Request\RequestType\SystemExceptionEncounteredType;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class RequestTypeFactoryTest
@@ -235,23 +235,24 @@ class RequestTypeFactoryTest extends TestCase
                     'markupVersion'   => '1.0',
                 ],
                 'System'      => [
-                    'application' => [
+                    'application'    => [
                         'applicationId' => 'applicationId',
                     ],
-                    'user'        => [
+                    'user'           => [
                         'userId'      => 'userId',
                         'accessToken' => 'accessToken',
                         'permissions' => [
                             'consentToken' => 'consentToken',
                         ],
                     ],
-                    'device'      => [
+                    'device'         => [
                         'deviceId'            => 'deviceId',
                         'supportedInterfaces' => [
                             'AudioPlayer' => [],
                         ],
                     ],
-                    'apiEndpoint' => 'https://api.amazonalexa.com',
+                    'apiEndpoint'    => 'https://api.amazonalexa.com',
+                    'apiAccessToken' => 'apiAccessToken',
                 ],
             ],
         ];
@@ -1154,6 +1155,11 @@ class RequestTypeFactoryTest extends TestCase
             $this->assertEquals(
                 $data['context']['System']['apiEndpoint'],
                 $context->getSystem()->getApiEndpoint()
+            );
+
+            $this->assertEquals(
+                $data['context']['System']['apiAccessToken'],
+                $context->getSystem()->getApiAccessToken()
             );
         }
     }
