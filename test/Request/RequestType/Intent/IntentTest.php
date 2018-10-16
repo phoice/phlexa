@@ -161,19 +161,19 @@ class IntentTest extends TestCase
                                 [
                                     'value' => [
                                         'name' => 'bar123',
-                                        'id'   => '123456789abcdef',
+                                        'id'   => '123456789abcdefA',
                                     ],
                                 ],
                                 [
                                     'value' => [
-                                        'name' => 'bar123',
-                                        'id'   => '123456789abcdef',
+                                        'name' => 'foo123',
+                                        'id'   => '123456789abcdefB',
                                     ],
                                 ],
                                 [
                                     'value' => [
-                                        'name' => 'bar123',
-                                        'id'   => '123456789abcdef',
+                                        'name' => 'foobar123',
+                                        'id'   => '123456789abcdefC',
                                     ],
                                 ],
                             ],
@@ -188,6 +188,60 @@ class IntentTest extends TestCase
         $this->assertEquals(
             3,
             $intent->countSlotValues('foo')
+        );
+    }
+
+    /**
+     *
+     */
+    public function testComplexSlotValuesWithResolutions(): void
+    {
+        $slots = [
+            'foo' => [
+                'name'        => 'foo',
+                'value'       => 'bar',
+                'resolutions' => [
+                    'resolutionsPerAuthority' => [
+                        [
+                            'authority' => 'amzn1.er-authority.echo-sdk.amzn1.ask.skill',
+                            'status'    => [
+                                'code' => 'ER_SUCCESS_MATCH',
+                            ],
+                            'values'    => [
+                                [
+                                    'value' => [
+                                        'name' => 'bar123',
+                                        'id'   => '123456789abcdefA',
+                                    ],
+                                ],
+                                [
+                                    'value' => [
+                                        'name' => 'foo123',
+                                        'id'   => '123456789abcdefB',
+                                    ],
+                                ],
+                                [
+                                    'value' => [
+                                        'name' => 'foobar123',
+                                        'id'   => '123456789abcdefC',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ]
+            ],
+        ];
+
+        $intent = new Intent('name', $slots);
+
+        $this->assertEquals(
+            [
+                'bar123',
+                'foo123',
+                'foobar123',
+            ],
+            $intent->getAllSlotValues('foo')
         );
     }
 }

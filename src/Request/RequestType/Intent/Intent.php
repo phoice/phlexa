@@ -92,6 +92,32 @@ class Intent implements IntentInterface
     /**
      * @param string $key
      *
+     * @return array
+     */
+    public function getAllSlotValues(string $key): array
+    {
+        $values = [];
+
+        if (isset($this->slots[$key]['resolutions'])) {
+            if (isset($this->slots[$key]['resolutions']['resolutionsPerAuthority'])) {
+                foreach ($this->slots[$key]['resolutions']['resolutionsPerAuthority'] as $resolution) {
+                    if (isset($resolution['values'])) {
+                        foreach ($resolution['values'] as $resolutionValue) {
+                            if (isset($resolutionValue['value']) && isset($resolutionValue['value']['name'])) {
+                                $values[] = $resolutionValue['value']['name'];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $values;
+    }
+
+    /**
+     * @param string $key
+     *
      * @return int
      */
     public function countSlotValues(string $key): int

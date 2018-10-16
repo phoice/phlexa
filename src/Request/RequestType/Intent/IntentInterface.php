@@ -36,6 +36,13 @@ interface IntentInterface
     /**
      * @param string $key
      *
+     * @return array
+     */
+    public function getAllSlotValues(string $key): array;
+
+    /**
+     * @param string $key
+     *
      * @return int
      */
     public function countSlotValues(string $key): int;
