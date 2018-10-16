@@ -15,6 +15,7 @@ namespace PhlexaTest\Request\RequestType\Intent;
 
 use Phlexa\Request\RequestType\Intent\Intent;
 use PHPUnit\Framework\TestCase;
+use function count;
 
 /**
  * Class IntentTest
@@ -112,6 +113,81 @@ class IntentTest extends TestCase
         $this->assertEquals(
             $slots['foo']['value'],
             $intent->getSlotValue('foo')
+        );
+    }
+
+    /**
+     *
+     */
+    public function testSingleSlotCount(): void
+    {
+        $slots = [
+            'foo' => [
+                'name'  => 'foo',
+                'value' => 'bar',
+            ],
+            'bar' => [],
+        ];
+
+        $intent = new Intent('name', $slots);
+
+        $this->assertEquals(
+            1,
+            $intent->countSlotValues('foo')
+        );
+        $this->assertEquals(
+            0,
+            $intent->countSlotValues('bar')
+        );
+    }
+
+    /**
+     *
+     */
+    public function testComplexSlotValueCountWithResolutions(): void
+    {
+        $slots = [
+            'foo' => [
+                'name'        => 'foo',
+                'value'       => 'bar',
+                'resolutions' => [
+                    'resolutionsPerAuthority' => [
+                        [
+                            'authority' => 'amzn1.er-authority.echo-sdk.amzn1.ask.skill',
+                            'status'    => [
+                                'code' => 'ER_SUCCESS_MATCH',
+                            ],
+                            'values'    => [
+                                [
+                                    'value' => [
+                                        'name' => 'bar123',
+                                        'id'   => '123456789abcdef',
+                                    ],
+                                ],
+                                [
+                                    'value' => [
+                                        'name' => 'bar123',
+                                        'id'   => '123456789abcdef',
+                                    ],
+                                ],
+                                [
+                                    'value' => [
+                                        'name' => 'bar123',
+                                        'id'   => '123456789abcdef',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ]
+            ],
+        ];
+
+        $intent = new Intent('name', $slots);
+
+        $this->assertEquals(
+            3,
+            $intent->countSlotValues('foo')
         );
     }
 }

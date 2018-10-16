@@ -34,6 +34,13 @@ interface IntentInterface
     public function getSlotValue(string $key, $checkResolution = false): string;
 
     /**
+     * @param string $key
+     *
+     * @return int
+     */
+    public function countSlotValues(string $key): int;
+
+    /**
      * @return array
      */
     public function getSlots(): array;

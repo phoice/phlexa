@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Phlexa\Request\RequestType\Intent;
 
+use function count;
+
 /**
  * Class Intent
  *
@@ -85,6 +87,32 @@ class Intent implements IntentInterface
         }
 
         return '';
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return int
+     */
+    public function countSlotValues(string $key): int
+    {
+        $count = 0;
+
+        if (isset($this->slots[$key], $this->slots[$key]['value'])) {
+            $count = 1;
+        }
+
+        if (isset($this->slots[$key]['resolutions'])) {
+            if (isset($this->slots[$key]['resolutions']['resolutionsPerAuthority'])) {
+                foreach ($this->slots[$key]['resolutions']['resolutionsPerAuthority'] as $resolution) {
+                    if (isset($resolution['values'])) {
+                        $count = count($resolution['values']);
+                    }
+                }
+            }
+        }
+
+        return $count;
     }
 
     /**
