@@ -25,6 +25,10 @@ class AskForPermissionsConsent implements CardInterface
     public const READ_ALEXA_HOUSEHOLD_LIST              = 'read::alexa:household:list';
     public const READ_ALEXA_DEVICE_ALL_ADDRESS          = 'read::alexa:device:all:address';
     public const READ_ALEXA_DEVICE_ALL_ADDRESS_COUNTRY  = 'read::alexa:device:all:address:country_and_postal_code';
+    public const ALEXA_PROFILE_NAME_READ                = 'alexa::profile:name:read';
+    public const ALEXA_PROFILE_GIVEN_NAME_READ          = 'alexa::profile:given_name:read';
+    public const ALEXA_PROFILE_EMAIL_READ               = 'alexa::profile:email:read';
+    public const ALEXA_PROFILE_MOBILE_NUMBER_READ       = 'alexa::profile:mobile_number:read';
 
     /** @var array */
     private $permissions = [];
@@ -34,7 +38,6 @@ class AskForPermissionsConsent implements CardInterface
      *
      * @param array $permissions
      */
-
     public function __construct(array $permissions)
     {
         $this->setPermissions($permissions);
