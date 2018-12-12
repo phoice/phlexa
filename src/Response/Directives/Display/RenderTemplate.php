@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Phlexa\Response\Directives\Display;
 
 use Phlexa\Response\Directives\DirectivesInterface;
+use function count;
+use function in_array;
 
 /**
  * Class RenderTemplate
@@ -32,12 +34,14 @@ class RenderTemplate implements DirectivesInterface
     public const TYPE_BODY_TEMPLATE_2 = 'BodyTemplate2';
     public const TYPE_BODY_TEMPLATE_3 = 'BodyTemplate3';
     public const TYPE_BODY_TEMPLATE_6 = 'BodyTemplate6';
+    public const TYPE_BODY_TEMPLATE_7 = 'BodyTemplate7';
 
     /** Allowed template types */
     public const ALLOWED_TYPES
         = [
             self::TYPE_LIST_TEMPLATE_1, self::TYPE_LIST_TEMPLATE_2, self::TYPE_BODY_TEMPLATE_1,
             self::TYPE_BODY_TEMPLATE_2, self::TYPE_BODY_TEMPLATE_3, self::TYPE_BODY_TEMPLATE_6,
+            self::TYPE_BODY_TEMPLATE_6,
         ];
 
     /** All back button types */
@@ -83,7 +87,7 @@ class RenderTemplate implements DirectivesInterface
      */
     public function __construct(string $type, string $token, TextContent $textContent = null)
     {
-        if (!in_array($type, self::ALLOWED_TYPES)) {
+        if (!in_array($type, self::ALLOWED_TYPES, true)) {
             $type = self::TYPE_BODY_TEMPLATE_1;
         }
 
@@ -97,7 +101,7 @@ class RenderTemplate implements DirectivesInterface
      */
     public function setBackButton(string $backButton)
     {
-        if (in_array($backButton, self::ALLOWED_BACK_BUTTONS)) {
+        if (in_array($backButton, self::ALLOWED_BACK_BUTTONS, true)) {
             $this->backButton = $backButton;
         }
     }

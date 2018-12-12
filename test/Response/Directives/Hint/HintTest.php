@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Directives\Hint;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Directives\Hint\Hint;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class HintTest
@@ -39,5 +39,6 @@ class HintTest extends TestCase
         ];
 
         $this->assertEquals($expected, $hint->toArray());
+        $this->assertEquals('Hint', $hint->getType());
     }
 }

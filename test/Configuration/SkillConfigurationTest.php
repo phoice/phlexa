@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Configuration;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Configuration\SkillConfiguration;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SkillConfigurationTest
@@ -42,16 +42,19 @@ class SkillConfigurationTest extends TestCase
     public function testSetConfig()
     {
         $config = [
-            'applicationId'    => 'amzn1.ask.skill.place-your-skill-id-here',
-            'applicationClass' => 'ApplicationClass',
-            'textHelperClass'  => 'TextHelperClass',
-            'smallImageUrl'    => 'https://www.phoice.tech//cards/hello-480x480.png',
-            'largeImageUrl'    => 'https://www.phoice.tech//cards/hello-800x800.png',
-            'sessionDefaults'  => [
+            'applicationId'        => 'amzn1.ask.skill.place-your-skill-id-here',
+            'skillTitle'           => 'Skill Title',
+            'applicationClass'     => 'ApplicationClass',
+            'textHelperClass'      => 'TextHelperClass',
+            'smallImageUrl'        => 'https://www.phoice.tech//cards/hello-480x480.png',
+            'largeImageUrl'        => 'https://www.phoice.tech//cards/hello-800x800.png',
+            'backgroundImageUrl'   => 'https://www.phoice.tech//cards/hello-1024x600.png',
+            'backgroundImageTitle' => 'Background Image Title',
+            'sessionDefaults'      => [
                 'foo' => 'bar',
                 'bar' => 'foo',
             ],
-            'intents'          => [
+            'intents'              => [
                 'aliases' => [
                     'foo' => 'bar',
                 ],
@@ -60,7 +63,7 @@ class SkillConfigurationTest extends TestCase
                     'foo' => 'bar',
                 ],
             ],
-            'texts'            => [
+            'texts'                => [
                 'de-DE' => [
                     'foo' => 'bar'
                 ],
@@ -71,18 +74,25 @@ class SkillConfigurationTest extends TestCase
                     'foo' => 'bar'
                 ],
             ],
+            'customData'           => [
+                'foo' => 'bar'
+            ],
         ];
 
         $skillConfiguration = new SkillConfiguration();
         $skillConfiguration->setConfig($config);
 
         $this->assertEquals($config['applicationId'], $skillConfiguration->getApplicationId());
+        $this->assertEquals($config['skillTitle'], $skillConfiguration->getSkillTitle());
         $this->assertEquals($config['applicationClass'], $skillConfiguration->getApplicationClass());
         $this->assertEquals($config['textHelperClass'], $skillConfiguration->getTextHelperClass());
         $this->assertEquals($config['sessionDefaults'], $skillConfiguration->getSessionDefaults());
         $this->assertEquals($config['smallImageUrl'], $skillConfiguration->getSmallImageUrl());
         $this->assertEquals($config['largeImageUrl'], $skillConfiguration->getLargeImageUrl());
+        $this->assertEquals($config['backgroundImageUrl'], $skillConfiguration->getBackgroundImageUrl());
+        $this->assertEquals($config['backgroundImageTitle'], $skillConfiguration->getBackgroundImageTitle());
         $this->assertEquals($config['intents'], $skillConfiguration->getIntents());
         $this->assertEquals($config['texts'], $skillConfiguration->getTexts());
+        $this->assertEquals($config['customData'], $skillConfiguration->getCustomData());
     }
 }
