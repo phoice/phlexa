@@ -41,7 +41,7 @@ class RenderTemplate implements DirectivesInterface
         = [
             self::TYPE_LIST_TEMPLATE_1, self::TYPE_LIST_TEMPLATE_2, self::TYPE_BODY_TEMPLATE_1,
             self::TYPE_BODY_TEMPLATE_2, self::TYPE_BODY_TEMPLATE_3, self::TYPE_BODY_TEMPLATE_6,
-            self::TYPE_BODY_TEMPLATE_6,
+            self::TYPE_BODY_TEMPLATE_7,
         ];
 
     /** All back button types */
