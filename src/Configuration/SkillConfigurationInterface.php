@@ -110,6 +110,16 @@ interface SkillConfigurationInterface
     /**
      * @return string
      */
+    public function getHost(): string;
+
+    /**
+     * @param string $host
+     */
+    public function setHost(string $host): void;
+
+    /**
+     * @return string
+     */
     public function getSmallImageUrl(): string;
 
     /**
