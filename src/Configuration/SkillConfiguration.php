@@ -45,6 +45,9 @@ class SkillConfiguration implements SkillConfigurationInterface
     private $texts = [];
 
     /** @var string */
+    private $host;
+
+    /** @var string */
     private $smallImageUrl;
 
     /** @var string */
@@ -201,6 +204,22 @@ class SkillConfiguration implements SkillConfigurationInterface
     public function setTexts(array $texts): void
     {
         $this->texts = $texts;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHost(): string
+    {
+        return $this->host;
+    }
+
+    /**
+     * @param string $host
+     */
+    public function setHost(string $host): void
+    {
+        $this->host = $host;
     }
 
     /**
