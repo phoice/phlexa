@@ -143,6 +143,14 @@ abstract class AbstractIntent implements IntentInterface
     /**
      * @return bool
      */
+    protected function isAplSupported(): bool
+    {
+        return $this->checkInterface('Alexa.Presentation.APL');
+    }
+
+    /**
+     * @return bool
+     */
     protected function isVideoAppSupported(): bool
     {
         return $this->checkInterface('VideoApp');
