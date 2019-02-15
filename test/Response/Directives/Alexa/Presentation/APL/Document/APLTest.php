@@ -24,7 +24,7 @@ class APLTest extends TestCase
     /**
      *
      */
-    public function testWithMandatoryOnly(): void
+    public function testConstructor(): void
     {
         $import       = [
             [
@@ -75,5 +75,33 @@ class APLTest extends TestCase
 
         $this->assertEquals($expected, $aplDocument->toArray());
         $this->assertEquals('APL', $aplDocument->getType());
+    }
+
+    /**
+     *
+     */
+    public function testFactoryFromString(): void
+    {
+        $aplJson  = file_get_contents(__DIR__ . '/test-assets/simple-apl.json');
+        $aplArray = include __DIR__ . '/test-assets/simple-apl.php';
+
+        $aplDocument = APL::createFromString($aplJson);
+
+        $this->assertEquals($aplArray, $aplDocument->toArray());
+        $this->assertEquals($aplArray['type'], $aplDocument->getType());
+    }
+
+    /**
+     *
+     */
+    public function testFactoryFromFile(): void
+    {
+        $aplFile  = __DIR__ . '/test-assets/simple-apl.json';
+        $aplArray = include __DIR__ . '/test-assets/simple-apl.php';
+
+        $aplDocument = APL::createFromFile($aplFile);
+
+        $this->assertEquals($aplArray, $aplDocument->toArray());
+        $this->assertEquals($aplArray['type'], $aplDocument->getType());
     }
 }

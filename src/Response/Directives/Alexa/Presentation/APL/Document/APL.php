@@ -85,6 +85,37 @@ class APL implements DirectivesInterface
     }
 
     /**
+     * @param $aplJson
+     *
+     * @return APL
+     */
+    public static function createFromString(string $aplJson): APL
+    {
+        $aplData = json_decode($aplJson, true);
+
+        $import       = $aplData['import'] ?? [];
+        $theme        = $aplData['theme'] ?? 'dark';
+        $resources    = $aplData['resources'] ?? [];
+        $styles       = $aplData['styles'] ?? [];
+        $layouts      = $aplData['layouts'] ?? [];
+        $mainTemplate = $aplData['mainTemplate'] ?? [];
+
+        return new APL($import, $resources, $styles, $layouts, $mainTemplate, $theme);
+    }
+
+    /**
+     * @param string $aplFile
+     *
+     * @return APL
+     */
+    public static function createFromFile(string $aplFile): APL
+    {
+        $aplJson = file_get_contents($aplFile);
+
+        return self::createFromString($aplJson);
+    }
+
+    /**
      * @return string
      */
     public function getType(): string
