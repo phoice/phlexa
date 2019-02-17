@@ -22,6 +22,7 @@ use Phlexa\Response\Directives\Alexa\Presentation\APL\RenderDocument;
 use Phlexa\Response\Directives\Display\Image;
 use Phlexa\Response\Directives\Display\RenderTemplate;
 use Phlexa\Response\Directives\Display\TextContent;
+use Phlexa\Response\Directives\Hint\Hint;
 use Phlexa\Response\OutputSpeech\SSML;
 use Phlexa\TextHelper\TextHelperInterface;
 
@@ -325,6 +326,12 @@ abstract class AbstractIntent implements IntentInterface
         }
 
         $this->getAlexaResponse()->addDirective($displayDirective);
+
+        if ($container->hasHintText()) {
+            $this->getAlexaResponse()->addDirective(
+                new Hint($container->getHintText())
+            );
+        }
     }
 
     /**
