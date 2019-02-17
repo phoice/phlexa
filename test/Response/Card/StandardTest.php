@@ -40,8 +40,8 @@ class StandardTest extends TestCase
             'title' => str_pad('title', 64, 'title'),
             'text'  => str_pad('text', 6000, 'text'),
             'image' => [
-                'smallImageUrl' => 'https://image.server/small.png',
-                'largeImageUrl' => 'https://image.server/large.png',
+                'smallFrontImage' => 'https://image.server/small.png',
+                'largeFrontImage' => 'https://image.server/large.png',
             ],
         ];
 
@@ -60,8 +60,8 @@ class StandardTest extends TestCase
             'title' => 'title',
             'text'  => 'text',
             'image' => [
-                'smallImageUrl' => 'https://image.server/small.png',
-                'largeImageUrl' => 'https://image.server/large.png',
+                'smallFrontImage' => 'https://image.server/small.png',
+                'largeFrontImage' => 'https://image.server/large.png',
             ],
         ];
 

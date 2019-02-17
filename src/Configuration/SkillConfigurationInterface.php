@@ -25,7 +25,7 @@ interface SkillConfigurationInterface
      *
      * @return void
      */
-    public function setConfig(array $config);
+    public function setConfig(array $config): void;
 
     /**
      * @return string
@@ -120,42 +120,82 @@ interface SkillConfigurationInterface
     /**
      * @return string
      */
-    public function getSmallImageUrl(): string;
+    public function getSmallFrontImage(): string;
 
     /**
-     * @param string $smallImageUrl
+     * @param string $smallFrontImage
      */
-    public function setSmallImageUrl(string $smallImageUrl);
-
-    /**
-     * @return string
-     */
-    public function getLargeImageUrl(): string;
-
-    /**
-     * @param string $largeImageUrl
-     */
-    public function setLargeImageUrl(string $largeImageUrl);
+    public function setSmallFrontImage(string $smallFrontImage);
 
     /**
      * @return string
      */
-    public function getBackgroundImageUrl(): string;
+    public function getLargeFrontImage(): string;
 
     /**
-     * @param string $backgroundImageUrl
+     * @param string $largeFrontImage
      */
-    public function setBackgroundImageUrl(string $backgroundImageUrl);
+    public function setLargeFrontImage(string $largeFrontImage);
+
+    /**
+     * @return string|null
+     */
+    public function getSmallBackgroundImage(): ?string;
+
+    /**
+     * @param string|null $smallBackgroundImage
+     */
+    public function setSmallBackgroundImage(?string $smallBackgroundImage): void;
 
     /**
      * @return string
      */
-    public function getBackgroundImageTitle(): string;
+    public function getMediumBackgroundImage(): string;
+
+    /**
+     * @param string $mediumBackgroundImage
+     */
+    public function setMediumBackgroundImage(string $mediumBackgroundImage);
+
+    /**
+     * @return string|null
+     */
+    public function getLargeBackgroundImage(): ?string;
+
+    /**
+     * @param string|null $largeBackgroundImage
+     */
+    public function setLargeBackgroundImage(?string $largeBackgroundImage): void;
+
+    /**
+     * @return string|null
+     */
+    public function getExtraLargeBackgroundImage(): ?string;
+
+    /**
+     * @param string|null $extraLargeBackgroundImage
+     */
+    public function setExtraLargeBackgroundImage(?string $extraLargeBackgroundImage): void;
+
+    /**
+     * @return string
+     */
+    public function getImageTitle(): string;
 
     /**
      * @param string $backgroundImageTitle
      */
-    public function setBackgroundImageTitle(string $backgroundImageTitle);
+    public function setImageTitle(string $backgroundImageTitle);
+
+    /**
+     * @return string|null
+     */
+    public function getNormalBodyAplDocument(): ?string;
+
+    /**
+     * @param string|null $normalBodyAplDocument
+     */
+    public function setNormalBodyAplDocument(?string $normalBodyAplDocument): void;
 
     /**
      * @return array

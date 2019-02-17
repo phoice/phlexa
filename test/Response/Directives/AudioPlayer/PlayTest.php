@@ -137,7 +137,7 @@ class PlayTest extends TestCase
         $art->setUrlSmall('https://image.server/art.png');
 
         $backgroundImage = new Image('background image description');
-        $backgroundImage->setUrlSmall('https://image.server/background.png');
+        $backgroundImage->setUrlSmall('https://image.server/medium-background.png');
 
         $directive = new Play(
             'REPLACE_ALL', 'https:/www.test.de/music.mp3', '12345678'
@@ -170,7 +170,7 @@ class PlayTest extends TestCase
                         'contentDescription' => 'background image description',
                         'sources'            => [
                             [
-                                'url'  => 'https://image.server/background.png',
+                                'url'  => 'https://image.server/medium-background.png',
                                 'type' => 'SMALL',
                             ],
                         ],

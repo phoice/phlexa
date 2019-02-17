@@ -69,8 +69,8 @@ class Standard implements CardInterface
             'title' => $this->title,
             'text'  => $this->text,
             'image' => [
-                'smallImageUrl' => $this->smallImageUrl,
-                'largeImageUrl' => $this->largeImageUrl,
+                'smallFrontImage' => $this->smallImageUrl,
+                'largeFrontImage' => $this->largeImageUrl,
             ],
         ];
     }

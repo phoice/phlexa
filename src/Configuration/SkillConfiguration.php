@@ -47,17 +47,29 @@ class SkillConfiguration implements SkillConfigurationInterface
     /** @var string */
     private $host;
 
-    /** @var string */
-    private $smallImageUrl;
+    /** @var string|null */
+    private $smallFrontImage;
+
+    /** @var string|null */
+    private $largeFrontImage;
+
+    /** @var string|null */
+    private $smallBackgroundImage;
+
+    /** @var string|null */
+    private $mediumBackgroundImage;
+
+    /** @var string|null */
+    private $largeBackgroundImage;
+
+    /** @var string|null */
+    private $extraLargeBackgroundImage;
 
     /** @var string */
-    private $largeImageUrl;
+    private $imageTitle;
 
-    /** @var string */
-    private $backgroundImageUrl;
-
-    /** @var string */
-    private $backgroundImageTitle;
+    /** @var string|null */
+    private $normalBodyAplDocument;
 
     /** @var array */
     private $customData = [];
@@ -225,65 +237,129 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @return string
      */
-    public function getSmallImageUrl(): string
+    public function getSmallFrontImage(): string
     {
-        return $this->smallImageUrl;
+        return $this->smallFrontImage;
     }
 
     /**
-     * @param string $smallImageUrl
+     * @param string $smallFrontImage
      */
-    public function setSmallImageUrl(string $smallImageUrl): void
+    public function setSmallFrontImage(string $smallFrontImage): void
     {
-        $this->smallImageUrl = $smallImageUrl;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLargeImageUrl(): string
-    {
-        return $this->largeImageUrl;
-    }
-
-    /**
-     * @param string $largeImageUrl
-     */
-    public function setLargeImageUrl(string $largeImageUrl): void
-    {
-        $this->largeImageUrl = $largeImageUrl;
+        $this->smallFrontImage = $smallFrontImage;
     }
 
     /**
      * @return string
      */
-    public function getBackgroundImageUrl(): string
+    public function getLargeFrontImage(): string
     {
-        return $this->backgroundImageUrl;
+        return $this->largeFrontImage;
     }
 
     /**
-     * @param string $backgroundImageUrl
+     * @param string $largeFrontImage
      */
-    public function setBackgroundImageUrl(string $backgroundImageUrl): void
+    public function setLargeFrontImage(string $largeFrontImage): void
     {
-        $this->backgroundImageUrl = $backgroundImageUrl;
+        $this->largeFrontImage = $largeFrontImage;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSmallBackgroundImage(): ?string
+    {
+        return $this->smallBackgroundImage;
+    }
+
+    /**
+     * @param string|null $smallBackgroundImage
+     */
+    public function setSmallBackgroundImage(?string $smallBackgroundImage): void
+    {
+        $this->smallBackgroundImage = $smallBackgroundImage;
     }
 
     /**
      * @return string
      */
-    public function getBackgroundImageTitle(): string
+    public function getMediumBackgroundImage(): string
     {
-        return $this->backgroundImageTitle;
+        return $this->mediumBackgroundImage;
     }
 
     /**
-     * @param string $backgroundImageTitle
+     * @param string $mediumBackgroundImage
      */
-    public function setBackgroundImageTitle(string $backgroundImageTitle): void
+    public function setMediumBackgroundImage(string $mediumBackgroundImage): void
     {
-        $this->backgroundImageTitle = $backgroundImageTitle;
+        $this->mediumBackgroundImage = $mediumBackgroundImage;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLargeBackgroundImage(): ?string
+    {
+        return $this->largeBackgroundImage;
+    }
+
+    /**
+     * @param string|null $largeBackgroundImage
+     */
+    public function setLargeBackgroundImage(?string $largeBackgroundImage): void
+    {
+        $this->largeBackgroundImage = $largeBackgroundImage;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExtraLargeBackgroundImage(): ?string
+    {
+        return $this->extraLargeBackgroundImage;
+    }
+
+    /**
+     * @param string|null $extraLargeBackgroundImage
+     */
+    public function setExtraLargeBackgroundImage(?string $extraLargeBackgroundImage): void
+    {
+        $this->extraLargeBackgroundImage = $extraLargeBackgroundImage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageTitle(): string
+    {
+        return $this->imageTitle;
+    }
+
+    /**
+     * @param string $imageTitle
+     */
+    public function setImageTitle(string $imageTitle): void
+    {
+        $this->imageTitle = $imageTitle;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNormalBodyAplDocument(): ?string
+    {
+        return $this->normalBodyAplDocument;
+    }
+
+    /**
+     * @param string|null $normalBodyAplDocument
+     */
+    public function setNormalBodyAplDocument(?string $normalBodyAplDocument): void
+    {
+        $this->normalBodyAplDocument = $normalBodyAplDocument;
     }
 
     /**

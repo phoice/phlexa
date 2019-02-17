@@ -33,7 +33,7 @@ class CancelIntentTest extends TestCase
     /**
      * Test the instantiation of the class
      */
-    public function testInstantiation()
+    public function testInstantiation():void
     {
         $data = [
             'version' => '1.0',
@@ -71,14 +71,14 @@ class CancelIntentTest extends TestCase
 
         $cancelIntent = new CancelIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
 
-        $this->assertTrue($cancelIntent instanceof AbstractIntent);
-        $this->assertTrue($cancelIntent instanceof IntentInterface);
+        $this->assertInstanceOf(AbstractIntent::class, $cancelIntent);
+        $this->assertInstanceOf(IntentInterface::class, $cancelIntent);
     }
 
     /**
      * Test the handling of the intent
      */
-    public function testHandle()
+    public function testHandleSimple():void
     {
         $data = [
             'version' => '1.0',
@@ -118,8 +118,13 @@ class CancelIntentTest extends TestCase
         $alexaResponse->setSessionContainer($sessionContainer);
 
         $skillConfiguration = new SkillConfiguration();
-        $skillConfiguration->setSmallImageUrl('https://image.server/small.png');
-        $skillConfiguration->setLargeImageUrl('https://image.server/large.png');
+        $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
+        $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
+        $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
+        $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
+        $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
+        $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
+        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
 
         $cancelIntent = new CancelIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
         $cancelIntent->handle();
@@ -137,8 +142,243 @@ class CancelIntentTest extends TestCase
                     'title' => 'cancelTitle',
                     'text'  => 'cancelMessage',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
+                    ],
+                ],
+                'shouldEndSession' => true,
+            ],
+        ];
+
+        $this->assertEquals($expected, $alexaResponse->toArray());
+    }
+
+    /**
+     * Test the handling of the intent with Display
+     */
+    public function testHandleWithDisplay():void
+    {
+        $data = [
+            'version' => '1.0',
+            'session' => [
+                'new'         => true,
+                'sessionId'   => 'sessionId',
+                'application' => [
+                    'applicationId' => 'amzn1.ask.skill.applicationId',
+                ],
+                'user'        => [
+                    'userId' => 'userId',
+                ],
+            ],
+            'request' => [
+                'type'      => 'IntentRequest',
+                'requestId' => 'requestId',
+                'timestamp' => '2017-01-27T20:29:59Z',
+                'locale'    => 'en-US',
+                'intent'    => [
+                    'name'  => 'AMAZON.CancelIntent',
+                    'slots' => [],
+                ],
+            ],
+            'context' => [
+                'AudioPlayer' => [
+                    'playerActivity' => 'IDLE',
+                ],
+                'System'      => [
+                    'application' => [
+                        'applicationId' => 'amzn1.ask.skill.applicationId',
+                    ],
+                    'user'        => [
+                        'userId' => 'userId',
+                    ],
+                    'device'      => [
+                        'supportedInterfaces' => [
+                            'Display' => [],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $sessionContainer = new SessionContainer(['foo' => 'bar']);
+
+        $alexaRequest = RequestTypeFactory::createFromData(json_encode($data));
+        $textHelper   = new TextHelper();
+
+        $alexaResponse = new AlexaResponse();
+        $alexaResponse->setSessionContainer($sessionContainer);
+
+        $skillConfiguration = new SkillConfiguration();
+        $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
+        $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
+        $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
+        $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
+        $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
+        $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
+        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+
+        $cancelIntent = new CancelIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
+        $cancelIntent->handle();
+
+        $expected = [
+            'version'           => '1.0',
+            'sessionAttributes' => [],
+            'response'          => [
+                'outputSpeech'     => [
+                    'type' => 'SSML',
+                    'ssml' => '<speak>cancelMessage</speak>',
+                ],
+                'directives'       => [
+                    [
+                        'type'     => 'Display.RenderTemplate',
+                        'template' => [
+                            'type'            => 'BodyTemplate6',
+                            'token'           => 'cancel',
+                            'backButton'      => 'HIDDEN',
+                            'textContent'     => [
+                                'primaryText'   => [
+                                    'text' => '<font size="7"><b>cancelTitle</b></font>',
+                                    'type' => 'RichText',
+                                ],
+                                'secondaryText' => [
+                                    'text' => '<font size="3">cancelMessage</font>',
+                                    'type' => 'RichText',
+                                ],
+                                'tertiaryText'  => [
+                                    'text' => '',
+                                    'type' => 'PlainText',
+                                ],
+                            ],
+                            'backgroundImage' => [
+                                'contentDescription' => 'cancelTitle',
+                                'sources'            => [
+                                    [
+                                        'url'  => 'https://image.server/medium-background.png',
+                                        'type' => 'LARGE',
+                                    ],
+                                ],
+                            ],
+                            'title'           => 'cancelTitle',
+                        ],
+                    ],
+                ],
+                'shouldEndSession' => true,
+            ],
+        ];
+
+        $this->assertEquals($expected, $alexaResponse->toArray());
+    }
+
+    /**
+     * Test the handling of the intent with APL
+     */
+    public function testHandleWithApl():void
+    {
+        $data = [
+            'version' => '1.0',
+            'session' => [
+                'new'         => true,
+                'sessionId'   => 'sessionId',
+                'application' => [
+                    'applicationId' => 'amzn1.ask.skill.applicationId',
+                ],
+                'user'        => [
+                    'userId' => 'userId',
+                ],
+            ],
+            'request' => [
+                'type'      => 'IntentRequest',
+                'requestId' => 'requestId',
+                'timestamp' => '2017-01-27T20:29:59Z',
+                'locale'    => 'en-US',
+                'intent'    => [
+                    'name'  => 'AMAZON.CancelIntent',
+                    'slots' => [],
+                ],
+            ],
+            'context' => [
+                'AudioPlayer' => [
+                    'playerActivity' => 'IDLE',
+                ],
+                'System'      => [
+                    'application' => [
+                        'applicationId' => 'amzn1.ask.skill.applicationId',
+                    ],
+                    'user'        => [
+                        'userId' => 'userId',
+                    ],
+                    'device'      => [
+                        'supportedInterfaces' => [
+                            'Alexa.Presentation.APL' => [],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $sessionContainer = new SessionContainer(['foo' => 'bar']);
+
+        $alexaRequest = RequestTypeFactory::createFromData(json_encode($data));
+        $textHelper   = new TextHelper();
+
+        $alexaResponse = new AlexaResponse();
+        $alexaResponse->setSessionContainer($sessionContainer);
+
+        $skillConfiguration = new SkillConfiguration();
+        $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
+        $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
+        $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
+        $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
+        $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
+        $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
+        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+
+        $cancelIntent = new CancelIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
+        $cancelIntent->handle();
+
+        $expected = [
+            'version'           => '1.0',
+            'sessionAttributes' => [],
+            'response'          => [
+                'outputSpeech'     => [
+                    'type' => 'SSML',
+                    'ssml' => '<speak>cancelMessage</speak>',
+                ],
+                'directives'       => [
+                    [
+                        'type'        => 'Alexa.Presentation.APL.RenderDocument',
+                        'version'     => '1.0',
+                        'document'    => [
+                            'type'         => 'APL',
+                            'version'      => '1.0',
+                            'theme'        => 'dark',
+                            'import'       => [],
+                            'resources'    => [],
+                            'styles'       => [],
+                            'layouts'      => [],
+                            'mainTemplate' => [],
+                        ],
+                        'token'       => 'cancel',
+                        'datasources' => [
+                            'content' => [
+                                'imageContent' => [
+                                    'logoIcon'                  => null,
+                                    'imageTitle'                => 'cancelTitle',
+                                    'smallFrontImage'           => 'https://image.server/small.png',
+                                    'largeFrontImage'           => 'https://image.server/large.png',
+                                    'smallBackgroundImage'      => 'https://image.server/small-background.png',
+                                    'mediumBackgroundImage'     => 'https://image.server/medium-background.png',
+                                    'largeBackgroundImage'      => 'https://image.server/large-background.png',
+                                    'extraLargeBackgroundImage' => 'https://image.server/extra-large-background.png',
+                                ],
+                                'textContent'  => [
+                                    'title'         => 'cancelTitle',
+                                    'primaryText'   => 'cancelMessage',
+                                    'secondaryText' => null,
+                                    'hintText'      => null,
+                                ],
+                            ],
+                        ],
                     ],
                 ],
                 'shouldEndSession' => true,

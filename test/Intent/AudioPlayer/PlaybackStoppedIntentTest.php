@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Intent\AudioPlayer;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Configuration\SkillConfiguration;
 use Phlexa\Intent\AbstractIntent;
 use Phlexa\Intent\AudioPlayer\PlaybackStoppedIntent;
@@ -21,6 +20,7 @@ use Phlexa\Intent\IntentInterface;
 use Phlexa\Request\RequestType\RequestTypeFactory;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\TextHelper\TextHelper;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class PlaybackStoppedIntentTest
@@ -32,7 +32,7 @@ class PlaybackStoppedIntentTest extends TestCase
     /**
      * Test the instantiation of the class
      */
-    public function testInstantiation()
+    public function testInstantiation(): void
     {
         $data = [
             'version' => '1.0',
@@ -68,14 +68,14 @@ class PlaybackStoppedIntentTest extends TestCase
 
         $intent = new PlaybackStoppedIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
 
-        $this->assertTrue($intent instanceof AbstractIntent);
-        $this->assertTrue($intent instanceof IntentInterface);
+        $this->assertInstanceOf(AbstractIntent::class, $intent);
+        $this->assertInstanceOf(IntentInterface::class, $intent);
     }
 
     /**
      * Test the handling of the intent
      */
-    public function testHandle()
+    public function testHandle(): void
     {
         $data = [
             'version' => '1.0',

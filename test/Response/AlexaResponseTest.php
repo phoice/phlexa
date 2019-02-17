@@ -155,8 +155,8 @@ class AlexaResponseTest extends TestCase
                     'title' => 'title',
                     'text'  => 'text',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'reprompt'         => [
