@@ -155,6 +155,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -277,6 +278,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -396,6 +398,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -508,6 +511,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -623,6 +627,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -738,6 +743,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);

@@ -156,6 +156,7 @@ class HelpIntentTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -280,6 +281,7 @@ class HelpIntentTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -408,6 +410,7 @@ class HelpIntentTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
