@@ -260,6 +260,13 @@ class LaunchIntentTest extends TestCase
                             'title'           => 'launchTitle',
                         ],
                     ],
+                    [
+                        'type' => 'Hint',
+                        'hint' => [
+                            'type' => 'PlainText',
+                            'text' => 'hintText',
+                        ],
+                    ],
                 ],
                 'reprompt'         => [
                     'outputSpeech' => [
@@ -379,7 +386,7 @@ class LaunchIntentTest extends TestCase
                                     'title'         => 'launchTitle',
                                     'primaryText'   => 'launchMessage',
                                     'secondaryText' => null,
-                                    'hintText'      => null,
+                                    'hintText'      => 'hintTextFull',
                                 ],
                             ],
                         ],

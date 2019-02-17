@@ -272,6 +272,13 @@ class HelpIntentTest extends TestCase
                             'title'           => 'helpTitle',
                         ],
                     ],
+                    [
+                        'type' => 'Hint',
+                        'hint' => [
+                            'type' => 'PlainText',
+                            'text' => 'hintText',
+                        ],
+                    ],
                 ],
                 'reprompt'         => [
                     'outputSpeech' => [
@@ -396,7 +403,7 @@ class HelpIntentTest extends TestCase
                                     'title'         => 'helpTitle',
                                     'primaryText'   => 'helpMessage',
                                     'secondaryText' => null,
-                                    'hintText'      => null,
+                                    'hintText'      => 'hintTextFull',
                                 ],
                             ],
                         ],

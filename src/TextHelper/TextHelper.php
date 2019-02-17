@@ -27,6 +27,7 @@ namespace Phlexa\TextHelper;
  * @method string getCancelTitle()
  * @method string getStopMessage()
  * @method string getStopTitle()
+ * @method string getHintText()
  */
 class TextHelper implements TextHelperInterface
 {
@@ -51,7 +52,7 @@ class TextHelper implements TextHelperInterface
      *
      * @param string $locale
      */
-    public function setLocale(string $locale)
+    public function setLocale(string $locale):void
     {
         $this->locale = $locale;
     }
@@ -75,7 +76,7 @@ class TextHelper implements TextHelperInterface
      *
      * @return string
      */
-    protected function getText(string $type, array $arguments = [])
+    protected function getText(string $type, array $arguments = []):string
     {
         if (!isset($this->commonTexts[$this->locale][$type])) {
             return $type;
@@ -90,5 +91,15 @@ class TextHelper implements TextHelperInterface
         }
 
         return vsprintf($text, $arguments);
+    }
+
+    /**
+     * @param string $hintText
+     *
+     * @return string
+     */
+    public function getHintTextFull(string $hintText): string
+    {
+        return $this->getText('hintTextFull', [$hintText]);
     }
 }

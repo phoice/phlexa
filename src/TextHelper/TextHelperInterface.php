@@ -27,6 +27,7 @@ namespace Phlexa\TextHelper;
  * @method string getCancelTitle()
  * @method string getStopMessage()
  * @method string getStopTitle()
+ * @method string getHintText()
  */
 interface TextHelperInterface
 {
@@ -36,4 +37,11 @@ interface TextHelperInterface
      * @param string $locale
      */
     public function setLocale(string $locale);
+
+    /**
+     * @param string $hintText
+     *
+     * @return string
+     */
+    public function getHintTextFull(string $hintText): string;
 }

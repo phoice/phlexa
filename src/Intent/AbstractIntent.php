@@ -400,7 +400,9 @@ abstract class AbstractIntent implements IntentInterface
                     'title'         => $container->getDisplayTitle() ?? null,
                     'primaryText'   => $container->getDisplayPrimaryText() ?? null,
                     'secondaryText' => $container->getDisplaySecondaryText() ?? null,
-                    'hintText'      => $container->getHintText() ?? null,
+                    'hintText'      => $container->getHintText()
+                        ? $this->getTextHelper()->getHintTextFull($container->getHintText())
+                        : null,
                 ],
             ],
         ];

@@ -42,6 +42,7 @@ class HelpIntent extends AbstractIntent
             ),
             'display_title'                => $this->getTextHelper()->getHelpTitle(),
             'display_primary_text'         => $this->getTextHelper()->getHelpMessage(),
+            'hint_text'                    => $this->getTextHelper()->getHintText(),
             'image_title'                  => $this->getTextHelper()->getHelpTitle(),
             'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),
             'large_front_image'            => $this->getSkillConfiguration()->getLargeFrontImage(),
