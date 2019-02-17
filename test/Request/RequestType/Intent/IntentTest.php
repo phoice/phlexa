@@ -15,7 +15,6 @@ namespace PhlexaTest\Request\RequestType\Intent;
 
 use Phlexa\Request\RequestType\Intent\Intent;
 use PHPUnit\Framework\TestCase;
-use function count;
 
 /**
  * Class IntentTest
@@ -138,6 +137,80 @@ class IntentTest extends TestCase
         $this->assertEquals(
             0,
             $intent->countSlotValues('bar')
+        );
+    }
+
+    /**
+     *
+     */
+    public function testSlotValue(): void
+    {
+        $slots = [
+            'foo' => [
+                'name'  => 'foo',
+                'value' => 'bar',
+            ],
+            'bar' => [],
+        ];
+
+        $intent = new Intent('name', $slots);
+
+        $this->assertEquals(
+            'bar',
+            $intent->getSlotValue('foo')
+        );
+        $this->assertEquals(
+            '',
+            $intent->getSlotValue('bar')
+        );
+    }
+
+    /**
+     *
+     */
+    public function testHasValidSlotValue(): void
+    {
+        $slots = [
+            'foo'  => [
+                'name'        => 'foo',
+                'value'       => 'bar',
+                'resolutions' => [
+                    'resolutionsPerAuthority' => [
+                        [
+                            'status' => [
+                                'code' => 'ER_SUCCESS_MATCH',
+                            ],
+                        ]
+                    ],
+                ]
+            ],
+            'bar'  => [],
+            'bar2' => [
+                'resolutions' => [],
+            ],
+            'bar3' => [
+                'resolutions' => [
+                    'resolutionsPerAuthority' => [],
+                ],
+            ],
+        ];
+
+        $intent = new Intent('name', $slots);
+
+        $this->assertTrue(
+            $intent->hasValidSlotValue('foo')
+        );
+        $this->assertFalse(
+            $intent->hasValidSlotValue('foobar')
+        );
+        $this->assertFalse(
+            $intent->hasValidSlotValue('bar')
+        );
+        $this->assertFalse(
+            $intent->hasValidSlotValue('bar2')
+        );
+        $this->assertFalse(
+            $intent->hasValidSlotValue('bar3')
         );
     }
 

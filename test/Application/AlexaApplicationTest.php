@@ -81,13 +81,33 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getSmallImageUrlMethod */
-        $getSmallImageUrlMethod = $skillConfiguration->getSmallImageUrl();
-        $getSmallImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
+        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
+        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
-        /** @var MethodProphecy $getLargeImageUrlMethod */
-        $getLargeImageUrlMethod = $skillConfiguration->getLargeImageUrl();
-        $getLargeImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        /** @var MethodProphecy $getSmallFrontImageMethod */
+        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
+        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+
+        /** @var MethodProphecy $getLargeFrontImageMethod */
+        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
+        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+
+        /** @var MethodProphecy $getSmallBackgroundImageMethod */
+        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
+        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+
+        /** @var MethodProphecy $getMediumBackgroundImageMethod */
+        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
+        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+
+        /** @var MethodProphecy $getLargeBackgroundImageMethod */
+        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
+        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+
+        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
+        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -123,8 +143,8 @@ class AlexaApplicationTest extends TestCase
                     'title' => 'helpTitle',
                     'text'  => 'helpMessage',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'reprompt'         => [
@@ -135,6 +155,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -183,13 +204,33 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getSmallImageUrlMethod */
-        $getSmallImageUrlMethod = $skillConfiguration->getSmallImageUrl();
-        $getSmallImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
+        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
+        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
-        /** @var MethodProphecy $getLargeImageUrlMethod */
-        $getLargeImageUrlMethod = $skillConfiguration->getLargeImageUrl();
-        $getLargeImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        /** @var MethodProphecy $getSmallFrontImageMethod */
+        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
+        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+
+        /** @var MethodProphecy $getLargeFrontImageMethod */
+        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
+        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+
+        /** @var MethodProphecy $getSmallBackgroundImageMethod */
+        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
+        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+
+        /** @var MethodProphecy $getMediumBackgroundImageMethod */
+        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
+        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+
+        /** @var MethodProphecy $getLargeBackgroundImageMethod */
+        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
+        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+
+        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
+        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -225,8 +266,8 @@ class AlexaApplicationTest extends TestCase
                     'title' => 'helpTitle',
                     'text'  => 'helpMessage',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'reprompt'         => [
@@ -237,6 +278,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -282,13 +324,33 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getSmallImageUrlMethod */
-        $getSmallImageUrlMethod = $skillConfiguration->getSmallImageUrl();
-        $getSmallImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
+        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
+        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
-        /** @var MethodProphecy $getLargeImageUrlMethod */
-        $getLargeImageUrlMethod = $skillConfiguration->getLargeImageUrl();
-        $getLargeImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        /** @var MethodProphecy $getSmallFrontImageMethod */
+        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
+        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+
+        /** @var MethodProphecy $getLargeFrontImageMethod */
+        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
+        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+
+        /** @var MethodProphecy $getSmallBackgroundImageMethod */
+        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
+        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+
+        /** @var MethodProphecy $getMediumBackgroundImageMethod */
+        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
+        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+
+        /** @var MethodProphecy $getLargeBackgroundImageMethod */
+        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
+        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+
+        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
+        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -324,8 +386,8 @@ class AlexaApplicationTest extends TestCase
                     'title' => 'launchTitle',
                     'text'  => 'launchMessage',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'reprompt'         => [
@@ -336,6 +398,7 @@ class AlexaApplicationTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -382,13 +445,33 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getSmallImageUrlMethod */
-        $getSmallImageUrlMethod = $skillConfiguration->getSmallImageUrl();
-        $getSmallImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
+        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
+        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
-        /** @var MethodProphecy $getLargeImageUrlMethod */
-        $getLargeImageUrlMethod = $skillConfiguration->getLargeImageUrl();
-        $getLargeImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        /** @var MethodProphecy $getSmallFrontImageMethod */
+        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
+        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+
+        /** @var MethodProphecy $getLargeFrontImageMethod */
+        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
+        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+
+        /** @var MethodProphecy $getSmallBackgroundImageMethod */
+        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
+        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+
+        /** @var MethodProphecy $getMediumBackgroundImageMethod */
+        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
+        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+
+        /** @var MethodProphecy $getLargeBackgroundImageMethod */
+        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
+        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+
+        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
+        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -422,12 +505,13 @@ class AlexaApplicationTest extends TestCase
                     'title' => 'stopTitle',
                     'text'  => 'stopMessage',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -477,13 +561,33 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getSmallImageUrlMethod */
-        $getSmallImageUrlMethod = $skillConfiguration->getSmallImageUrl();
-        $getSmallImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
+        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
+        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
-        /** @var MethodProphecy $getLargeImageUrlMethod */
-        $getLargeImageUrlMethod = $skillConfiguration->getLargeImageUrl();
-        $getLargeImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        /** @var MethodProphecy $getSmallFrontImageMethod */
+        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
+        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+
+        /** @var MethodProphecy $getLargeFrontImageMethod */
+        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
+        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+
+        /** @var MethodProphecy $getSmallBackgroundImageMethod */
+        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
+        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+
+        /** @var MethodProphecy $getMediumBackgroundImageMethod */
+        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
+        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+
+        /** @var MethodProphecy $getLargeBackgroundImageMethod */
+        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
+        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+
+        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
+        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -517,12 +621,13 @@ class AlexaApplicationTest extends TestCase
                     'title' => 'stopTitle',
                     'text'  => 'stopMessage',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);
@@ -572,13 +677,33 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getSmallImageUrlMethod */
-        $getSmallImageUrlMethod = $skillConfiguration->getSmallImageUrl();
-        $getSmallImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
+        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
+        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
-        /** @var MethodProphecy $getLargeImageUrlMethod */
-        $getLargeImageUrlMethod = $skillConfiguration->getLargeImageUrl();
-        $getLargeImageUrlMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        /** @var MethodProphecy $getSmallFrontImageMethod */
+        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
+        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+
+        /** @var MethodProphecy $getLargeFrontImageMethod */
+        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
+        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+
+        /** @var MethodProphecy $getSmallBackgroundImageMethod */
+        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
+        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+
+        /** @var MethodProphecy $getMediumBackgroundImageMethod */
+        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
+        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+
+        /** @var MethodProphecy $getLargeBackgroundImageMethod */
+        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
+        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+
+        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
+        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -612,12 +737,13 @@ class AlexaApplicationTest extends TestCase
                     'title' => 'cancelTitle',
                     'text'  => 'cancelMessage',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $result);

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Configuration;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Configuration\SkillConfiguration;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SkillConfigurationTest
@@ -42,16 +42,22 @@ class SkillConfigurationTest extends TestCase
     public function testSetConfig()
     {
         $config = [
-            'applicationId'    => 'amzn1.ask.skill.place-your-skill-id-here',
-            'applicationClass' => 'ApplicationClass',
-            'textHelperClass'  => 'TextHelperClass',
-            'smallImageUrl'    => 'https://www.phoice.tech//cards/hello-480x480.png',
-            'largeImageUrl'    => 'https://www.phoice.tech//cards/hello-800x800.png',
-            'sessionDefaults'  => [
+            'applicationId'             => 'amzn1.ask.skill.place-your-skill-id-here',
+            'skillTitle'                => 'Skill Title',
+            'applicationClass'          => 'ApplicationClass',
+            'textHelperClass'           => 'TextHelperClass',
+            'smallFrontImage'           => 'https://www.phoice.tech//cards/hello-480x480.png',
+            'largeFrontImage'           => 'https://www.phoice.tech//cards/hello-800x800.png',
+            'smallBackgroundImage'      => 'https://www.phoice.tech//cards/hello-480x480.png',
+            'mediumBackgroundImage'     => 'https://www.phoice.tech//cards/hello-1024x600.png',
+            'largeBackgroundImage'      => 'https://www.phoice.tech//cards/hello-1280x800.png',
+            'extraLargeBackgroundImage' => 'https://www.phoice.tech//cards/hello-1920x1080.png',
+            'imageTitle'                => 'Background Image Title',
+            'sessionDefaults'           => [
                 'foo' => 'bar',
                 'bar' => 'foo',
             ],
-            'intents'          => [
+            'intents'                   => [
                 'aliases' => [
                     'foo' => 'bar',
                 ],
@@ -60,7 +66,7 @@ class SkillConfigurationTest extends TestCase
                     'foo' => 'bar',
                 ],
             ],
-            'texts'            => [
+            'texts'                     => [
                 'de-DE' => [
                     'foo' => 'bar'
                 ],
@@ -71,18 +77,30 @@ class SkillConfigurationTest extends TestCase
                     'foo' => 'bar'
                 ],
             ],
+            'customData'                => [
+                'foo' => 'bar'
+            ],
+            'normalBodyAplDocument'     => '{"type": "APL"}',
         ];
 
         $skillConfiguration = new SkillConfiguration();
         $skillConfiguration->setConfig($config);
 
         $this->assertEquals($config['applicationId'], $skillConfiguration->getApplicationId());
+        $this->assertEquals($config['skillTitle'], $skillConfiguration->getSkillTitle());
         $this->assertEquals($config['applicationClass'], $skillConfiguration->getApplicationClass());
         $this->assertEquals($config['textHelperClass'], $skillConfiguration->getTextHelperClass());
         $this->assertEquals($config['sessionDefaults'], $skillConfiguration->getSessionDefaults());
-        $this->assertEquals($config['smallImageUrl'], $skillConfiguration->getSmallImageUrl());
-        $this->assertEquals($config['largeImageUrl'], $skillConfiguration->getLargeImageUrl());
+        $this->assertEquals($config['smallFrontImage'], $skillConfiguration->getSmallFrontImage());
+        $this->assertEquals($config['largeFrontImage'], $skillConfiguration->getLargeFrontImage());
+        $this->assertEquals($config['smallBackgroundImage'], $skillConfiguration->getSmallBackgroundImage());
+        $this->assertEquals($config['mediumBackgroundImage'], $skillConfiguration->getMediumBackgroundImage());
+        $this->assertEquals($config['largeBackgroundImage'], $skillConfiguration->getLargeBackgroundImage());
+        $this->assertEquals($config['extraLargeBackgroundImage'], $skillConfiguration->getExtraLargeBackgroundImage());
+        $this->assertEquals($config['imageTitle'], $skillConfiguration->getImageTitle());
         $this->assertEquals($config['intents'], $skillConfiguration->getIntents());
         $this->assertEquals($config['texts'], $skillConfiguration->getTexts());
+        $this->assertEquals($config['customData'], $skillConfiguration->getCustomData());
+        $this->assertEquals($config['normalBodyAplDocument'], $skillConfiguration->getNormalBodyAplDocument());
     }
 }

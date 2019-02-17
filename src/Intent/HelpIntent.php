@@ -13,11 +13,10 @@ declare(strict_types=1);
 
 namespace Phlexa\Intent;
 
+use Phlexa\Content\BodyContainer;
 use Phlexa\Response\AlexaResponse;
-use Phlexa\Response\Card\Standard;
+use Phlexa\Response\Directives\Alexa\Presentation\APL\Document\APL;
 use Phlexa\Response\Directives\Display\RenderTemplate;
-use Phlexa\Response\Directives\Display\TextContent;
-use Phlexa\Response\OutputSpeech\SSML;
 
 /**
  * Class HelpIntent
@@ -33,34 +32,29 @@ class HelpIntent extends AbstractIntent
      */
     public function handle(): AlexaResponse
     {
-        $smallImageUrl = $this->getSkillConfiguration()->getSmallImageUrl();
-        $largeImageUrl = $this->getSkillConfiguration()->getLargeImageUrl();
+        $content = [
+            'output_speech'                => $this->getTextHelper()->getHelpMessage(),
+            'reprompt_speech'              => $this->getTextHelper()->getRepromptMessage(),
+            'token'                        => 'help',
+            'display_template'             => RenderTemplate::TYPE_BODY_TEMPLATE_6,
+            'apl_document'                 => APL::createFromString(
+                $this->getSkillConfiguration()->getNormalBodyAplDocument()
+            ),
+            'display_title'                => $this->getTextHelper()->getHelpTitle(),
+            'display_primary_text'         => $this->getTextHelper()->getHelpMessage(),
+            'image_title'                  => $this->getTextHelper()->getHelpTitle(),
+            'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),
+            'large_front_image'            => $this->getSkillConfiguration()->getLargeFrontImage(),
+            'small_background_image'       => $this->getSkillConfiguration()->getSmallBackgroundImage(),
+            'medium_background_image'      => $this->getSkillConfiguration()->getMediumBackgroundImage(),
+            'large_background_image'       => $this->getSkillConfiguration()->getLargeBackgroundImage(),
+            'extra_large_background_image' => $this->getSkillConfiguration()->getExtraLargeBackgroundImage(),
+            'card'                         => true,
+            'display'                      => true,
+            'apl'                          => true,
+        ];
 
-        $title   = $this->getTextHelper()->getHelpTitle();
-        $message = $this->getTextHelper()->getHelpMessage();
-
-        $this->getAlexaResponse()->setOutputSpeech(
-            new SSML($message)
-        );
-
-        if ($this->isDisplaySupported()) {
-            $textContent = new TextContent(
-                '<font size="7"><b>' . $title . '</b></font>',
-                TextContent::TYPE_RICH_TEXT,
-                '<font size="3">' . $message . '</font>',
-                TextContent::TYPE_RICH_TEXT
-            );
-
-            $this->addBodyTemplateDirective(RenderTemplate::TYPE_BODY_TEMPLATE_6, $textContent, 'help');
-        } else {
-            $this->getAlexaResponse()->setCard(
-                new Standard($title, $message, $smallImageUrl, $largeImageUrl)
-            );
-        }
-
-        $this->getAlexaResponse()->setReprompt(
-            new SSML($this->getTextHelper()->getRepromptMessage())
-        );
+        $this->renderBodyContainer(new BodyContainer($content));
 
         return $this->getAlexaResponse();
     }

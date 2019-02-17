@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Response\Card\Simple;
 use Phlexa\Response\Card\Standard;
@@ -21,6 +20,7 @@ use Phlexa\Response\Directives\AudioPlayer\Play;
 use Phlexa\Response\OutputSpeech\PlainText;
 use Phlexa\Response\OutputSpeech\SSML;
 use Phlexa\Session\SessionContainer;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AlexaResponseTest
@@ -47,6 +47,7 @@ class AlexaResponseTest extends TestCase
             'response'          => [
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -93,6 +94,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -155,8 +157,8 @@ class AlexaResponseTest extends TestCase
                     'title' => 'title',
                     'text'  => 'text',
                     'image' => [
-                        'smallImageUrl' => 'https://image.server/small.png',
-                        'largeImageUrl' => 'https://image.server/large.png',
+                        'smallFrontImage' => 'https://image.server/small.png',
+                        'largeFrontImage' => 'https://image.server/large.png',
                     ],
                 ],
                 'reprompt'         => [
@@ -167,6 +169,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -193,6 +196,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -212,6 +216,7 @@ class AlexaResponseTest extends TestCase
             'response'          => [
                 'shouldEndSession' => true,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -230,6 +235,7 @@ class AlexaResponseTest extends TestCase
             'response'          => [
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -255,6 +261,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -282,6 +289,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -304,7 +312,7 @@ class AlexaResponseTest extends TestCase
             'sessionAttributes' => [],
             'response'          => [
                 'shouldEndSession' => false,
-                'directives' => [
+                'directives'       => [
                     [
                         'type'         => 'AudioPlayer.Play',
                         'playBehavior' => 'REPLACE_ALL',
@@ -319,6 +327,7 @@ class AlexaResponseTest extends TestCase
                     ]
                 ],
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -345,7 +354,7 @@ class AlexaResponseTest extends TestCase
             'sessionAttributes' => [],
             'response'          => [
                 'shouldEndSession' => false,
-                'directives' => [
+                'directives'       => [
                     [
                         'type'         => 'AudioPlayer.Play',
                         'playBehavior' => 'REPLACE_ENQUEUED',
@@ -360,6 +369,7 @@ class AlexaResponseTest extends TestCase
                     ]
                 ],
             ],
+            'userAgent'         => 'phlexa-2.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
