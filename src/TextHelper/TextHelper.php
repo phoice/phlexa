@@ -52,7 +52,7 @@ class TextHelper implements TextHelperInterface
      *
      * @param string $locale
      */
-    public function setLocale(string $locale):void
+    public function setLocale(string $locale): void
     {
         $this->locale = $locale;
     }
@@ -76,7 +76,7 @@ class TextHelper implements TextHelperInterface
      *
      * @return string
      */
-    protected function getText(string $type, array $arguments = []):string
+    protected function getText(string $type, array $arguments = []): string
     {
         if (!isset($this->commonTexts[$this->locale][$type])) {
             return $type;

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Directives\Display;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Directives\Display\Image;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ImageTest
@@ -51,11 +51,11 @@ class ImageTest extends TestCase
             'contentDescription' => 'image description',
             'sources'            => [
                 [
-                    'url' => 'https://image.server/small.png',
+                    'url'  => 'https://image.server/small.png',
                     'type' => 'SMALL',
                 ],
                 [
-                    'url' => 'https://image.server/medium.png',
+                    'url'  => 'https://image.server/medium.png',
                     'type' => 'MEDIUM',
                 ],
             ],
@@ -80,23 +80,23 @@ class ImageTest extends TestCase
             'contentDescription' => 'image description',
             'sources'            => [
                 [
-                    'url' => 'https://image.server/xsmall.png',
+                    'url'  => 'https://image.server/xsmall.png',
                     'type' => 'X_SMALL',
                 ],
                 [
-                    'url' => 'https://image.server/small.png',
+                    'url'  => 'https://image.server/small.png',
                     'type' => 'SMALL',
                 ],
                 [
-                    'url' => 'https://image.server/medium.png',
+                    'url'  => 'https://image.server/medium.png',
                     'type' => 'MEDIUM',
                 ],
                 [
-                    'url' => 'https://image.server/large.png',
+                    'url'  => 'https://image.server/large.png',
                     'type' => 'LARGE',
                 ],
                 [
-                    'url' => 'https://image.server/xlarge.png',
+                    'url'  => 'https://image.server/xlarge.png',
                     'type' => 'X_LARGE',
                 ],
             ],

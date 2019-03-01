@@ -235,15 +235,15 @@ class LaunchIntentTest extends TestCase
                             'token'           => 'launch',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'primaryText'   => [
+                                'largeText'  => [
                                     'text' => '<font size="7"><b>launchTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
-                                'secondaryText' => [
+                                'mediumText' => [
                                     'text' => '<font size="3">launchMessage</font>',
                                     'type' => 'RichText',
                                 ],
-                                'tertiaryText'  => [
+                                'shortText'  => [
                                     'text' => '',
                                     'type' => 'PlainText',
                                 ],
@@ -383,10 +383,10 @@ class LaunchIntentTest extends TestCase
                                     'extraLargeBackgroundImage' => 'https://image.server/extra-large-background.png',
                                 ],
                                 'textContent'  => [
-                                    'title'         => 'launchTitle',
-                                    'primaryText'   => 'launchMessage',
-                                    'secondaryText' => null,
-                                    'hintText'      => 'hintTextFull',
+                                    'title'      => 'launchTitle',
+                                    'largeText'  => 'launchMessage',
+                                    'mediumText' => null,
+                                    'hintText'   => 'hintTextFull',
                                 ],
                             ],
                         ],

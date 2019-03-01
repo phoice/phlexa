@@ -13,10 +13,6 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Application;
 
-use PHPUnit\Framework\TestCase;
-use Prophecy\Prophecy\MethodProphecy;
-use Prophecy\Prophecy\ObjectProphecy;
-use Psr\Container\ContainerInterface;
 use Phlexa\Application\AlexaApplication;
 use Phlexa\Configuration\SkillConfigurationInterface;
 use Phlexa\Intent\CancelIntent;
@@ -29,6 +25,10 @@ use Phlexa\Request\RequestType\SessionEndedRequestType;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Session\SessionContainer;
 use Phlexa\TextHelper\TextHelper;
+use PHPUnit\Framework\TestCase;
+use Prophecy\Prophecy\MethodProphecy;
+use Prophecy\Prophecy\ObjectProphecy;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class AlexaApplicationTest
@@ -107,7 +107,9 @@ class AlexaApplicationTest extends TestCase
 
         /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
         $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
+            'https://image.server/extra-large-background.png'
+        );
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -230,7 +232,9 @@ class AlexaApplicationTest extends TestCase
 
         /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
         $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
+            'https://image.server/extra-large-background.png'
+        );
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -350,7 +354,9 @@ class AlexaApplicationTest extends TestCase
 
         /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
         $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
+            'https://image.server/extra-large-background.png'
+        );
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -471,7 +477,9 @@ class AlexaApplicationTest extends TestCase
 
         /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
         $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
+            'https://image.server/extra-large-background.png'
+        );
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -587,7 +595,9 @@ class AlexaApplicationTest extends TestCase
 
         /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
         $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
+            'https://image.server/extra-large-background.png'
+        );
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);
@@ -703,7 +713,9 @@ class AlexaApplicationTest extends TestCase
 
         /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
         $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/extra-large-background.png');
+        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
+            'https://image.server/extra-large-background.png'
+        );
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
         $intentManager = $this->prophesize(ContainerInterface::class);

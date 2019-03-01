@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Context\AudioPlayer;
 use Phlexa\Request\Context\Context;
@@ -26,6 +25,7 @@ use Phlexa\Request\RequestType\LaunchRequestType;
 use Phlexa\Request\Session\Application as SessionApplication;
 use Phlexa\Request\Session\Session;
 use Phlexa\Request\Session\User as SessionUser;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AlexaRequestTest
@@ -101,7 +101,7 @@ class AlexaRequestTest extends TestCase
         $device      = new Device();
         $apiEndpoint = 'apiEndpoint';
 
-        $system  = new System($application, $user, $device, $apiEndpoint);
+        $system = new System($application, $user, $device, $apiEndpoint);
 
         $context = new Context(
             new AudioPlayer('IDLE')

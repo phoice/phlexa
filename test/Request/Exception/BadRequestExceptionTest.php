@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Request\Exception;
 
+use Phlexa\Request\Exception\BadRequest;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
-use Phlexa\Request\Exception\BadRequest;
 
 /**
  * Class BadRequestExceptionTest

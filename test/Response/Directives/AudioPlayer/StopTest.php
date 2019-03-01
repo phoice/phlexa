@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Directives\AudioPlayer;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Directives\AudioPlayer\Stop;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class StopTest

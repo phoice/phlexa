@@ -21,9 +21,6 @@ function openssl_verify()
 namespace PhlexaTest\Request\Certificate;
 
 // @codingStandardsIgnoreStart
-use PHPUnit\Framework\TestCase;
-use Prophecy\Prophecy\MethodProphecy;
-use Prophecy\Prophecy\ObjectProphecy;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Certificate\CertificateLoader;
 use Phlexa\Request\Certificate\CertificateValidator;
@@ -34,6 +31,9 @@ use Phlexa\Request\RequestType\LaunchRequestType;
 use Phlexa\Request\Session\Application;
 use Phlexa\Request\Session\Session;
 use Phlexa\Request\Session\User;
+use PHPUnit\Framework\TestCase;
+use Prophecy\Prophecy\MethodProphecy;
+use Prophecy\Prophecy\ObjectProphecy;
 
 // @codingStandardsIgnoreEnd
 

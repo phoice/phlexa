@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\PlaybackControllerPlayCommandIssuedType;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class PlaybackControllerPlayCommandIssuedTest

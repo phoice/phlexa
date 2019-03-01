@@ -22,7 +22,7 @@ class TextContent
 {
     /** All back button types */
     public const TYPE_PLAIN_TEXT = 'PlainText';
-    public const TYPE_RICH_TEXT = 'RichText';
+    public const TYPE_RICH_TEXT  = 'RichText';
 
     /** Line break for display */
     public const BREAK_DISPLAY = '<br/>';
@@ -31,19 +31,19 @@ class TextContent
     public const ALLOWED_TYPES = [self::TYPE_PLAIN_TEXT, self::TYPE_RICH_TEXT];
 
     /** @var string */
-    private $primaryText;
+    private $largeText;
 
     /** @var string */
     private $primaryType = self::TYPE_PLAIN_TEXT;
 
     /** @var string */
-    private $secondaryText;
+    private $mediumText;
 
     /** @var string */
     private $secondaryType = self::TYPE_PLAIN_TEXT;
 
     /** @var string */
-    private $tertiaryText;
+    private $shortText;
 
     /** @var string */
     private $tertiaryType = self::TYPE_PLAIN_TEXT;
@@ -51,26 +51,26 @@ class TextContent
     /**
      * TextContent constructor.
      *
-     * @param string      $primaryText
+     * @param string      $largeText
      * @param string|null $primaryType
-     * @param string|null $secondaryText
+     * @param string|null $mediumText
      * @param string|null $secondaryType
-     * @param string|null $tertiaryText
+     * @param string|null $shortText
      * @param string|null $tertiaryType
      */
     public function __construct(
-        string $primaryText,
+        string $largeText,
         string $primaryType = null,
-        string $secondaryText = null,
+        string $mediumText = null,
         string $secondaryType = null,
-        string $tertiaryText = null,
+        string $shortText = null,
         string $tertiaryType = null
     ) {
-        $this->primaryText   = $primaryText;
+        $this->largeText     = $largeText;
         $this->primaryType   = $this->checkType($primaryType);
-        $this->secondaryText = $secondaryText;
+        $this->mediumText    = $mediumText;
         $this->secondaryType = $this->checkType($secondaryType);
-        $this->tertiaryText  = $tertiaryText;
+        $this->shortText     = $shortText;
         $this->tertiaryType  = $this->checkType($tertiaryType);
     }
 
@@ -94,16 +94,16 @@ class TextContent
     public function toArray(): array
     {
         $data = [
-            'primaryText'   => [
-                'text' => $this->primaryText,
+            'largeText'  => [
+                'text' => $this->largeText,
                 'type' => $this->primaryType,
             ],
-            'secondaryText' => [
-                'text' => $this->secondaryText ?? '',
+            'mediumText' => [
+                'text' => $this->mediumText ?? '',
                 'type' => $this->secondaryType,
             ],
-            'tertiaryText'  => [
-                'text' => $this->tertiaryText ?? '',
+            'shortText'  => [
+                'text' => $this->shortText ?? '',
                 'type' => $this->tertiaryType,
             ],
         ];

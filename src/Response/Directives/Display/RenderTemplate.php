@@ -45,7 +45,7 @@ class RenderTemplate implements DirectivesInterface
         ];
 
     /** All back button types */
-    public const BACK_BUTTON_HIDDEN = 'HIDDEN';
+    public const BACK_BUTTON_HIDDEN  = 'HIDDEN';
     public const BACK_BUTTON_VISIBLE = 'VISIBLE';
 
     /** Allowed template types */
@@ -162,9 +162,9 @@ class RenderTemplate implements DirectivesInterface
         $data = [
             'type'     => $this->getType(),
             'template' => [
-                'type'        => $this->type,
-                'token'       => $this->token,
-                'backButton'  => $this->backButton,
+                'type'       => $this->type,
+                'token'      => $this->token,
+                'backButton' => $this->backButton,
             ],
         ];
 

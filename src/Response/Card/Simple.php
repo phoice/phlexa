@@ -29,7 +29,7 @@ class Simple implements CardInterface
     /** @var string */
     private $content;
 
-    /** @var string*/
+    /** @var string */
     private $title;
 
     /**

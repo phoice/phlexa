@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType\Cause;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\Cause\Cause;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class CauseTest

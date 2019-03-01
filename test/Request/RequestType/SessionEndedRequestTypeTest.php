@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\Error\Error;
 use Phlexa\Request\RequestType\SessionEndedRequestType;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SessionEndedRequestTypeTest

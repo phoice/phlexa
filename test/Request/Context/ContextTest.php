@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\Context;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\Context\AudioPlayer;
 use Phlexa\Request\Context\Context;
 use Phlexa\Request\Context\System;
 use Phlexa\Request\Context\System\Application;
 use Phlexa\Request\Context\System\Device;
 use Phlexa\Request\Context\System\User;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ContextTest

@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\Intent\Intent;
 use Phlexa\Request\RequestType\IntentRequestType;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class IntentRequestTypeTest

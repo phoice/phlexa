@@ -39,10 +39,10 @@ class BodyContainer
     private $displayTitle;
 
     /** @var string|null */
-    private $displayPrimaryText;
+    private $displayLargeText;
 
     /** @var string|null */
-    private $displaySecondaryText;
+    private $displayMediumText;
 
     /** @var string|null */
     private $hintText;
@@ -243,49 +243,49 @@ class BodyContainer
     /**
      * @return string|null
      */
-    public function getDisplayPrimaryText(): ?string
+    public function getDisplayLargeText(): ?string
     {
-        return $this->displayPrimaryText;
+        return $this->displayLargeText;
     }
 
     /**
-     * @param string|null $displayPrimaryText
+     * @param string|null $displayLargeText
      */
-    public function setDisplayPrimaryText(?string $displayPrimaryText): void
+    public function setDisplayLargeText(?string $displayLargeText): void
     {
-        $this->displayPrimaryText = $displayPrimaryText;
+        $this->displayLargeText = $displayLargeText;
     }
 
     /**
      * @return bool
      */
-    public function hasDisplayPrimaryText(): bool
+    public function hasDisplayLargeText(): bool
     {
-        return null !== $this->displayPrimaryText;
+        return null !== $this->displayLargeText;
     }
 
     /**
      * @return string|null
      */
-    public function getDisplaySecondaryText(): ?string
+    public function getDisplayMediumText(): ?string
     {
-        return $this->displaySecondaryText;
+        return $this->displayMediumText;
     }
 
     /**
-     * @param string|null $displaySecondaryText
+     * @param string|null $displayMediumText
      */
-    public function setDisplaySecondaryText(?string $displaySecondaryText): void
+    public function setDisplayMediumText(?string $displayMediumText): void
     {
-        $this->displaySecondaryText = $displaySecondaryText;
+        $this->displayMediumText = $displayMediumText;
     }
 
     /**
      * @return bool
      */
-    public function hasDisplaySecondaryText(): bool
+    public function hasDisplayMediumText(): bool
     {
-        return null !== $this->displaySecondaryText;
+        return null !== $this->displayMediumText;
     }
 
     /**

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Directives\Display;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Directives\Display\TextContent;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class TextContentTest
@@ -31,15 +31,15 @@ class TextContentTest extends TestCase
         $textContent = new TextContent('primary text');
 
         $expected = [
-            'primaryText'   => [
+            'largeText'  => [
                 'text' => 'primary text',
                 'type' => 'PlainText',
             ],
-            'secondaryText' => [
+            'mediumText' => [
                 'text' => '',
                 'type' => 'PlainText',
             ],
-            'tertiaryText'  => [
+            'shortText'  => [
                 'text' => '',
                 'type' => 'PlainText',
             ],
@@ -56,15 +56,15 @@ class TextContentTest extends TestCase
         $textContent = new TextContent('primary text', null, 'secondary text', 'RichText', 'tertiary text');
 
         $expected = [
-            'primaryText'   => [
+            'largeText'  => [
                 'text' => 'primary text',
                 'type' => 'PlainText',
             ],
-            'secondaryText' => [
+            'mediumText' => [
                 'text' => 'secondary text',
                 'type' => 'RichText',
             ],
-            'tertiaryText'  => [
+            'shortText'  => [
                 'text' => 'tertiary text',
                 'type' => 'PlainText',
             ],

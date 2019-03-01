@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\PlaybackControllerPauseCommandIssuedType;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class PlaybackControllerPauseCommandIssuedTest

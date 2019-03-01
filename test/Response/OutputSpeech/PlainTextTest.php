@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\OutputSpeech;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\OutputSpeech\PlainText;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class PlainTextTest

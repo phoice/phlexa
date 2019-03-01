@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\AudioPlayer\CurrentPlaybackState;
 use Phlexa\Request\RequestType\AudioPlayerPlaybackFailedType;
 use Phlexa\Request\RequestType\Error\Error;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AudioPlayerPlaybackFailedTypeTest
@@ -30,11 +30,11 @@ class AudioPlayerPlaybackFailedTypeTest extends TestCase
      */
     public function testInstantiation()
     {
-        $requestId = 'requestId';
-        $timestamp = '2017-01-27T20:29:59Z';
-        $locale    = 'de-DE';
-        $token     = '123456';
-        $error     = new Error('type', 'message');
+        $requestId            = 'requestId';
+        $timestamp            = '2017-01-27T20:29:59Z';
+        $locale               = 'de-DE';
+        $token                = '123456';
+        $error                = new Error('type', 'message');
         $currentPlaybackState = new CurrentPlaybackState('PLAYING', 1000, '1234567');
 
         $launchRequest = new AudioPlayerPlaybackFailedType(

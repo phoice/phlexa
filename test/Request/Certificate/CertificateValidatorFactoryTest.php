@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace PhlexaTest\Request\Certificate;
 
 // @codingStandardsIgnoreStart
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Certificate\CertificateLoader;
 use Phlexa\Request\Certificate\CertificateValidator;
@@ -25,6 +24,7 @@ use Phlexa\Request\RequestType\LaunchRequestType;
 use Phlexa\Request\Session\Application;
 use Phlexa\Request\Session\Session;
 use Phlexa\Request\Session\User;
+use PHPUnit\Framework\TestCase;
 
 // @codingStandardsIgnoreEnd
 
@@ -57,7 +57,7 @@ class CertificateValidatorFactoryTest extends TestCase
 
         $alexaRequest = $this->createAlexaRequest($timestamp);
 
-        $factory = new CertificateValidatorFactory(        );
+        $factory = new CertificateValidatorFactory();
 
         $validator = $factory->create(
             $this->certificateUrl,

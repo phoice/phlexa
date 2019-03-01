@@ -237,15 +237,15 @@ class StopIntentTest extends TestCase
                             'token'           => 'stop',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'primaryText'   => [
+                                'largeText'  => [
                                     'text' => '<font size="7"><b>stopTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
-                                'secondaryText' => [
+                                'mediumText' => [
                                     'text' => '<font size="3">stopMessage</font>',
                                     'type' => 'RichText',
                                 ],
-                                'tertiaryText'  => [
+                                'shortText'  => [
                                     'text' => '',
                                     'type' => 'PlainText',
                                 ],
@@ -374,10 +374,10 @@ class StopIntentTest extends TestCase
                                     'extraLargeBackgroundImage' => 'https://image.server/extra-large-background.png',
                                 ],
                                 'textContent'  => [
-                                    'title'         => 'stopTitle',
-                                    'primaryText'   => 'stopMessage',
-                                    'secondaryText' => null,
-                                    'hintText'      => null,
+                                    'title'      => 'stopTitle',
+                                    'largeText'  => 'stopMessage',
+                                    'mediumText' => null,
+                                    'hintText'   => null,
                                 ],
                             ],
                         ],

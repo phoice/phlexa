@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Response\Directives\VideoApp;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Directives\VideoApp\Launch;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class LaunchTest
@@ -59,7 +59,7 @@ class LaunchTest extends TestCase
         $expected = [
             'type'      => 'VideoApp.Launch',
             'videoItem' => [
-                'source'   => 'https:/www.test.de/video.mp4',
+                'source' => 'https:/www.test.de/video.mp4',
             ],
         ];
 
@@ -81,7 +81,7 @@ class LaunchTest extends TestCase
             'videoItem' => [
                 'source'   => 'https:/www.test.de/video.mp4',
                 'metadata' => [
-                    'title'    => 'title',
+                    'title' => 'title',
                 ],
             ],
         ];

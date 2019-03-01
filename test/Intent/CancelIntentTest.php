@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Intent;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Configuration\SkillConfiguration;
 use Phlexa\Intent\AbstractIntent;
 use Phlexa\Intent\CancelIntent;
@@ -22,6 +21,7 @@ use Phlexa\Request\RequestType\RequestTypeFactory;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Session\SessionContainer;
 use Phlexa\TextHelper\TextHelper;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class CancelIntentTest
@@ -33,7 +33,7 @@ class CancelIntentTest extends TestCase
     /**
      * Test the instantiation of the class
      */
-    public function testInstantiation():void
+    public function testInstantiation(): void
     {
         $data = [
             'version' => '1.0',
@@ -78,7 +78,7 @@ class CancelIntentTest extends TestCase
     /**
      * Test the handling of the intent
      */
-    public function testHandleSimple():void
+    public function testHandleSimple(): void
     {
         $data = [
             'version' => '1.0',
@@ -157,7 +157,7 @@ class CancelIntentTest extends TestCase
     /**
      * Test the handling of the intent with Display
      */
-    public function testHandleWithDisplay():void
+    public function testHandleWithDisplay(): void
     {
         $data = [
             'version' => '1.0',
@@ -237,15 +237,15 @@ class CancelIntentTest extends TestCase
                             'token'           => 'cancel',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'primaryText'   => [
+                                'largeText'  => [
                                     'text' => '<font size="7"><b>cancelTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
-                                'secondaryText' => [
+                                'mediumText' => [
                                     'text' => '<font size="3">cancelMessage</font>',
                                     'type' => 'RichText',
                                 ],
-                                'tertiaryText'  => [
+                                'shortText'  => [
                                     'text' => '',
                                     'type' => 'PlainText',
                                 ],
@@ -274,7 +274,7 @@ class CancelIntentTest extends TestCase
     /**
      * Test the handling of the intent with APL
      */
-    public function testHandleWithApl():void
+    public function testHandleWithApl(): void
     {
         $data = [
             'version' => '1.0',
@@ -374,10 +374,10 @@ class CancelIntentTest extends TestCase
                                     'extraLargeBackgroundImage' => 'https://image.server/extra-large-background.png',
                                 ],
                                 'textContent'  => [
-                                    'title'         => 'cancelTitle',
-                                    'primaryText'   => 'cancelMessage',
-                                    'secondaryText' => null,
-                                    'hintText'      => null,
+                                    'title'      => 'cancelTitle',
+                                    'largeText'  => 'cancelMessage',
+                                    'mediumText' => null,
+                                    'hintText'   => null,
                                 ],
                             ],
                         ],

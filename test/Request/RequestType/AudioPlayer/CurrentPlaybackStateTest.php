@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType\AudioPlayer;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\AudioPlayer\CurrentPlaybackState;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class CurrentPlaybackStateTest

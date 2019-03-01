@@ -41,7 +41,7 @@ class LaunchIntent extends AbstractIntent
                 $this->getSkillConfiguration()->getNormalBodyAplDocument()
             ),
             'display_title'                => $this->getTextHelper()->getLaunchTitle(),
-            'display_primary_text'         => $this->getTextHelper()->getLaunchMessage(),
+            'display_large_text'           => $this->getTextHelper()->getLaunchMessage(),
             'hint_text'                    => $this->getTextHelper()->getHintText(),
             'image_title'                  => $this->getTextHelper()->getLaunchTitle(),
             'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),

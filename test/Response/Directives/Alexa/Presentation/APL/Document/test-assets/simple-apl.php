@@ -187,7 +187,7 @@ return [
                                         [
                                             [
                                                 'type'     => 'Text',
-                                                'text'     => '${payload.bodyTemplate1Data.textContent.primaryText.text}',
+                                                'text'     => '${payload.bodyTemplate1Data.textContent.largeText.text}',
                                                 'fontSize' => '@textSizeBody',
                                                 'spacing'  => '@spacingSmall',
                                                 'style'    => 'textStyleBody',
@@ -224,7 +224,7 @@ return [
                                             [
                                                 [
                                                     'type'     => 'Text',
-                                                    'text'     => '${payload.bodyTemplate1Data.textContent.primaryText.text}',
+                                                    'text'     => '${payload.bodyTemplate1Data.textContent.largeText.text}',
                                                     'fontSize' => '@textSizeBody',
                                                     'spacing'  => '@spacingSmall',
                                                     'style'    => 'textStyleBody',

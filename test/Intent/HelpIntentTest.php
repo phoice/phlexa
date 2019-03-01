@@ -247,15 +247,15 @@ class HelpIntentTest extends TestCase
                             'token'           => 'help',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'primaryText'   => [
+                                'largeText'  => [
                                     'text' => '<font size="7"><b>helpTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
-                                'secondaryText' => [
+                                'mediumText' => [
                                     'text' => '<font size="3">helpMessage</font>',
                                     'type' => 'RichText',
                                 ],
-                                'tertiaryText'  => [
+                                'shortText'  => [
                                     'text' => '',
                                     'type' => 'PlainText',
                                 ],
@@ -400,10 +400,10 @@ class HelpIntentTest extends TestCase
                                     'extraLargeBackgroundImage' => 'https://image.server/extra-large-background.png',
                                 ],
                                 'textContent'  => [
-                                    'title'         => 'helpTitle',
-                                    'primaryText'   => 'helpMessage',
-                                    'secondaryText' => null,
-                                    'hintText'      => 'hintTextFull',
+                                    'title'      => 'helpTitle',
+                                    'largeText'  => 'helpMessage',
+                                    'mediumText' => null,
+                                    'hintText'   => 'hintTextFull',
                                 ],
                             ],
                         ],

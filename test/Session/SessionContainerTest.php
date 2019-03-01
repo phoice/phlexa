@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Session;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Context\AudioPlayer;
 use Phlexa\Request\Context\Context;
@@ -22,6 +21,7 @@ use Phlexa\Request\Session\Application;
 use Phlexa\Request\Session\Session;
 use Phlexa\Request\Session\User;
 use Phlexa\Session\SessionContainer;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SessionContainerTest

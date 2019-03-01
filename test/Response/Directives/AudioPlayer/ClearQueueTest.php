@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Directives\AudioPlayer;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Directives\AudioPlayer\ClearQueue;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ClearQueueTest

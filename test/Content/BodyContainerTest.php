@@ -41,8 +41,8 @@ class BodyContainerTest extends TestCase
         $this->assertNull($container->getDisplayTemplate());
         $this->assertNull($container->getAplDocument());
         $this->assertNull($container->getDisplayTitle());
-        $this->assertNull($container->getDisplayPrimaryText());
-        $this->assertNull($container->getDisplaySecondaryText());
+        $this->assertNull($container->getDisplayLargeText());
+        $this->assertNull($container->getDisplayMediumText());
         $this->assertNull($container->getHintText());
         $this->assertNull($container->getLogoIcon());
         $this->assertNull($container->getImageTitle());
@@ -69,8 +69,8 @@ class BodyContainerTest extends TestCase
             'display_template'             => 'test display template',
             'apl_document'                 => $this->getAplDocument(),
             'display_title'                => 'test display title',
-            'display_primary_text'         => 'test display primary text',
-            'display_secondary_text'       => 'test display secondary text',
+            'display_large_text'           => 'test display primary text',
+            'display_medium_text'          => 'test display secondary text',
             'hint_text'                    => 'test hint text',
             'logo_icon'                    => 'test logo icon',
             'image_title'                  => 'test image title',
@@ -93,8 +93,8 @@ class BodyContainerTest extends TestCase
         $this->assertEquals($content['display_template'], $container->getDisplayTemplate());
         $this->assertEquals($content['apl_document'], $container->getAplDocument());
         $this->assertEquals($content['display_title'], $container->getDisplayTitle());
-        $this->assertEquals($content['display_primary_text'], $container->getDisplayPrimaryText());
-        $this->assertEquals($content['display_secondary_text'], $container->getDisplaySecondaryText());
+        $this->assertEquals($content['display_large_text'], $container->getDisplayLargeText());
+        $this->assertEquals($content['display_medium_text'], $container->getDisplayMediumText());
         $this->assertEquals($content['hint_text'], $container->getHintText());
         $this->assertEquals($content['logo_icon'], $container->getLogoIcon());
         $this->assertEquals($content['image_title'], $container->getImageTitle());
@@ -126,8 +126,8 @@ class BodyContainerTest extends TestCase
         $this->assertFalse($container->hasDisplayTemplate());
         $this->assertFalse($container->hasAplDocument());
         $this->assertFalse($container->hasDisplayTitle());
-        $this->assertFalse($container->hasDisplayPrimaryText());
-        $this->assertFalse($container->hasDisplaySecondaryText());
+        $this->assertFalse($container->hasDisplayLargeText());
+        $this->assertFalse($container->hasDisplayMediumText());
         $this->assertFalse($container->hasHintText());
         $this->assertFalse($container->hasLogoIcon());
         $this->assertFalse($container->hasImageTitle());
@@ -154,8 +154,8 @@ class BodyContainerTest extends TestCase
             'display_template'             => 'test display template',
             'apl_document'                 => $this->getAplDocument(),
             'display_title'                => 'test display title',
-            'display_primary_text'         => 'test display primary text',
-            'display_secondary_text'       => 'test display secondary text',
+            'display_large_text'           => 'test display primary text',
+            'display_medium_text'          => 'test display secondary text',
             'hint_text'                    => 'test hint text',
             'logo_icon'                    => 'test logo icon',
             'image_title'                  => 'test image title',
@@ -178,8 +178,8 @@ class BodyContainerTest extends TestCase
         $this->assertTrue($container->hasDisplayTemplate());
         $this->assertTrue($container->hasAplDocument());
         $this->assertTrue($container->hasDisplayTitle());
-        $this->assertTrue($container->hasDisplayPrimaryText());
-        $this->assertTrue($container->hasDisplaySecondaryText());
+        $this->assertTrue($container->hasDisplayLargeText());
+        $this->assertTrue($container->hasDisplayMediumText());
         $this->assertTrue($container->hasHintText());
         $this->assertTrue($container->hasLogoIcon());
         $this->assertTrue($container->hasImageTitle());

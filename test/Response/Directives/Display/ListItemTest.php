@@ -23,10 +23,10 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Directives\Display;
 
+use Phlexa\Response\Directives\Display\Image;
 use Phlexa\Response\Directives\Display\ListItem;
 use Phlexa\Response\Directives\Display\TextContent;
 use PHPUnit\Framework\TestCase;
-use Phlexa\Response\Directives\Display\Image;
 
 /**
  * Class ListItemTest
@@ -59,17 +59,17 @@ class ListItemTest extends TestCase
         $listItem->setTextContent($textContent);
 
         $expected = [
-            'token' => 'token',
+            'token'       => 'token',
             'textContent' => [
-                'primaryText'   => [
+                'largeText'  => [
                     'text' => 'primary text',
                     'type' => 'PlainText',
                 ],
-                'secondaryText' => [
+                'mediumText' => [
                     'text' => 'secondary text',
                     'type' => 'RichText',
                 ],
-                'tertiaryText'  => [
+                'shortText'  => [
                     'text' => 'tertiary text',
                     'type' => 'PlainText',
                 ],
@@ -96,22 +96,22 @@ class ListItemTest extends TestCase
         $listItem->setImage($image);
 
         $expected = [
-            'token' => 'token',
+            'token'       => 'token',
             'textContent' => [
-                'primaryText'   => [
+                'largeText'  => [
                     'text' => 'primary text',
                     'type' => 'PlainText',
                 ],
-                'secondaryText' => [
+                'mediumText' => [
                     'text' => 'secondary text',
                     'type' => 'RichText',
                 ],
-                'tertiaryText'  => [
+                'shortText'  => [
                     'text' => 'tertiary text',
                     'type' => 'PlainText',
                 ],
             ],
-            'image' => [
+            'image'       => [
                 'contentDescription' => 'image description',
                 'sources'            => [
                     [

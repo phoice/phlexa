@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\Certificate;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\Certificate\CertificateLoader;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class CertificateLoaderTest

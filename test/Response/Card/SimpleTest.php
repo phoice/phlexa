@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Response\Card;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Response\Card\Simple;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SimpleTest

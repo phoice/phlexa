@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\Session;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\Session\User;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class UserTest

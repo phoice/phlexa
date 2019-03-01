@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\RequestType;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\RequestType\Cause\Cause;
 use Phlexa\Request\RequestType\Error\Error;
 use Phlexa\Request\RequestType\SystemExceptionEncounteredType;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SystemExceptionEncounteredTypeTest

@@ -264,7 +264,7 @@ abstract class AbstractIntent implements IntentInterface
     protected function renderCard(BodyContainer $container): void
     {
         $displayTitle = $container->getDisplayTitle();
-        $displayText  = $container->getDisplayPrimaryText();
+        $displayText  = $container->getDisplayLargeText();
 
         $smallImageUrl = $container->hasSmallFrontImage()
             ? $container->getSmallFrontImage()
@@ -343,28 +343,28 @@ abstract class AbstractIntent implements IntentInterface
     {
         $displayTitle = '<font size="7"><b>' . $container->getDisplayTitle() . '</b></font>';
 
-        $displayPrimaryText = $container->hasDisplayPrimaryText()
-            ? '<font size="3">' . $container->getDisplayPrimaryText() . '</font>'
+        $displayLargeText = $container->hasDisplayLargeText()
+            ? '<font size="3">' . $container->getDisplayLargeText() . '</font>'
             : null;
 
-        $displaySecondaryText = $container->hasDisplaySecondaryText()
-            ? '<font size="2">' . $container->getDisplaySecondaryText() . '</font>'
+        $displayMediumText = $container->hasDisplayMediumText()
+            ? '<font size="2">' . $container->getDisplayMediumText() . '</font>'
             : null;
 
-        if ($displaySecondaryText) {
+        if ($displayMediumText) {
             $textContent = new TextContent(
                 $displayTitle,
                 TextContent::TYPE_RICH_TEXT,
-                $displayPrimaryText,
+                $displayLargeText,
                 TextContent::TYPE_RICH_TEXT,
-                $displaySecondaryText,
+                $displayMediumText,
                 TextContent::TYPE_RICH_TEXT
             );
-        } elseif ($displayPrimaryText) {
+        } elseif ($displayLargeText) {
             $textContent = new TextContent(
                 $displayTitle,
                 TextContent::TYPE_RICH_TEXT,
-                $displayPrimaryText,
+                $displayLargeText,
                 TextContent::TYPE_RICH_TEXT
             );
         } else {
@@ -397,10 +397,10 @@ abstract class AbstractIntent implements IntentInterface
                     'extraLargeBackgroundImage' => $container->getExtraLargeBackgroundImage() ?? null,
                 ],
                 'textContent'  => [
-                    'title'         => $container->getDisplayTitle() ?? null,
-                    'primaryText'   => $container->getDisplayPrimaryText() ?? null,
-                    'secondaryText' => $container->getDisplaySecondaryText() ?? null,
-                    'hintText'      => $container->getHintText()
+                    'title'      => $container->getDisplayTitle() ?? null,
+                    'largeText'  => $container->getDisplayLargeText() ?? null,
+                    'mediumText' => $container->getDisplayMediumText() ?? null,
+                    'hintText'   => $container->getHintText()
                         ? $this->getTextHelper()->getHintTextFull($container->getHintText())
                         : null,
                 ],

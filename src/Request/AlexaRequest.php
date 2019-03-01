@@ -25,7 +25,7 @@ use Phlexa\Request\Session\SessionInterface;
  */
 class AlexaRequest implements AlexaRequestInterface
 {
-    public const NAME = 'AlexaRequest';
+    public const NAME            = 'AlexaRequest';
     public const DEFAULT_VERSION = '1.0';
 
     /** @var string */

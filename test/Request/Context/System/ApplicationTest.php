@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Request\Context\System;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\Request\Context\System\Application;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ApplicationTest

@@ -23,8 +23,8 @@ use Phlexa\Response\Directives\Display\Image;
  */
 class Play implements DirectivesInterface
 {
-    public const PLAY_BEHAVIOR_REPLACE_ALL = 'REPLACE_ALL';
-    public const PLAY_BEHAVIOR_ENQUEUE = 'ENQUEUE';
+    public const PLAY_BEHAVIOR_REPLACE_ALL      = 'REPLACE_ALL';
+    public const PLAY_BEHAVIOR_ENQUEUE          = 'ENQUEUE';
     public const PLAY_BEHAVIOR_REPLACE_ENQUEUED = 'REPLACE_ENQUEUED';
 
     /** @var string */

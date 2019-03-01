@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace PhlexaTest\TextHelper;
 
-use PHPUnit\Framework\TestCase;
 use Phlexa\TextHelper\TextHelper;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AlexaTextHelperTest
