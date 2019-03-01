@@ -45,6 +45,9 @@ class BodyContainer
     private $displayMediumText;
 
     /** @var string|null */
+    private $displayShortText;
+
+    /** @var string|null */
     private $hintText;
 
     /** @var string|null */
@@ -286,6 +289,30 @@ class BodyContainer
     public function hasDisplayMediumText(): bool
     {
         return null !== $this->displayMediumText;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDisplayShortText(): ?string
+    {
+        return $this->displayShortText;
+    }
+
+    /**
+     * @param string|null $displayShortText
+     */
+    public function setDisplayShortText(?string $displayShortText): void
+    {
+        $this->displayShortText = $displayShortText;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasDisplayShortText(): bool
+    {
+        return null !== $this->displayShortText;
     }
 
     /**
