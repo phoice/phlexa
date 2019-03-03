@@ -46,6 +46,8 @@ class SkillConfigurationTest extends TestCase
             'skillTitle'                => 'Skill Title',
             'applicationClass'          => 'ApplicationClass',
             'textHelperClass'           => 'TextHelperClass',
+            'smallIconImage'            => 'https://www.phoice.tech//cards/icon-480x480.png',
+            'largeIconImage'            => 'https://www.phoice.tech//cards/icon-800x800.png',
             'smallFrontImage'           => 'https://www.phoice.tech//cards/hello-480x480.png',
             'largeFrontImage'           => 'https://www.phoice.tech//cards/hello-800x800.png',
             'smallBackgroundImage'      => 'https://www.phoice.tech//cards/hello-480x480.png',
@@ -91,6 +93,8 @@ class SkillConfigurationTest extends TestCase
         $this->assertEquals($config['applicationClass'], $skillConfiguration->getApplicationClass());
         $this->assertEquals($config['textHelperClass'], $skillConfiguration->getTextHelperClass());
         $this->assertEquals($config['sessionDefaults'], $skillConfiguration->getSessionDefaults());
+        $this->assertEquals($config['smallIconImage'], $skillConfiguration->getSmallIconImage());
+        $this->assertEquals($config['largeIconImage'], $skillConfiguration->getLargeIconImage());
         $this->assertEquals($config['smallFrontImage'], $skillConfiguration->getSmallFrontImage());
         $this->assertEquals($config['largeFrontImage'], $skillConfiguration->getLargeFrontImage());
         $this->assertEquals($config['smallBackgroundImage'], $skillConfiguration->getSmallBackgroundImage());

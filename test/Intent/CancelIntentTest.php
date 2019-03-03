@@ -118,6 +118,7 @@ class CancelIntentTest extends TestCase
         $alexaResponse->setSessionContainer($sessionContainer);
 
         $skillConfiguration = new SkillConfiguration();
+        $skillConfiguration->setSmallIconImage('https://image.server/icon.png');
         $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
         $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
         $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
@@ -210,6 +211,7 @@ class CancelIntentTest extends TestCase
         $alexaResponse->setSessionContainer($sessionContainer);
 
         $skillConfiguration = new SkillConfiguration();
+        $skillConfiguration->setSmallIconImage('https://image.server/icon.png');
         $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
         $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
         $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
@@ -327,6 +329,7 @@ class CancelIntentTest extends TestCase
         $alexaResponse->setSessionContainer($sessionContainer);
 
         $skillConfiguration = new SkillConfiguration();
+        $skillConfiguration->setSmallIconImage('https://image.server/icon.png');
         $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
         $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
         $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
@@ -364,7 +367,7 @@ class CancelIntentTest extends TestCase
                         'datasources' => [
                             'content' => [
                                 'imageContent' => [
-                                    'logoIcon'                  => null,
+                                    'logoIcon'                  => 'https://image.server/icon.png',
                                     'imageTitle'                => 'cancelTitle',
                                     'smallFrontImage'           => 'https://image.server/small.png',
                                     'largeFrontImage'           => 'https://image.server/large.png',

@@ -48,6 +48,12 @@ class SkillConfiguration implements SkillConfigurationInterface
     private $host;
 
     /** @var string|null */
+    private $smallIconImage;
+
+    /** @var string|null */
+    private $largeIconImage;
+
+    /** @var string|null */
     private $smallFrontImage;
 
     /** @var string|null */
@@ -232,6 +238,38 @@ class SkillConfiguration implements SkillConfigurationInterface
     public function setHost(string $host): void
     {
         $this->host = $host;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSmallIconImage(): string
+    {
+        return $this->smallIconImage;
+    }
+
+    /**
+     * @param string $smallIconImage
+     */
+    public function setSmallIconImage(string $smallIconImage): void
+    {
+        $this->smallIconImage = $smallIconImage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLargeIconImage(): string
+    {
+        return $this->largeIconImage;
+    }
+
+    /**
+     * @param string $largeIconImage
+     */
+    public function setLargeIconImage(string $largeIconImage): void
+    {
+        $this->largeIconImage = $largeIconImage;
     }
 
     /**

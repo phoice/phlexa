@@ -85,6 +85,10 @@ class AlexaApplicationTest extends TestCase
         $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
         $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
+        /** @var MethodProphecy $getSmallIconImageMethod */
+        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
+        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+
         /** @var MethodProphecy $getSmallFrontImageMethod */
         $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
         $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
@@ -210,6 +214,10 @@ class AlexaApplicationTest extends TestCase
         $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
         $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
+        /** @var MethodProphecy $getSmallIconImageMethod */
+        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
+        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+
         /** @var MethodProphecy $getSmallFrontImageMethod */
         $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
         $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
@@ -331,6 +339,10 @@ class AlexaApplicationTest extends TestCase
         /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
         $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
         $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+
+        /** @var MethodProphecy $getSmallIconImageMethod */
+        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
+        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
 
         /** @var MethodProphecy $getSmallFrontImageMethod */
         $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
@@ -455,6 +467,10 @@ class AlexaApplicationTest extends TestCase
         $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
         $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
+        /** @var MethodProphecy $getSmallIconImageMethod */
+        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
+        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+
         /** @var MethodProphecy $getSmallFrontImageMethod */
         $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
         $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
@@ -573,6 +589,10 @@ class AlexaApplicationTest extends TestCase
         $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
         $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
 
+        /** @var MethodProphecy $getSmallIconImageMethod */
+        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
+        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+
         /** @var MethodProphecy $getSmallFrontImageMethod */
         $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
         $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
@@ -690,6 +710,10 @@ class AlexaApplicationTest extends TestCase
         /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
         $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
         $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+
+        /** @var MethodProphecy $getSmallIconImageMethod */
+        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
+        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
 
         /** @var MethodProphecy $getSmallFrontImageMethod */
         $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();

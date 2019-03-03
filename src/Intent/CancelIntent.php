@@ -42,6 +42,7 @@ class CancelIntent extends AbstractIntent
             'display_title'                => $this->getTextHelper()->getCancelTitle(),
             'display_large_text'           => $this->getTextHelper()->getCancelMessage(),
             'image_title'                  => $this->getTextHelper()->getCancelTitle(),
+            'logo_icon'                    => $this->getSkillConfiguration()->getSmallIconImage(),
             'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),
             'large_front_image'            => $this->getSkillConfiguration()->getLargeFrontImage(),
             'small_background_image'       => $this->getSkillConfiguration()->getSmallBackgroundImage(),

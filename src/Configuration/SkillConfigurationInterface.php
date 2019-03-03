@@ -120,6 +120,26 @@ interface SkillConfigurationInterface
     /**
      * @return string
      */
+    public function getSmallIconImage(): string;
+
+    /**
+     * @param string $smallIconImage
+     */
+    public function setSmallIconImage(string $smallIconImage): void;
+
+    /**
+     * @return string
+     */
+    public function getLargeIconImage(): string;
+
+    /**
+     * @param string $largeIconImage
+     */
+    public function setLargeIconImage(string $largeIconImage): void;
+
+    /**
+     * @return string
+     */
     public function getSmallFrontImage(): string;
 
     /**
