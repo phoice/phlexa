@@ -15,6 +15,8 @@ namespace Phlexa\Intent;
 
 use Phlexa\Configuration\SkillConfigurationInterface;
 use Phlexa\Content\BodyContainer;
+use Phlexa\Content\ImageContainer;
+use Phlexa\Content\SlideShowContainer;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Response\Card\Standard;
@@ -250,12 +252,56 @@ abstract class AbstractIntent implements IntentInterface
         }
 
         if ($container->hasApl() && $container->hasAplDocument() && $this->isAplSupported()) {
-            $this->renderAplTemplate($container);
+            $this->renderAplBodyTemplate($container);
         } elseif ($container->hasDisplay() && $container->hasDisplayTemplate() && $this->isDisplaySupported()) {
             $this->renderDisplayTemplate($container);
         } elseif ($container->hasCard()) {
             $this->renderCard($container);
         }
+    }
+
+    /**
+     * @param SlideShowContainer $container
+     */
+    protected function renderSlideShowContainer(SlideShowContainer $container): void
+    {
+        if ($container->hasOutputSpeech()) {
+            $this->getAlexaResponse()->setOutputSpeech(
+                new SSML($container->getOutputSpeech())
+            );
+        }
+
+        if ($container->hasRepromptSpeech()) {
+            $this->getAlexaResponse()->setReprompt(
+                new SSML($container->getRepromptSpeech())
+            );
+        }
+
+        if ($container->hasApl() && $container->hasAplDocument() && $this->isAplSupported()) {
+            $this->renderAplSlideShowTemplate($container);
+
+            return;
+        }
+
+        $this->setRandomImageFromSlideShow($container);
+
+        if ($container->hasDisplay() && $container->hasDisplayTemplate() && $this->isDisplaySupported()) {
+            $this->renderDisplayTemplate($container);
+        } elseif ($container->hasCard()) {
+            $this->renderCard($container);
+        }
+    }
+
+    /**
+     * @param SlideShowContainer $container
+     */
+    protected function setRandomImageFromSlideShow(SlideShowContainer $container): void
+    {
+        $slideImages = $container->getSlideImages();
+
+        $randomImage = $slideImages[array_rand($slideImages)];
+
+        $container->setImage($randomImage);
     }
 
     /**
@@ -266,12 +312,12 @@ abstract class AbstractIntent implements IntentInterface
         $displayTitle = $container->getDisplayTitle();
         $displayText  = $container->getDisplayLargeText();
 
-        $smallImageUrl = $container->hasSmallFrontImage()
-            ? $container->getSmallFrontImage()
+        $smallImageUrl = $container->getImage()->hasSmallFrontImage()
+            ? $container->getImage()->getSmallFrontImage()
             : $this->getSkillConfiguration()->getSmallFrontImage();
 
-        $largeImageUrl = $container->hasLargeFrontImage()
-            ? $container->getLargeFrontImage()
+        $largeImageUrl = $container->getImage()->hasLargeFrontImage()
+            ? $container->getImage()->getLargeFrontImage()
             : $this->getSkillConfiguration()->getLargeFrontImage();
 
         $this->getAlexaResponse()->setCard(
@@ -292,12 +338,12 @@ abstract class AbstractIntent implements IntentInterface
             ? $container->getDisplayTemplate()
             : RenderTemplate::TYPE_BODY_TEMPLATE_6;
 
-        $imageTitle = $container->hasImageTitle()
-            ? $container->getImageTitle()
+        $imageTitle = $container->getImage()->hasImageTitle()
+            ? $container->getImage()->getImageTitle()
             : $this->getSkillConfiguration()->getSkillTitle();
 
-        $backgroundImageUrl = $container->hasMediumBackgroundImage()
-            ? $container->getMediumBackgroundImage()
+        $backgroundImageUrl = $container->getImage()->hasMediumBackgroundImage()
+            ? $container->getImage()->getMediumBackgroundImage()
             : $this->getSkillConfiguration()->getMediumBackgroundImage();
 
         $backgroundImage = new Image($imageTitle);
@@ -310,12 +356,12 @@ abstract class AbstractIntent implements IntentInterface
         if (in_array(
             $template, [RenderTemplate::TYPE_BODY_TEMPLATE_2, RenderTemplate::TYPE_BODY_TEMPLATE_3], true
         )) {
-            $smallImageUrl = $container->hasSmallFrontImage()
-                ? $container->getSmallFrontImage()
+            $smallImageUrl = $container->getImage()->hasSmallFrontImage()
+                ? $container->getImage()->getSmallFrontImage()
                 : $this->getSkillConfiguration()->getSmallFrontImage();
 
-            $largeImageUrl = $container->hasLargeFrontImage()
-                ? $container->getLargeFrontImage()
+            $largeImageUrl = $container->getImage()->hasLargeFrontImage()
+                ? $container->getImage()->getLargeFrontImage()
                 : $this->getSkillConfiguration()->getLargeFrontImage();
 
             $image = new Image($imageTitle);
@@ -380,32 +426,66 @@ abstract class AbstractIntent implements IntentInterface
     /**
      * @param BodyContainer $container
      */
-    protected function renderAplTemplate(BodyContainer $container): void
+    protected function renderAplBodyTemplate(BodyContainer $container): void
     {
         $token = $container->hasToken() ? $container->getToken() : 'token';
 
         $datasources = [
             'content' => [
                 'imageContent' => [
-                    'logoIcon'                  => $container->getLogoIcon() ?? null,
-                    'imageTitle'                => $container->getImageTitle() ?? null,
-                    'smallFrontImage'           => $container->getSmallFrontImage() ?? null,
-                    'largeFrontImage'           => $container->getLargeFrontImage() ?? null,
-                    'smallBackgroundImage'      => $container->getSmallBackgroundImage() ?? null,
-                    'mediumBackgroundImage'     => $container->getMediumBackgroundImage() ?? null,
-                    'largeBackgroundImage'      => $container->getLargeBackgroundImage() ?? null,
-                    'extraLargeBackgroundImage' => $container->getExtraLargeBackgroundImage() ?? null,
+                    'logoIcon'                  => $container->getLogoIcon(),
+                    'imageTitle'                => $container->getImage()->getImageTitle(),
+                    'smallFrontImage'           => $container->getImage()->getSmallFrontImage(),
+                    'largeFrontImage'           => $container->getImage()->getLargeFrontImage(),
+                    'smallBackgroundImage'      => $container->getImage()->getSmallBackgroundImage(),
+                    'mediumBackgroundImage'     => $container->getImage()->getMediumBackgroundImage(),
+                    'largeBackgroundImage'      => $container->getImage()->getLargeBackgroundImage(),
+                    'extraLargeBackgroundImage' => $container->getImage()->getExtraLargeBackgroundImage(),
                 ],
                 'textContent'  => [
-                    'title'      => $container->getDisplayTitle() ?? null,
-                    'largeText'  => $container->getDisplayLargeText() ?? null,
-                    'mediumText' => $container->getDisplayMediumText() ?? null,
+                    'title'      => $container->getDisplayTitle(),
+                    'largeText'  => $container->getDisplayLargeText(),
+                    'mediumText' => $container->getDisplayMediumText(),
                     'hintText'   => $container->getHintText()
                         ? $this->getTextHelper()->getHintTextFull($container->getHintText())
                         : null,
                 ],
             ],
         ];
+
+        $renderDocument = new RenderDocument($container->getAplDocument(), $token, $datasources);
+
+        $this->getAlexaResponse()->addDirective($renderDocument);
+    }
+
+    /**
+     * @param SlideShowContainer $container
+     */
+    protected function renderAplSlideShowTemplate(SlideShowContainer $container): void
+    {
+        $token = $container->hasToken() ? $container->getToken() : 'token';
+
+        $datasources = [
+            'content' => [
+                'imageContent'     => [
+                    'logoIcon' => $container->getLogoIcon(),
+                ],
+                'slideShowContent' => [],
+            ],
+        ];
+
+        /** @var ImageContainer $image */
+        foreach ($container->getSlideImages() as $image) {
+            $datasources['content']['slideShowContent'][] = [
+                'imageTitle'                => $image->getImageTitle(),
+                'smallFrontImage'           => $image->getSmallFrontImage(),
+                'largeFrontImage'           => $image->getLargeFrontImage(),
+                'smallBackgroundImage'      => $image->getSmallBackgroundImage(),
+                'mediumBackgroundImage'     => $image->getMediumBackgroundImage(),
+                'largeBackgroundImage'      => $image->getLargeBackgroundImage(),
+                'extraLargeBackgroundImage' => $image->getExtraLargeBackgroundImage(),
+            ];
+        }
 
         $renderDocument = new RenderDocument($container->getAplDocument(), $token, $datasources);
 

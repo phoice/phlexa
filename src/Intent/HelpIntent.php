@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Phlexa\Intent;
 
 use Phlexa\Content\BodyContainer;
+use Phlexa\Content\ImageContainer;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Response\Directives\Alexa\Presentation\APL\Document\APL;
 use Phlexa\Response\Directives\Display\RenderTemplate;
@@ -33,27 +34,31 @@ class HelpIntent extends AbstractIntent
     public function handle(): AlexaResponse
     {
         $content = [
-            'output_speech'                => $this->getTextHelper()->getHelpMessage(),
-            'reprompt_speech'              => $this->getTextHelper()->getRepromptMessage(),
-            'token'                        => 'help',
-            'display_template'             => RenderTemplate::TYPE_BODY_TEMPLATE_6,
-            'apl_document'                 => APL::createFromString(
+            'output_speech'      => $this->getTextHelper()->getHelpMessage(),
+            'reprompt_speech'    => $this->getTextHelper()->getRepromptMessage(),
+            'token'              => 'help',
+            'display_template'   => RenderTemplate::TYPE_BODY_TEMPLATE_6,
+            'apl_document'       => APL::createFromString(
                 $this->getSkillConfiguration()->getAplDocuments()['normal-body']
             ),
-            'display_title'                => $this->getTextHelper()->getHelpTitle(),
-            'display_large_text'           => $this->getTextHelper()->getHelpMessage(),
-            'hint_text'                    => $this->getTextHelper()->getHintText(),
-            'image_title'                  => $this->getTextHelper()->getHelpTitle(),
-            'logo_icon'                    => $this->getSkillConfiguration()->getSmallIconImage(),
-            'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),
-            'large_front_image'            => $this->getSkillConfiguration()->getLargeFrontImage(),
-            'small_background_image'       => $this->getSkillConfiguration()->getSmallBackgroundImage(),
-            'medium_background_image'      => $this->getSkillConfiguration()->getMediumBackgroundImage(),
-            'large_background_image'       => $this->getSkillConfiguration()->getLargeBackgroundImage(),
-            'extra_large_background_image' => $this->getSkillConfiguration()->getExtraLargeBackgroundImage(),
-            'card'                         => true,
-            'display'                      => true,
-            'apl'                          => true,
+            'display_title'      => $this->getTextHelper()->getHelpTitle(),
+            'display_large_text' => $this->getTextHelper()->getHelpMessage(),
+            'hint_text'          => $this->getTextHelper()->getHintText(),
+            'logo_icon'          => $this->getSkillConfiguration()->getSmallIconImage(),
+            'image'              => new ImageContainer(
+                [
+                    'image_title'                  => $this->getTextHelper()->getHelpTitle(),
+                    'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),
+                    'large_front_image'            => $this->getSkillConfiguration()->getLargeFrontImage(),
+                    'small_background_image'       => $this->getSkillConfiguration()->getSmallBackgroundImage(),
+                    'medium_background_image'      => $this->getSkillConfiguration()->getMediumBackgroundImage(),
+                    'large_background_image'       => $this->getSkillConfiguration()->getLargeBackgroundImage(),
+                    'extra_large_background_image' => $this->getSkillConfiguration()->getExtraLargeBackgroundImage(),
+                ]
+            ),
+            'card'               => true,
+            'display'            => true,
+            'apl'                => true,
         ];
 
         $this->renderBodyContainer(new BodyContainer($content));

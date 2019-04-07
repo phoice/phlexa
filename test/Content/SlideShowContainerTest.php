@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace PhlexaTest\Content;
 
-use Phlexa\Content\BodyContainer;
 use Phlexa\Content\ImageContainer;
+use Phlexa\Content\SlideShowContainer;
 use Phlexa\Response\Directives\Alexa\Presentation\APL\Document\APL;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class BodyContainerTest
+ * Class SlideShowContainerTest
  *
  * @package PhlexaTest\Content
  */
-class BodyContainerTest extends TestCase
+class SlideShowContainerTest extends TestCase
 {
     /**
      * Test the getter methods with only mandatory data
@@ -34,7 +34,7 @@ class BodyContainerTest extends TestCase
             'output_speech' => 'test output speech',
         ];
 
-        $container = new BodyContainer($content);
+        $container = new SlideShowContainer($content);
 
         $this->assertEquals($content['output_speech'], $container->getOutputSpeech());
         $this->assertNull($container->getRepromptSpeech());
@@ -47,7 +47,7 @@ class BodyContainerTest extends TestCase
         $this->assertNull($container->getDisplayShortText());
         $this->assertNull($container->getHintText());
         $this->assertNull($container->getLogoIcon());
-        $this->assertNull($container->getImage());
+        $this->assertEmpty($container->getSlideImages());
         $this->assertFalse($container->hasCard());
         $this->assertFalse($container->hasDisplay());
         $this->assertFalse($container->hasApl());
@@ -70,23 +70,13 @@ class BodyContainerTest extends TestCase
             'display_short_text'  => 'test display short text',
             'hint_text'           => 'test hint text',
             'logo_icon'           => 'test logo icon',
-            'image'               => new ImageContainer(
-                [
-                    'image_title'                  => 'test image title',
-                    'small_front_image'            => 'test small front image',
-                    'large_front_image'            => 'test large front image',
-                    'small_background_image'       => 'test small background image',
-                    'medium_background_image'      => 'test medium background image',
-                    'large_background_image'       => 'test large background image',
-                    'extra_large_background_image' => 'test extra large background image',
-                ]
-            ),
+            'slide_images'        => ['slide images'],
             'card'                => true,
             'display'             => true,
             'apl'                 => true,
         ];
 
-        $container = new BodyContainer($content);
+        $container = new SlideShowContainer($content);
 
         $this->assertEquals($content['output_speech'], $container->getOutputSpeech());
         $this->assertEquals($content['reprompt_speech'], $container->getRepromptSpeech());
@@ -99,7 +89,7 @@ class BodyContainerTest extends TestCase
         $this->assertEquals($content['display_short_text'], $container->getDisplayShortText());
         $this->assertEquals($content['hint_text'], $container->getHintText());
         $this->assertEquals($content['logo_icon'], $container->getLogoIcon());
-        $this->assertEquals($content['image'], $container->getImage());
+        $this->assertEquals($content['slide_images'], $container->getSlideImages());
         $this->assertTrue($container->hasCard());
         $this->assertTrue($container->hasDisplay());
         $this->assertTrue($container->hasApl());
@@ -114,7 +104,7 @@ class BodyContainerTest extends TestCase
             'output_speech' => 'test output speech',
         ];
 
-        $container = new BodyContainer($content);
+        $container = new SlideShowContainer($content);
 
         $this->assertTrue($container->hasOutputSpeech());
         $this->assertFalse($container->hasRepromptSpeech());
@@ -127,7 +117,7 @@ class BodyContainerTest extends TestCase
         $this->assertFalse($container->hasDisplayShortText());
         $this->assertFalse($container->hasHintText());
         $this->assertFalse($container->hasLogoIcon());
-        $this->assertFalse($container->hasImage());
+        $this->assertFalse($container->hasSlideImages());
         $this->assertFalse($container->hasCard());
         $this->assertFalse($container->hasDisplay());
         $this->assertFalse($container->hasApl());
@@ -150,23 +140,13 @@ class BodyContainerTest extends TestCase
             'display_short_text'  => 'test display short text',
             'hint_text'           => 'test hint text',
             'logo_icon'           => 'test logo icon',
-            'image'               => new ImageContainer(
-                [
-                    'image_title'                  => 'test image title',
-                    'small_front_image'            => 'test small front image',
-                    'large_front_image'            => 'test large front image',
-                    'small_background_image'       => 'test small background image',
-                    'medium_background_image'      => 'test medium background image',
-                    'large_background_image'       => 'test large background image',
-                    'extra_large_background_image' => 'test extra large background image',
-                ]
-            ),
+            'slide_images'        => [new ImageContainer()],
             'card'                => true,
             'display'             => true,
             'apl'                 => true,
         ];
 
-        $container = new BodyContainer($content);
+        $container = new SlideShowContainer($content);
 
         $this->assertTrue($container->hasOutputSpeech());
         $this->assertTrue($container->hasRepromptSpeech());
@@ -179,7 +159,7 @@ class BodyContainerTest extends TestCase
         $this->assertTrue($container->hasDisplayShortText());
         $this->assertTrue($container->hasHintText());
         $this->assertTrue($container->hasLogoIcon());
-        $this->assertTrue($container->hasImage());
+        $this->assertTrue($container->hasSlideImages());
         $this->assertTrue($container->hasCard());
         $this->assertTrue($container->hasDisplay());
         $this->assertTrue($container->hasApl());

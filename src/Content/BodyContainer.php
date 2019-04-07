@@ -53,26 +53,8 @@ class BodyContainer
     /** @var string|null */
     private $logoIcon;
 
-    /** @var string|null */
-    private $imageTitle;
-
-    /** @var string|null */
-    private $smallFrontImage;
-
-    /** @var string|null */
-    private $largeFrontImage;
-
-    /** @var string|null */
-    private $smallBackgroundImage;
-
-    /** @var string|null */
-    private $mediumBackgroundImage;
-
-    /** @var string|null */
-    private $largeBackgroundImage;
-
-    /** @var string|null */
-    private $extraLargeBackgroundImage;
+    /** @var ImageContainer */
+    private $image;
 
     /** @var bool */
     private $card = false;
@@ -364,171 +346,27 @@ class BodyContainer
     }
 
     /**
-     * @return string|null
+     * @return ImageContainer
      */
-    public function getImageTitle(): ?string
+    public function getImage(): ?ImageContainer
     {
-        return $this->imageTitle;
+        return $this->image;
     }
 
     /**
-     * @param string|null $imageTitle
+     * @param ImageContainer $image
      */
-    public function setImageTitle(?string $imageTitle): void
+    public function setImage(ImageContainer $image): void
     {
-        $this->imageTitle = $imageTitle;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasImageTitle(): bool
-    {
-        return null !== $this->imageTitle;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSmallFrontImage(): ?string
-    {
-        return $this->smallFrontImage;
-    }
-
-    /**
-     * @param string|null $smallFrontImage
-     */
-    public function setSmallFrontImage(?string $smallFrontImage): void
-    {
-        $this->smallFrontImage = $smallFrontImage;
+        $this->image = $image;
     }
 
     /**
      * @return bool
      */
-    public function hasSmallFrontImage(): bool
+    public function hasImage(): bool
     {
-        return null !== $this->smallFrontImage;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLargeFrontImage(): ?string
-    {
-        return $this->largeFrontImage;
-    }
-
-    /**
-     * @param string|null $largeFrontImage
-     */
-    public function setLargeFrontImage(?string $largeFrontImage): void
-    {
-        $this->largeFrontImage = $largeFrontImage;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasLargeFrontImage(): bool
-    {
-        return null !== $this->largeFrontImage;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSmallBackgroundImage(): ?string
-    {
-        return $this->smallBackgroundImage;
-    }
-
-    /**
-     * @param string|null $smallBackgroundImage
-     */
-    public function setSmallBackgroundImage(?string $smallBackgroundImage): void
-    {
-        $this->smallBackgroundImage = $smallBackgroundImage;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasSmallBackgroundImage(): bool
-    {
-        return null !== $this->smallBackgroundImage;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getMediumBackgroundImage(): ?string
-    {
-        return $this->mediumBackgroundImage;
-    }
-
-    /**
-     * @param string|null $mediumBackgroundImage
-     */
-    public function setMediumBackgroundImage(?string $mediumBackgroundImage): void
-    {
-        $this->mediumBackgroundImage = $mediumBackgroundImage;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasMediumBackgroundImage(): bool
-    {
-        return null !== $this->mediumBackgroundImage;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLargeBackgroundImage(): ?string
-    {
-        return $this->largeBackgroundImage;
-    }
-
-    /**
-     * @param string|null $largeBackgroundImage
-     */
-    public function setLargeBackgroundImage(?string $largeBackgroundImage): void
-    {
-        $this->largeBackgroundImage = $largeBackgroundImage;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasLargeBackgroundImage(): bool
-    {
-        return null !== $this->largeBackgroundImage;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getExtraLargeBackgroundImage(): ?string
-    {
-        return $this->extraLargeBackgroundImage;
-    }
-
-    /**
-     * @param string|null $extraLargeBackgroundImage
-     */
-    public function setExtraLargeBackgroundImage(?string $extraLargeBackgroundImage): void
-    {
-        $this->extraLargeBackgroundImage = $extraLargeBackgroundImage;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasExtraLargeBackgroundImage(): bool
-    {
-        return null !== $this->extraLargeBackgroundImage;
+        return null !== $this->image;
     }
 
     /**
