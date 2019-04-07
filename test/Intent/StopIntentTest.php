@@ -125,7 +125,7 @@ class StopIntentTest extends TestCase
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
         $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
-        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+        $skillConfiguration->setAplDocuments(['normal-body' => '{"type": "APL"}']);
 
         $stopIntent = new StopIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
         $stopIntent->handle();
@@ -218,7 +218,7 @@ class StopIntentTest extends TestCase
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
         $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
-        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+        $skillConfiguration->setAplDocuments(['normal-body' => '{"type": "APL"}']);
 
         $stopIntent = new StopIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
         $stopIntent->handle();
@@ -336,7 +336,7 @@ class StopIntentTest extends TestCase
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
         $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
-        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+        $skillConfiguration->setAplDocuments(['normal-body' => '{"type": "APL"}']);
 
         $stopIntent = new StopIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
         $stopIntent->handle();

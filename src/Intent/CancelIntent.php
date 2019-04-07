@@ -37,7 +37,7 @@ class CancelIntent extends AbstractIntent
             'token'                        => 'cancel',
             'display_template'             => RenderTemplate::TYPE_BODY_TEMPLATE_6,
             'apl_document'                 => APL::createFromString(
-                $this->getSkillConfiguration()->getNormalBodyAplDocument()
+                $this->getSkillConfiguration()->getAplDocuments()['normal-body']
             ),
             'display_title'                => $this->getTextHelper()->getCancelTitle(),
             'display_large_text'           => $this->getTextHelper()->getCancelMessage(),

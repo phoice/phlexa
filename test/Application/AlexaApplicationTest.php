@@ -81,9 +81,9 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
-        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
-        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+        /** @var MethodProphecy $getAplDocumentsMethod */
+        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
+        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
 
         /** @var MethodProphecy $getSmallIconImageMethod */
         $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
@@ -210,9 +210,9 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
-        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
-        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+        /** @var MethodProphecy $getAplDocumentsMethod */
+        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
+        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
 
         /** @var MethodProphecy $getSmallIconImageMethod */
         $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
@@ -336,9 +336,9 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
-        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
-        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+        /** @var MethodProphecy $getAplDocumentsMethod */
+        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
+        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
 
         /** @var MethodProphecy $getSmallIconImageMethod */
         $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
@@ -463,9 +463,9 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
-        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
-        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+        /** @var MethodProphecy $getAplDocumentsMethod */
+        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
+        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
 
         /** @var MethodProphecy $getSmallIconImageMethod */
         $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
@@ -585,9 +585,9 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
-        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
-        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+        /** @var MethodProphecy $getAplDocumentsMethod */
+        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
+        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
 
         /** @var MethodProphecy $getSmallIconImageMethod */
         $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
@@ -707,9 +707,9 @@ class AlexaApplicationTest extends TestCase
         /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
         $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
 
-        /** @var MethodProphecy $getNormalBodyAplDocumentMethod */
-        $getNormalBodyAplDocumentMethod = $skillConfiguration->getNormalBodyAplDocument();
-        $getNormalBodyAplDocumentMethod->shouldBeCalled()->willReturn('{"type": "APL"}');
+        /** @var MethodProphecy $getAplDocumentsMethod */
+        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
+        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
 
         /** @var MethodProphecy $getSmallIconImageMethod */
         $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();

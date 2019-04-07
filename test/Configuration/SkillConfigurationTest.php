@@ -82,7 +82,7 @@ class SkillConfigurationTest extends TestCase
             'customData'                => [
                 'foo' => 'bar'
             ],
-            'normalBodyAplDocument'     => '{"type": "APL"}',
+            'aplDocuments'     => ['normal-body' => '{"type": "APL"}'],
         ];
 
         $skillConfiguration = new SkillConfiguration();
@@ -105,6 +105,6 @@ class SkillConfigurationTest extends TestCase
         $this->assertEquals($config['intents'], $skillConfiguration->getIntents());
         $this->assertEquals($config['texts'], $skillConfiguration->getTexts());
         $this->assertEquals($config['customData'], $skillConfiguration->getCustomData());
-        $this->assertEquals($config['normalBodyAplDocument'], $skillConfiguration->getNormalBodyAplDocument());
+        $this->assertEquals($config['aplDocuments'], $skillConfiguration->getAplDocuments());
     }
 }

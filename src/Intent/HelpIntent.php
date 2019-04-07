@@ -38,7 +38,7 @@ class HelpIntent extends AbstractIntent
             'token'                        => 'help',
             'display_template'             => RenderTemplate::TYPE_BODY_TEMPLATE_6,
             'apl_document'                 => APL::createFromString(
-                $this->getSkillConfiguration()->getNormalBodyAplDocument()
+                $this->getSkillConfiguration()->getAplDocuments()['normal-body']
             ),
             'display_title'                => $this->getTextHelper()->getHelpTitle(),
             'display_large_text'           => $this->getTextHelper()->getHelpMessage(),

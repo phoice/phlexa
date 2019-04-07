@@ -38,7 +38,7 @@ class LaunchIntent extends AbstractIntent
             'token'                        => 'launch',
             'display_template'             => RenderTemplate::TYPE_BODY_TEMPLATE_6,
             'apl_document'                 => APL::createFromString(
-                $this->getSkillConfiguration()->getNormalBodyAplDocument()
+                $this->getSkillConfiguration()->getAplDocuments()['normal-body']
             ),
             'display_title'                => $this->getTextHelper()->getLaunchTitle(),
             'display_large_text'           => $this->getTextHelper()->getLaunchMessage(),

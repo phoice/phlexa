@@ -208,14 +208,14 @@ interface SkillConfigurationInterface
     public function setImageTitle(string $backgroundImageTitle);
 
     /**
-     * @return string|null
+     * @return array
      */
-    public function getNormalBodyAplDocument(): ?string;
+    public function getAplDocuments(): array;
 
     /**
-     * @param string|null $normalBodyAplDocument
+     * @param array $aplDocuments
      */
-    public function setNormalBodyAplDocument(?string $normalBodyAplDocument): void;
+    public function setAplDocuments(array $aplDocuments): void;
 
     /**
      * @return array

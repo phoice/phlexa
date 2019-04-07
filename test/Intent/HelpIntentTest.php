@@ -125,7 +125,7 @@ class HelpIntentTest extends TestCase
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
         $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
-        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+        $skillConfiguration->setAplDocuments(['normal-body' => '{"type": "APL"}']);
 
         $helpIntent = new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
         $helpIntent->handle();
@@ -226,7 +226,7 @@ class HelpIntentTest extends TestCase
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
         $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
-        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+        $skillConfiguration->setAplDocuments(['normal-body' => '{"type": "APL"}']);
 
         $helpIntent = new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
         $helpIntent->handle();
@@ -360,7 +360,7 @@ class HelpIntentTest extends TestCase
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
         $skillConfiguration->setExtraLargeBackgroundImage('https://image.server/extra-large-background.png');
-        $skillConfiguration->setNormalBodyAplDocument('{"type": "APL"}');
+        $skillConfiguration->setAplDocuments(['normal-body' => '{"type": "APL"}']);
 
         $helpIntent = new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
         $helpIntent->handle();

@@ -74,8 +74,8 @@ class SkillConfiguration implements SkillConfigurationInterface
     /** @var string */
     private $imageTitle;
 
-    /** @var string|null */
-    private $normalBodyAplDocument;
+    /** @var array */
+    private $aplDocuments = [];
 
     /** @var array */
     private $customData = [];
@@ -385,19 +385,19 @@ class SkillConfiguration implements SkillConfigurationInterface
     }
 
     /**
-     * @return string|null
+     * @return array
      */
-    public function getNormalBodyAplDocument(): ?string
+    public function getAplDocuments(): array
     {
-        return $this->normalBodyAplDocument;
+        return $this->aplDocuments;
     }
 
     /**
-     * @param string|null $normalBodyAplDocument
+     * @param array $aplDocuments
      */
-    public function setNormalBodyAplDocument(?string $normalBodyAplDocument): void
+    public function setAplDocuments(array $aplDocuments): void
     {
-        $this->normalBodyAplDocument = $normalBodyAplDocument;
+        $this->aplDocuments = $aplDocuments;
     }
 
     /**
