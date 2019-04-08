@@ -309,8 +309,11 @@ abstract class AbstractIntent implements IntentInterface
      */
     protected function renderCard(BodyContainer $container): void
     {
-        $displayTitle = $container->getDisplayTitle();
-        $displayText  = $container->getDisplayLargeText();
+        $cardTitle = $container->getDisplayTitle();
+
+        $cardText  = $container->hasCardText()
+            ? $container->getCardText()
+            : strip_tags($container->getDisplayLargeText());
 
         $smallImageUrl = $container->getImage()->hasSmallFrontImage()
             ? $container->getImage()->getSmallFrontImage()
@@ -321,7 +324,7 @@ abstract class AbstractIntent implements IntentInterface
             : $this->getSkillConfiguration()->getLargeFrontImage();
 
         $this->getAlexaResponse()->setCard(
-            new Standard($displayTitle, $displayText, $smallImageUrl, $largeImageUrl)
+            new Standard($cardTitle, $cardText, $smallImageUrl, $largeImageUrl)
         );
     }
 

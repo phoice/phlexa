@@ -48,6 +48,9 @@ class BodyContainer
     private $displayShortText;
 
     /** @var string|null */
+    private $cardText;
+
+    /** @var string|null */
     private $hintText;
 
     /** @var string|null */
@@ -295,6 +298,30 @@ class BodyContainer
     public function hasDisplayShortText(): bool
     {
         return null !== $this->displayShortText;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCardText(): ?string
+    {
+        return $this->cardText;
+    }
+
+    /**
+     * @param string|null $cardText
+     */
+    public function setCardText(?string $cardText): void
+    {
+        $this->cardText = $cardText;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasCardText(): bool
+    {
+        return null !== $this->cardText;
     }
 
     /**

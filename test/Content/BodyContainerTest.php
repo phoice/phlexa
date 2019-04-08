@@ -45,6 +45,7 @@ class BodyContainerTest extends TestCase
         $this->assertNull($container->getDisplayLargeText());
         $this->assertNull($container->getDisplayMediumText());
         $this->assertNull($container->getDisplayShortText());
+        $this->assertNull($container->getCardText());
         $this->assertNull($container->getHintText());
         $this->assertNull($container->getLogoIcon());
         $this->assertNull($container->getImage());
@@ -68,6 +69,7 @@ class BodyContainerTest extends TestCase
             'display_large_text'  => 'test display large text',
             'display_medium_text' => 'test display medium text',
             'display_short_text'  => 'test display short text',
+            'card_text'           => 'test card text',
             'hint_text'           => 'test hint text',
             'logo_icon'           => 'test logo icon',
             'image'               => new ImageContainer(
@@ -97,6 +99,7 @@ class BodyContainerTest extends TestCase
         $this->assertEquals($content['display_large_text'], $container->getDisplayLargeText());
         $this->assertEquals($content['display_medium_text'], $container->getDisplayMediumText());
         $this->assertEquals($content['display_short_text'], $container->getDisplayShortText());
+        $this->assertEquals($content['card_text'], $container->getCardText());
         $this->assertEquals($content['hint_text'], $container->getHintText());
         $this->assertEquals($content['logo_icon'], $container->getLogoIcon());
         $this->assertEquals($content['image'], $container->getImage());
@@ -125,6 +128,7 @@ class BodyContainerTest extends TestCase
         $this->assertFalse($container->hasDisplayLargeText());
         $this->assertFalse($container->hasDisplayMediumText());
         $this->assertFalse($container->hasDisplayShortText());
+        $this->assertFalse($container->hasCardText());
         $this->assertFalse($container->hasHintText());
         $this->assertFalse($container->hasLogoIcon());
         $this->assertFalse($container->hasImage());
@@ -148,6 +152,7 @@ class BodyContainerTest extends TestCase
             'display_large_text'  => 'test display large text',
             'display_medium_text' => 'test display medium text',
             'display_short_text'  => 'test display short text',
+            'card_text'           => 'test card text',
             'hint_text'           => 'test hint text',
             'logo_icon'           => 'test logo icon',
             'image'               => new ImageContainer(
@@ -177,6 +182,7 @@ class BodyContainerTest extends TestCase
         $this->assertTrue($container->hasDisplayLargeText());
         $this->assertTrue($container->hasDisplayMediumText());
         $this->assertTrue($container->hasDisplayShortText());
+        $this->assertTrue($container->hasCardText());
         $this->assertTrue($container->hasHintText());
         $this->assertTrue($container->hasLogoIcon());
         $this->assertTrue($container->hasImage());
