@@ -311,7 +311,7 @@ abstract class AbstractIntent implements IntentInterface
     {
         $cardTitle = $container->getDisplayTitle();
 
-        $cardText  = $container->hasCardText()
+        $cardText = $container->hasCardText()
             ? $container->getCardText()
             : strip_tags($container->getDisplayLargeText());
 
@@ -481,6 +481,7 @@ abstract class AbstractIntent implements IntentInterface
         foreach ($container->getSlideImages() as $image) {
             $datasources['content']['slideShowContent'][] = [
                 'imageTitle'                => $image->getImageTitle(),
+                'hintText'                  => $image->getHintText(),
                 'smallFrontImage'           => $image->getSmallFrontImage(),
                 'largeFrontImage'           => $image->getLargeFrontImage(),
                 'smallBackgroundImage'      => $image->getSmallBackgroundImage(),
