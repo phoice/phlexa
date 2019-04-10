@@ -22,6 +22,9 @@ class ImageContainer
     private $imageTitle;
 
     /** @var string|null */
+    private $hintText;
+
+    /** @var string|null */
     private $smallFrontImage;
 
     /** @var string|null */
@@ -77,6 +80,30 @@ class ImageContainer
     public function hasImageTitle(): bool
     {
         return null !== $this->imageTitle;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getHintText(): ?string
+    {
+        return $this->hintText;
+    }
+
+    /**
+     * @param string|null $hintText
+     */
+    public function setHintText(?string $hintText): void
+    {
+        $this->hintText = $hintText;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasHintText(): bool
+    {
+        return null !== $this->hintText;
     }
 
     /**

@@ -36,6 +36,7 @@ class ImageContainerTest extends TestCase
         $container = new ImageContainer($content);
 
         $this->assertEquals($content['image_title'], $container->getImageTitle());
+        $this->assertNull($container->getHintText());
         $this->assertNull($container->getSmallFrontImage());
         $this->assertNull($container->getLargeFrontImage());
         $this->assertNull($container->getSmallBackgroundImage());
@@ -51,6 +52,7 @@ class ImageContainerTest extends TestCase
     {
         $content = [
             'image_title'                  => 'test image title',
+            'hint_text'                    => 'test hint text',
             'small_front_image'            => 'test small front image',
             'large_front_image'            => 'test large front image',
             'small_background_image'       => 'test small background image',
@@ -62,6 +64,7 @@ class ImageContainerTest extends TestCase
         $container = new ImageContainer($content);
 
         $this->assertEquals($content['image_title'], $container->getImageTitle());
+        $this->assertEquals($content['hint_text'], $container->getHintText());
         $this->assertEquals($content['small_front_image'], $container->getSmallFrontImage());
         $this->assertEquals($content['large_front_image'], $container->getLargeFrontImage());
         $this->assertEquals($content['small_background_image'], $container->getSmallBackgroundImage());
@@ -82,6 +85,7 @@ class ImageContainerTest extends TestCase
         $container = new ImageContainer($content);
 
         $this->assertTrue($container->hasImageTitle());
+        $this->assertFalse($container->hasHintText());
         $this->assertFalse($container->hasSmallFrontImage());
         $this->assertFalse($container->hasLargeFrontImage());
         $this->assertFalse($container->hasSmallBackgroundImage());
@@ -97,6 +101,7 @@ class ImageContainerTest extends TestCase
     {
         $content = [
             'image_title'                  => 'test image title',
+            'hint_text'                    => 'test hint text',
             'small_front_image'            => 'test small front image',
             'large_front_image'            => 'test large front image',
             'small_background_image'       => 'test small background image',
@@ -108,53 +113,12 @@ class ImageContainerTest extends TestCase
         $container = new ImageContainer($content);
 
         $this->assertTrue($container->hasImageTitle());
+        $this->assertTrue($container->hasHintText());
         $this->assertTrue($container->hasSmallFrontImage());
         $this->assertTrue($container->hasLargeFrontImage());
         $this->assertTrue($container->hasSmallBackgroundImage());
         $this->assertTrue($container->hasMediumBackgroundImage());
         $this->assertTrue($container->hasLargeBackgroundImage());
         $this->assertTrue($container->hasExtraLargeBackgroundImage());
-    }
-
-    /**
-     * @return APL
-     */
-    private function getAplDocument(): APL
-    {
-        $import       = [
-            [
-                'name'    => 'alexa-layouts',
-                'version' => '1.0.0',
-            ],
-        ];
-        $resources    = [
-            [
-                'description' => 'Stock color for the light theme',
-                'colors'      => [
-                    'colorTextPrimary' => '#151920',
-                ],
-            ],
-        ];
-        $styles       = [
-            'textStyleBase' => [
-                'description' => 'Base font description; set color and core font family',
-                'values'      => [
-                    [
-                        'color'      => '@colorTextPrimary',
-                        'fontFamily' => 'Amazon Ember',
-                    ],
-                ],
-            ],
-        ];
-        $layouts      = [];
-        $mainTemplate = [
-            'description' => 'Test Template',
-            'parameters'  => [
-                'payload',
-            ],
-            'items'       => [],
-        ];
-
-        return new APL($import, $resources, $styles, $layouts, $mainTemplate);
     }
 }
