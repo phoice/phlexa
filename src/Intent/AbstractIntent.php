@@ -299,9 +299,11 @@ abstract class AbstractIntent implements IntentInterface
     {
         $slideImages = $container->getSlideImages();
 
+        /** @var ImageContainer $randomImage */
         $randomImage = $slideImages[array_rand($slideImages)];
 
         $container->setImage($randomImage);
+        $container->setHintText($randomImage->getHintText());
     }
 
     /**
