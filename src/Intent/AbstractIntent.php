@@ -304,6 +304,15 @@ abstract class AbstractIntent implements IntentInterface
 
         $container->setImage($randomImage);
         $container->setHintText($randomImage->getHintText());
+        $container->setDisplayTitle($randomImage->getImageTitle());
+
+        if ($this->isDisplaySupported() === false) {
+            $container->setDisplayLargeText(
+                $container->getDisplayLargeText() . Standard::BREAK_CARD . $randomImage->getHintText()
+            );
+        } else {
+            $container->setDisplayLargeText($randomImage->getImageTitle());
+        }
     }
 
     /**
@@ -483,7 +492,7 @@ abstract class AbstractIntent implements IntentInterface
         foreach ($container->getSlideImages() as $image) {
             $datasources['content']['slideShowContent'][] = [
                 'imageTitle'                => $image->getImageTitle(),
-                'hintText'                  => $image->getHintText(),
+                'hintText'                  => $this->getTextHelper()->getHintTextFull($image->getHintText()),
                 'smallFrontImage'           => $image->getSmallFrontImage(),
                 'largeFrontImage'           => $image->getLargeFrontImage(),
                 'smallBackgroundImage'      => $image->getSmallBackgroundImage(),
