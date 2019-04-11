@@ -308,7 +308,8 @@ abstract class AbstractIntent implements IntentInterface
 
         if ($this->isDisplaySupported() === false) {
             $container->setDisplayLargeText(
-                $container->getDisplayLargeText() . Standard::BREAK_CARD . $randomImage->getHintText()
+                $container->getDisplayLargeText() . Standard::BREAK_CARD .
+                $this->getTextHelper()->getHintTextFull($randomImage->getHintText())
             );
         } else {
             $container->setDisplayLargeText($randomImage->getImageTitle());
