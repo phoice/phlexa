@@ -19,6 +19,9 @@ namespace Phlexa\Content;
 class ImageContainer
 {
     /** @var string|null */
+    private $imageId;
+
+    /** @var string|null */
     private $imageTitle;
 
     /** @var string|null */
@@ -56,6 +59,30 @@ class ImageContainer
                 $this->$setMethod($value);
             }
         }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageId(): ?string
+    {
+        return $this->imageId;
+    }
+
+    /**
+     * @param string|null $imageId
+     */
+    public function setImageId(?string $imageId): void
+    {
+        $this->imageId = $imageId;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasImageId(): bool
+    {
+        return null !== $this->imageId;
     }
 
     /**

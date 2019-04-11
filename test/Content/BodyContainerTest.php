@@ -74,6 +74,7 @@ class BodyContainerTest extends TestCase
             'logo_icon'           => 'test logo icon',
             'image'               => new ImageContainer(
                 [
+                    'image_id'                     => 'imageDefault',
                     'image_title'                  => 'test image title',
                     'hint_text'                    => 'test hint text',
                     'small_front_image'            => 'test small front image',
@@ -158,6 +159,7 @@ class BodyContainerTest extends TestCase
             'logo_icon'           => 'test logo icon',
             'image'               => new ImageContainer(
                 [
+                    'image_id'                     => 'imageDefault',
                     'image_title'                  => 'test image title',
                     'hint_text'                    => 'test hint text',
                     'small_front_image'            => 'test small front image',

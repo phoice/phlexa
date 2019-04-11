@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace PhlexaTest\Content;
 
 use Phlexa\Content\ImageContainer;
-use Phlexa\Response\Directives\Alexa\Presentation\APL\Document\APL;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -30,11 +29,13 @@ class ImageContainerTest extends TestCase
     public function testGetMethodsWithMandatory(): void
     {
         $content = [
+            'image_id'    => 'test image id',
             'image_title' => 'test image title',
         ];
 
         $container = new ImageContainer($content);
 
+        $this->assertEquals($content['image_id'], $container->getImageId());
         $this->assertEquals($content['image_title'], $container->getImageTitle());
         $this->assertNull($container->getHintText());
         $this->assertNull($container->getSmallFrontImage());
@@ -51,6 +52,7 @@ class ImageContainerTest extends TestCase
     public function testGetMethodsWithAll(): void
     {
         $content = [
+            'image_id'                     => 'test image id',
             'image_title'                  => 'test image title',
             'hint_text'                    => 'test hint text',
             'small_front_image'            => 'test small front image',
@@ -63,6 +65,7 @@ class ImageContainerTest extends TestCase
 
         $container = new ImageContainer($content);
 
+        $this->assertEquals($content['image_id'], $container->getImageId());
         $this->assertEquals($content['image_title'], $container->getImageTitle());
         $this->assertEquals($content['hint_text'], $container->getHintText());
         $this->assertEquals($content['small_front_image'], $container->getSmallFrontImage());
@@ -79,11 +82,13 @@ class ImageContainerTest extends TestCase
     public function testHasMethodsWithMandatory(): void
     {
         $content = [
+            'image_id'    => 'test image id',
             'image_title' => 'test image title',
         ];
 
         $container = new ImageContainer($content);
 
+        $this->assertTrue($container->hasImageId());
         $this->assertTrue($container->hasImageTitle());
         $this->assertFalse($container->hasHintText());
         $this->assertFalse($container->hasSmallFrontImage());
@@ -100,6 +105,7 @@ class ImageContainerTest extends TestCase
     public function testHasMethodsWithAll(): void
     {
         $content = [
+            'image_id'                     => 'test image id',
             'image_title'                  => 'test image title',
             'hint_text'                    => 'test hint text',
             'small_front_image'            => 'test small front image',
@@ -112,6 +118,7 @@ class ImageContainerTest extends TestCase
 
         $container = new ImageContainer($content);
 
+        $this->assertTrue($container->hasImageId());
         $this->assertTrue($container->hasImageTitle());
         $this->assertTrue($container->hasHintText());
         $this->assertTrue($container->hasSmallFrontImage());

@@ -47,6 +47,7 @@ class HelpIntent extends AbstractIntent
             'logo_icon'          => $this->getSkillConfiguration()->getSmallIconImage(),
             'image'              => new ImageContainer(
                 [
+                    'image_id'                     => 'imageDefault',
                     'image_title'                  => $this->getTextHelper()->getHelpTitle(),
                     'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),
                     'large_front_image'            => $this->getSkillConfiguration()->getLargeFrontImage(),
