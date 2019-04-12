@@ -143,8 +143,8 @@ class StopIntentTest extends TestCase
                     'title' => 'stopTitle',
                     'text'  => 'stopMessage',
                     'image' => [
-                        'smallFrontImage' => 'https://image.server/small.png',
-                        'largeFrontImage' => 'https://image.server/large.png',
+                        'smallImageUrl' => 'https://image.server/small.png',
+                        'largeImageUrl' => 'https://image.server/large.png',
                     ],
                 ],
                 'shouldEndSession' => true,
