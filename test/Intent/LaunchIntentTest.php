@@ -237,15 +237,15 @@ class LaunchIntentTest extends TestCase
                             'token'           => 'launch',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'largeText'  => [
+                                'primaryText'  => [
                                     'text' => '<font size="7"><b>launchTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
-                                'mediumText' => [
+                                'secondaryText' => [
                                     'text' => '<font size="3">launchMessage</font>',
                                     'type' => 'RichText',
                                 ],
-                                'shortText'  => [
+                                'tertiaryText'  => [
                                     'text' => '',
                                     'type' => 'PlainText',
                                 ],

@@ -249,15 +249,15 @@ class HelpIntentTest extends TestCase
                             'token'           => 'help',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'largeText'  => [
+                                'primaryText'  => [
                                     'text' => '<font size="7"><b>helpTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
-                                'mediumText' => [
+                                'secondaryText' => [
                                     'text' => '<font size="3">helpMessage</font>',
                                     'type' => 'RichText',
                                 ],
-                                'shortText'  => [
+                                'tertiaryText'  => [
                                     'text' => '',
                                     'type' => 'PlainText',
                                 ],

@@ -42,15 +42,15 @@ class RenderTemplateTest extends TestCase
                 'token'       => 'token',
                 'backButton'  => 'HIDDEN',
                 'textContent' => [
-                    'largeText'  => [
+                    'primaryText'  => [
                         'text' => 'primary text',
                         'type' => 'PlainText',
                     ],
-                    'mediumText' => [
+                    'secondaryText' => [
                         'text' => 'secondary text',
                         'type' => 'RichText',
                     ],
-                    'shortText'  => [
+                    'tertiaryText'  => [
                         'text' => 'tertiary text',
                         'type' => 'PlainText',
                     ],
@@ -77,15 +77,15 @@ class RenderTemplateTest extends TestCase
                 'token'       => 'token',
                 'backButton'  => 'HIDDEN',
                 'textContent' => [
-                    'largeText'  => [
+                    'primaryText'  => [
                         'text' => 'primary text',
                         'type' => 'PlainText',
                     ],
-                    'mediumText' => [
+                    'secondaryText' => [
                         'text' => '',
                         'type' => 'PlainText',
                     ],
-                    'shortText'  => [
+                    'tertiaryText'  => [
                         'text' => '',
                         'type' => 'PlainText',
                     ],
@@ -117,15 +117,15 @@ class RenderTemplateTest extends TestCase
                 'token'           => 'token',
                 'backButton'      => 'HIDDEN',
                 'textContent'     => [
-                    'largeText'  => [
+                    'primaryText'  => [
                         'text' => 'primary text',
                         'type' => 'PlainText',
                     ],
-                    'mediumText' => [
+                    'secondaryText' => [
                         'text' => 'secondary text',
                         'type' => 'RichText',
                     ],
-                    'shortText'  => [
+                    'tertiaryText'  => [
                         'text' => 'tertiary text',
                         'type' => 'PlainText',
                     ],
@@ -177,15 +177,15 @@ class RenderTemplateTest extends TestCase
                 'token'           => 'token',
                 'backButton'      => 'VISIBLE',
                 'textContent'     => [
-                    'largeText'  => [
+                    'primaryText'  => [
                         'text' => 'primary text',
                         'type' => 'PlainText',
                     ],
-                    'mediumText' => [
+                    'secondaryText' => [
                         'text' => 'secondary text',
                         'type' => 'RichText',
                     ],
-                    'shortText'  => [
+                    'tertiaryText'  => [
                         'text' => 'tertiary text',
                         'type' => 'PlainText',
                     ],
@@ -283,15 +283,15 @@ class RenderTemplateTest extends TestCase
                     [
                         'token'       => 'token1',
                         'textContent' => [
-                            'largeText'  => [
+                            'primaryText'  => [
                                 'text' => 'primary text 1',
                                 'type' => 'PlainText',
                             ],
-                            'mediumText' => [
+                            'secondaryText' => [
                                 'text' => 'secondary text 1',
                                 'type' => 'RichText',
                             ],
-                            'shortText'  => [
+                            'tertiaryText'  => [
                                 'text' => 'tertiary text 1',
                                 'type' => 'PlainText',
                             ],
@@ -313,15 +313,15 @@ class RenderTemplateTest extends TestCase
                     [
                         'token'       => 'token2',
                         'textContent' => [
-                            'largeText'  => [
+                            'primaryText'  => [
                                 'text' => 'primary text 2',
                                 'type' => 'PlainText',
                             ],
-                            'mediumText' => [
+                            'secondaryText' => [
                                 'text' => 'secondary text 2',
                                 'type' => 'RichText',
                             ],
-                            'shortText'  => [
+                            'tertiaryText'  => [
                                 'text' => 'tertiary text 2',
                                 'type' => 'PlainText',
                             ],

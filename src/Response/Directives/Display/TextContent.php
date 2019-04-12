@@ -94,15 +94,15 @@ class TextContent
     public function toArray(): array
     {
         $data = [
-            'largeText'  => [
+            'primaryText'  => [
                 'text' => $this->largeText,
                 'type' => $this->primaryType,
             ],
-            'mediumText' => [
+            'secondaryText' => [
                 'text' => $this->mediumText ?? '',
                 'type' => $this->secondaryType,
             ],
-            'shortText'  => [
+            'tertiaryText'  => [
                 'text' => $this->shortText ?? '',
                 'type' => $this->tertiaryType,
             ],

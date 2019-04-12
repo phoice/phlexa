@@ -31,15 +31,15 @@ class TextContentTest extends TestCase
         $textContent = new TextContent('primary text');
 
         $expected = [
-            'largeText'  => [
+            'primaryText'  => [
                 'text' => 'primary text',
                 'type' => 'PlainText',
             ],
-            'mediumText' => [
+            'secondaryText' => [
                 'text' => '',
                 'type' => 'PlainText',
             ],
-            'shortText'  => [
+            'tertiaryText'  => [
                 'text' => '',
                 'type' => 'PlainText',
             ],
@@ -56,15 +56,15 @@ class TextContentTest extends TestCase
         $textContent = new TextContent('primary text', null, 'secondary text', 'RichText', 'tertiary text');
 
         $expected = [
-            'largeText'  => [
+            'primaryText'  => [
                 'text' => 'primary text',
                 'type' => 'PlainText',
             ],
-            'mediumText' => [
+            'secondaryText' => [
                 'text' => 'secondary text',
                 'type' => 'RichText',
             ],
-            'shortText'  => [
+            'tertiaryText'  => [
                 'text' => 'tertiary text',
                 'type' => 'PlainText',
             ],

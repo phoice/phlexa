@@ -239,15 +239,15 @@ class CancelIntentTest extends TestCase
                             'token'           => 'cancel',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'largeText'  => [
+                                'primaryText'  => [
                                     'text' => '<font size="7"><b>cancelTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
-                                'mediumText' => [
+                                'secondaryText' => [
                                     'text' => '<font size="3">cancelMessage</font>',
                                     'type' => 'RichText',
                                 ],
-                                'shortText'  => [
+                                'tertiaryText'  => [
                                     'text' => '',
                                     'type' => 'PlainText',
                                 ],

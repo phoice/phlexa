@@ -61,15 +61,15 @@ class ListItemTest extends TestCase
         $expected = [
             'token'       => 'token',
             'textContent' => [
-                'largeText'  => [
+                'primaryText'  => [
                     'text' => 'primary text',
                     'type' => 'PlainText',
                 ],
-                'mediumText' => [
+                'secondaryText' => [
                     'text' => 'secondary text',
                     'type' => 'RichText',
                 ],
-                'shortText'  => [
+                'tertiaryText'  => [
                     'text' => 'tertiary text',
                     'type' => 'PlainText',
                 ],
@@ -98,15 +98,15 @@ class ListItemTest extends TestCase
         $expected = [
             'token'       => 'token',
             'textContent' => [
-                'largeText'  => [
+                'primaryText'  => [
                     'text' => 'primary text',
                     'type' => 'PlainText',
                 ],
-                'mediumText' => [
+                'secondaryText' => [
                     'text' => 'secondary text',
                     'type' => 'RichText',
                 ],
-                'shortText'  => [
+                'tertiaryText'  => [
                     'text' => 'tertiary text',
                     'type' => 'PlainText',
                 ],
