@@ -40,7 +40,7 @@ class SetState implements CommandInterface
      * SetState constructor.
      *
      * @param string $state
-     * @param bool    $value
+     * @param bool   $value
      */
     public function __construct(string $state, bool $value)
     {
@@ -70,9 +70,9 @@ class SetState implements CommandInterface
     public function toArray(): array
     {
         $data = [
-            'type'        => $this->getType(),
-            'state'       => $this->state,
-            'value'       => $this->value ? 'true' : 'false',
+            'type'  => $this->getType(),
+            'state' => $this->state,
+            'value' => $this->value,
         ];
 
         if ($this->componentId) {

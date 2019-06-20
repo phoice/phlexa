@@ -64,7 +64,7 @@ trait OptionalPropertiesTrait
         }
 
         if ($this->when) {
-            $data['when'] = $this->when ? 'true' : 'false';
+            $data['when'] = $this->when;
         }
 
         return $data;
