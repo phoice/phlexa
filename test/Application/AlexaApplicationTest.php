@@ -97,9 +97,9 @@ class AlexaApplicationTest extends TestCase
         $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
         $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        /** @var MethodProphecy $getRoundBackgroundImageMethod */
+        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
+        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
 
         /** @var MethodProphecy $getMediumBackgroundImageMethod */
         $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
@@ -226,9 +226,9 @@ class AlexaApplicationTest extends TestCase
         $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
         $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        /** @var MethodProphecy $getRoundBackgroundImageMethod */
+        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
+        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
 
         /** @var MethodProphecy $getMediumBackgroundImageMethod */
         $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
@@ -352,9 +352,9 @@ class AlexaApplicationTest extends TestCase
         $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
         $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        /** @var MethodProphecy $getRoundBackgroundImageMethod */
+        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
+        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
 
         /** @var MethodProphecy $getMediumBackgroundImageMethod */
         $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
@@ -479,9 +479,9 @@ class AlexaApplicationTest extends TestCase
         $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
         $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        /** @var MethodProphecy $getRoundBackgroundImageMethod */
+        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
+        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
 
         /** @var MethodProphecy $getMediumBackgroundImageMethod */
         $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
@@ -601,9 +601,9 @@ class AlexaApplicationTest extends TestCase
         $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
         $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        /** @var MethodProphecy $getRoundBackgroundImageMethod */
+        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
+        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
 
         /** @var MethodProphecy $getMediumBackgroundImageMethod */
         $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
@@ -723,9 +723,9 @@ class AlexaApplicationTest extends TestCase
         $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
         $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        /** @var MethodProphecy $getRoundBackgroundImageMethod */
+        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
+        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
 
         /** @var MethodProphecy $getMediumBackgroundImageMethod */
         $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();

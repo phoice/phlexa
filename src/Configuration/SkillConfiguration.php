@@ -60,7 +60,7 @@ class SkillConfiguration implements SkillConfigurationInterface
     private $largeFrontImage;
 
     /** @var string|null */
-    private $smallBackgroundImage;
+    private $roundBackgroundImage;
 
     /** @var string|null */
     private $mediumBackgroundImage;
@@ -307,17 +307,17 @@ class SkillConfiguration implements SkillConfigurationInterface
     /**
      * @return string|null
      */
-    public function getSmallBackgroundImage(): ?string
+    public function getRoundBackgroundImage(): ?string
     {
-        return $this->smallBackgroundImage;
+        return $this->roundBackgroundImage;
     }
 
     /**
-     * @param string|null $smallBackgroundImage
+     * @param string|null $roundBackgroundImage
      */
-    public function setSmallBackgroundImage(?string $smallBackgroundImage): void
+    public function setRoundBackgroundImage(?string $roundBackgroundImage): void
     {
-        $this->smallBackgroundImage = $smallBackgroundImage;
+        $this->roundBackgroundImage = $roundBackgroundImage;
     }
 
     /**

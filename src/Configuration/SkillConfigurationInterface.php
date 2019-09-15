@@ -160,12 +160,12 @@ interface SkillConfigurationInterface
     /**
      * @return string|null
      */
-    public function getSmallBackgroundImage(): ?string;
+    public function getRoundBackgroundImage(): ?string;
 
     /**
-     * @param string|null $smallBackgroundImage
+     * @param string|null $roundBackgroundImage
      */
-    public function setSmallBackgroundImage(?string $smallBackgroundImage): void;
+    public function setRoundBackgroundImage(?string $roundBackgroundImage): void;
 
     /**
      * @return string

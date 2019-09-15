@@ -49,7 +49,7 @@ class StopIntent extends AbstractIntent
                     'image_title'                  => $this->getTextHelper()->getStopTitle(),
                     'small_front_image'            => $this->getSkillConfiguration()->getSmallFrontImage(),
                     'large_front_image'            => $this->getSkillConfiguration()->getLargeFrontImage(),
-                    'small_background_image'       => $this->getSkillConfiguration()->getSmallBackgroundImage(),
+                    'round_background_image'       => $this->getSkillConfiguration()->getRoundBackgroundImage(),
                     'medium_background_image'      => $this->getSkillConfiguration()->getMediumBackgroundImage(),
                     'large_background_image'       => $this->getSkillConfiguration()->getLargeBackgroundImage(),
                     'extra_large_background_image' => $this->getSkillConfiguration()->getExtraLargeBackgroundImage(),

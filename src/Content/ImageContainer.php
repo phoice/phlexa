@@ -28,13 +28,16 @@ class ImageContainer
     private $hintText;
 
     /** @var string|null */
+    private $path;
+
+    /** @var string|null */
     private $smallFrontImage;
 
     /** @var string|null */
     private $largeFrontImage;
 
     /** @var string|null */
-    private $smallBackgroundImage;
+    private $roundBackgroundImage;
 
     /** @var string|null */
     private $mediumBackgroundImage;
@@ -136,6 +139,30 @@ class ImageContainer
     /**
      * @return string|null
      */
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    /**
+     * @param string|null $path
+     */
+    public function setPath(?string $path): void
+    {
+        $this->path = $path;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPath(): bool
+    {
+        return null !== $this->path;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getSmallFrontImage(): ?string
     {
         return $this->smallFrontImage;
@@ -184,25 +211,25 @@ class ImageContainer
     /**
      * @return string|null
      */
-    public function getSmallBackgroundImage(): ?string
+    public function getRoundBackgroundImage(): ?string
     {
-        return $this->smallBackgroundImage;
+        return $this->roundBackgroundImage;
     }
 
     /**
-     * @param string|null $smallBackgroundImage
+     * @param string|null $roundBackgroundImage
      */
-    public function setSmallBackgroundImage(?string $smallBackgroundImage): void
+    public function setRoundBackgroundImage(?string $roundBackgroundImage): void
     {
-        $this->smallBackgroundImage = $smallBackgroundImage;
+        $this->roundBackgroundImage = $roundBackgroundImage;
     }
 
     /**
      * @return bool
      */
-    public function hasSmallBackgroundImage(): bool
+    public function hasRoundBackgroundImage(): bool
     {
-        return null !== $this->smallBackgroundImage;
+        return null !== $this->roundBackgroundImage;
     }
 
     /**
