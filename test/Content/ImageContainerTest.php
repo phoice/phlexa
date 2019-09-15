@@ -41,6 +41,7 @@ class ImageContainerTest extends TestCase
         $this->assertNull($container->getSmallFrontImage());
         $this->assertNull($container->getLargeFrontImage());
         $this->assertNull($container->getRoundBackgroundImage());
+        $this->assertNull($container->getSmallBackgroundImage());
         $this->assertNull($container->getMediumBackgroundImage());
         $this->assertNull($container->getLargeBackgroundImage());
         $this->assertNull($container->getExtraLargeBackgroundImage());
@@ -58,6 +59,7 @@ class ImageContainerTest extends TestCase
             'small_front_image'            => 'test small front image',
             'large_front_image'            => 'test large front image',
             'round_background_image'       => 'test round background image',
+            'small_background_image'       => 'test small background image',
             'medium_background_image'      => 'test medium background image',
             'large_background_image'       => 'test large background image',
             'extra_large_background_image' => 'test extra large background image',
@@ -71,6 +73,7 @@ class ImageContainerTest extends TestCase
         $this->assertEquals($content['small_front_image'], $container->getSmallFrontImage());
         $this->assertEquals($content['large_front_image'], $container->getLargeFrontImage());
         $this->assertEquals($content['round_background_image'], $container->getRoundBackgroundImage());
+        $this->assertEquals($content['small_background_image'], $container->getSmallBackgroundImage());
         $this->assertEquals($content['medium_background_image'], $container->getMediumBackgroundImage());
         $this->assertEquals($content['large_background_image'], $container->getLargeBackgroundImage());
         $this->assertEquals($content['extra_large_background_image'], $container->getExtraLargeBackgroundImage());
@@ -95,6 +98,7 @@ class ImageContainerTest extends TestCase
         $this->assertFalse($container->hasSmallFrontImage());
         $this->assertFalse($container->hasLargeFrontImage());
         $this->assertFalse($container->hasRoundBackgroundImage());
+        $this->assertFalse($container->hasSmallBackgroundImage());
         $this->assertFalse($container->hasMediumBackgroundImage());
         $this->assertFalse($container->hasLargeBackgroundImage());
         $this->assertFalse($container->hasExtraLargeBackgroundImage());
@@ -109,10 +113,11 @@ class ImageContainerTest extends TestCase
             'image_id'                     => 'test image id',
             'image_title'                  => 'test image title',
             'hint_text'                    => 'test hint text',
-            'path'                    => 'test path',
+            'path'                         => 'test path',
             'small_front_image'            => 'test small front image',
             'large_front_image'            => 'test large front image',
             'round_background_image'       => 'test round background image',
+            'small_background_image'       => 'test small background image',
             'medium_background_image'      => 'test medium background image',
             'large_background_image'       => 'test large background image',
             'extra_large_background_image' => 'test extra large background image',
@@ -127,6 +132,7 @@ class ImageContainerTest extends TestCase
         $this->assertTrue($container->hasSmallFrontImage());
         $this->assertTrue($container->hasLargeFrontImage());
         $this->assertTrue($container->hasRoundBackgroundImage());
+        $this->assertTrue($container->hasSmallBackgroundImage());
         $this->assertTrue($container->hasMediumBackgroundImage());
         $this->assertTrue($container->hasLargeBackgroundImage());
         $this->assertTrue($container->hasExtraLargeBackgroundImage());

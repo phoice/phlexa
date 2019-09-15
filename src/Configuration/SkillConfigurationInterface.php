@@ -168,6 +168,16 @@ interface SkillConfigurationInterface
     public function setRoundBackgroundImage(?string $roundBackgroundImage): void;
 
     /**
+     * @return string|null
+     */
+    public function getSmallBackgroundImage(): ?string;
+
+    /**
+     * @param string|null $smallBackgroundImage
+     */
+    public function setSmallBackgroundImage(?string $smallBackgroundImage): void;
+
+    /**
      * @return string
      */
     public function getMediumBackgroundImage(): string;
