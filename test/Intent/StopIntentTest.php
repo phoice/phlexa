@@ -121,6 +121,7 @@ class StopIntentTest extends TestCase
         $skillConfiguration->setSmallIconImage('https://image.server/icon.png');
         $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
         $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
+        $skillConfiguration->setRoundBackgroundImage('https://image.server/round-background.png');
         $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
@@ -214,6 +215,7 @@ class StopIntentTest extends TestCase
         $skillConfiguration->setSmallIconImage('https://image.server/icon.png');
         $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
         $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
+        $skillConfiguration->setRoundBackgroundImage('https://image.server/round-background.png');
         $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
@@ -239,7 +241,7 @@ class StopIntentTest extends TestCase
                             'token'           => 'stop',
                             'backButton'      => 'HIDDEN',
                             'textContent'     => [
-                                'primaryText'  => [
+                                'primaryText'   => [
                                     'text' => '<font size="7"><b>stopTitle</b></font>',
                                     'type' => 'RichText',
                                 ],
@@ -332,6 +334,7 @@ class StopIntentTest extends TestCase
         $skillConfiguration->setSmallIconImage('https://image.server/icon.png');
         $skillConfiguration->setSmallFrontImage('https://image.server/small.png');
         $skillConfiguration->setLargeFrontImage('https://image.server/large.png');
+        $skillConfiguration->setRoundBackgroundImage('https://image.server/round-background.png');
         $skillConfiguration->setSmallBackgroundImage('https://image.server/small-background.png');
         $skillConfiguration->setMediumBackgroundImage('https://image.server/medium-background.png');
         $skillConfiguration->setLargeBackgroundImage('https://image.server/large-background.png');
@@ -371,6 +374,7 @@ class StopIntentTest extends TestCase
                                     'imageTitle'                => 'stopTitle',
                                     'smallFrontImage'           => 'https://image.server/small.png',
                                     'largeFrontImage'           => 'https://image.server/large.png',
+                                    'roundBackgroundImage'      => 'https://image.server/round-background.png',
                                     'smallBackgroundImage'      => 'https://image.server/small-background.png',
                                     'mediumBackgroundImage'     => 'https://image.server/medium-background.png',
                                     'largeBackgroundImage'      => 'https://image.server/large-background.png',
