@@ -15,6 +15,7 @@ namespace Phlexa\Request\Context;
 
 use Phlexa\Request\Context\System\ApplicationInterface;
 use Phlexa\Request\Context\System\DeviceInterface;
+use Phlexa\Request\Context\System\PersonInterface;
 use Phlexa\Request\Context\System\UserInterface;
 
 /**
@@ -48,4 +49,9 @@ interface SystemInterface
      * @return string
      */
     public function getApiAccessToken();
+
+    /**
+     * @return PersonInterface
+     */
+    public function getPerson(): ?PersonInterface;
 }

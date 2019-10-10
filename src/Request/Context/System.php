@@ -15,6 +15,7 @@ namespace Phlexa\Request\Context;
 
 use Phlexa\Request\Context\System\ApplicationInterface;
 use Phlexa\Request\Context\System\DeviceInterface;
+use Phlexa\Request\Context\System\PersonInterface;
 use Phlexa\Request\Context\System\UserInterface;
 
 /**
@@ -33,6 +34,9 @@ class System implements SystemInterface
     /** @var DeviceInterface */
     private $device;
 
+    /** @var PersonInterface */
+    private $person;
+
     /** @var string */
     private $apiEndpoint;
 
@@ -47,13 +51,15 @@ class System implements SystemInterface
      * @param DeviceInterface      $device
      * @param string|null          $apiEndpoint
      * @param string|null          $apiAccessToken
+     * @param PersonInterface|null $person
      */
     public function __construct(
         ApplicationInterface $application,
         UserInterface $user,
         DeviceInterface $device,
         string $apiEndpoint = null,
-        string $apiAccessToken = null
+        string $apiAccessToken = null,
+        PersonInterface $person = null
     ) {
         $this->application = $application;
         $this->user        = $user;
@@ -65,6 +71,10 @@ class System implements SystemInterface
 
         if ($apiAccessToken) {
             $this->apiAccessToken = $apiAccessToken;
+        }
+
+        if ($person) {
+            $this->person = $person;
         }
     }
 
@@ -106,5 +116,13 @@ class System implements SystemInterface
     public function getApiAccessToken()
     {
         return $this->apiAccessToken;
+    }
+
+    /**
+     * @return PersonInterface
+     */
+    public function getPerson(): ?PersonInterface
+    {
+        return $this->person;
     }
 }

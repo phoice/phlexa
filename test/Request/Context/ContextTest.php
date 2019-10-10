@@ -18,6 +18,7 @@ use Phlexa\Request\Context\Context;
 use Phlexa\Request\Context\System;
 use Phlexa\Request\Context\System\Application;
 use Phlexa\Request\Context\System\Device;
+use Phlexa\Request\Context\System\Person;
 use Phlexa\Request\Context\System\User;
 use PHPUnit\Framework\TestCase;
 
@@ -54,6 +55,32 @@ class ContextTest extends TestCase
         $device->setDeviceId('deviceId');
 
         $system = new System($application, $user, $device, $apiEndpoint);
+
+        $context = new Context();
+        $context->setAudioPlayer($audioPlayer);
+        $context->setSystem($system);
+
+        $this->assertEquals($system, $context->getSystem());
+    }
+
+    /**
+     *
+     */
+    public function testWithSystemFull()
+    {
+        $audioPlayer = new AudioPlayer('IDLE');
+
+        $apiEndpoint = 'apiEndpoint';
+        $apiAccessToken = 'apiAccessToken';
+
+        $application = new Application('applicationId');
+        $user        = new User('userId');
+        $device      = new Device();
+        $device->setDeviceId('deviceId');
+
+        $person = new Person('personId');
+
+        $system = new System($application, $user, $device, $apiEndpoint, $apiAccessToken, $person);
 
         $context = new Context();
         $context->setAudioPlayer($audioPlayer);

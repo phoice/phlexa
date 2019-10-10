@@ -275,6 +275,88 @@ class RequestTypeFactoryTest extends TestCase
     /**
      *
      */
+    public function testFactoryForIntentRequestTypeWithFullContextAndPerson()
+    {
+        $data = [
+            'version' => '1.0',
+            'session' => [
+                'new'         => true,
+                'sessionId'   => 'sessionId',
+                'application' => [
+                    'applicationId' => 'applicationId',
+                ],
+                'attributes'  => [
+                    'foo' => 'bar',
+                ],
+                'user'        => [
+                    'userId' => 'userId',
+                ],
+            ],
+            'request' => [
+                'type'      => 'IntentRequest',
+                'requestId' => 'requestId',
+                'timestamp' => '2017-01-27T20:29:59Z',
+                'locale'    => 'de-DE',
+                'intent'    => [
+                    'name' => 'name',
+                ],
+            ],
+            'context' => [
+                'AudioPlayer' => [
+                    'playerActivity'       => 'PLAYING',
+                    'token'                => '123456',
+                    'offsetInMilliseconds' => 1000,
+                ],
+                'Display'     => [
+                    'token'           => '123456',
+                    'templateVersion' => '1.0',
+                    'markupVersion'   => '1.0',
+                ],
+                'System'      => [
+                    'application'    => [
+                        'applicationId' => 'applicationId',
+                    ],
+                    'user'           => [
+                        'userId'      => 'userId',
+                        'accessToken' => 'accessToken',
+                        'permissions' => [
+                            'consentToken' => 'consentToken',
+                        ],
+                    ],
+                    'person'         => [
+                        'personId'    => 'personId',
+                        'accessToken' => 'accessToken',
+                    ],
+                    'device'         => [
+                        'deviceId'            => 'deviceId',
+                        'supportedInterfaces' => [
+                            'AudioPlayer' => [],
+                        ],
+                    ],
+                    'apiEndpoint'    => 'https://api.amazonalexa.com',
+                    'apiAccessToken' => 'apiAccessToken',
+                ],
+            ],
+        ];
+
+        $alexaRequest = RequestTypeFactory::createFromData(json_encode($data));
+
+        $this->assertEquals('1.0', $alexaRequest->getVersion());
+
+        $this->assertSessionData($alexaRequest, $data);
+
+        $this->assertContextData($alexaRequest, $data);
+
+        $this->assertRequestData(
+            $alexaRequest->getRequest(),
+            $data,
+            IntentRequestType::class
+        );
+    }
+
+    /**
+     *
+     */
     public function testFactoryForIntentRequestTypeWithNoContext()
     {
         $data = [

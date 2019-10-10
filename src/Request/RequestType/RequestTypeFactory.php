@@ -20,6 +20,7 @@ use Phlexa\Request\Context\Display;
 use Phlexa\Request\Context\System;
 use Phlexa\Request\Context\System\Application as ContextApplication;
 use Phlexa\Request\Context\System\Device;
+use Phlexa\Request\Context\System\Person as ContextPerson;
 use Phlexa\Request\Context\System\User as ContextUser;
 use Phlexa\Request\RequestType\AudioPlayer\CurrentPlaybackState;
 use Phlexa\Request\RequestType\Cause\Cause;
@@ -120,12 +121,24 @@ class RequestTypeFactory
                     $device->setSupportedInterfaces($data['context']['System']['device']['supportedInterfaces']);
                 }
 
+                if (isset($data['context']['System']['person'])
+                    && isset($data['context']['System']['person']['personId'])) {
+                    $contextPerson = new ContextPerson($data['context']['System']['person']['personId']);
+
+                    if (isset($data['context']['System']['person']['accessToken'])) {
+                        $contextPerson->setAccessToken($data['context']['System']['person']['accessToken']);
+                    }
+                } else {
+                    $contextPerson = null;
+                }
+
                 $system = new System(
                     new ContextApplication($data['context']['System']['application']['applicationId']),
                     $contextUser,
                     $device,
                     $data['context']['System']['apiEndpoint'] ?? null,
-                    $data['context']['System']['apiAccessToken'] ?? null
+                    $data['context']['System']['apiAccessToken'] ?? null,
+                    $contextPerson
                 );
 
                 $context->setSystem($system);
