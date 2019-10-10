@@ -16,6 +16,7 @@ namespace PhlexaTest\Request\Context;
 use Phlexa\Request\Context\System;
 use Phlexa\Request\Context\System\Application;
 use Phlexa\Request\Context\System\Device;
+use Phlexa\Request\Context\System\Person;
 use Phlexa\Request\Context\System\User;
 use PHPUnit\Framework\TestCase;
 
@@ -29,7 +30,7 @@ class SystemTest extends TestCase
     /**
      *
      */
-    public function testInstantiation()
+    public function testInstantiationWithoutPerson()
     {
         $application    = new Application('applicationId');
         $user           = new User('userId');
@@ -44,5 +45,27 @@ class SystemTest extends TestCase
         $this->assertEquals($device, $system->getDevice());
         $this->assertEquals($apiEndpoint, $system->getApiEndpoint());
         $this->assertEquals($apiAccessToken, $system->getApiAccessToken());
+    }
+
+    /**
+     *
+     */
+    public function testInstantiationWithPerson()
+    {
+        $application    = new Application('applicationId');
+        $user           = new User('userId');
+        $device         = new Device();
+        $apiEndpoint    = 'apiEndpoint';
+        $apiAccessToken = 'apiAccessToken';
+        $person         = new Person('personId');
+
+        $system = new System($application, $user, $device, $apiEndpoint, $apiAccessToken, $person);
+
+        $this->assertEquals($application, $system->getApplication());
+        $this->assertEquals($user, $system->getUser());
+        $this->assertEquals($device, $system->getDevice());
+        $this->assertEquals($apiEndpoint, $system->getApiEndpoint());
+        $this->assertEquals($apiAccessToken, $system->getApiAccessToken());
+        $this->assertEquals($person, $system->getPerson());
     }
 }
