@@ -16,6 +16,8 @@ namespace Phlexa\Intent;
 use Phlexa\Configuration\SkillConfigurationInterface;
 use Phlexa\Content\BodyContainer;
 use Phlexa\Content\ImageContainer;
+use Phlexa\Content\ListContainer;
+use Phlexa\Content\ListItemContainer;
 use Phlexa\Content\SlideShowContainer;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Response\AlexaResponse;
@@ -317,6 +319,37 @@ abstract class AbstractIntent implements IntentInterface
     }
 
     /**
+     * @param ListContainer $container
+     */
+    protected function renderListContainer(ListContainer $container): void
+    {
+        if ($container->hasOutputSpeech()) {
+            $this->getAlexaResponse()->setOutputSpeech(
+                new SSML($container->getOutputSpeech())
+            );
+        }
+
+        if ($container->hasRepromptSpeech()) {
+            $this->getAlexaResponse()->setReprompt(
+                new SSML($container->getRepromptSpeech())
+            );
+        }
+
+        if ($container->hasApl() && $container->hasAplDocument() && $this->isAplSupported()) {
+            $this->renderAplListTemplate($container);
+
+            return;
+        }
+
+        if ($container->hasDisplay() && $container->hasDisplayTemplate() && $this->isDisplaySupported()) {
+            $this->renderDisplayTemplate($container);
+        } elseif ($container->hasCard()) {
+            $this->renderCard($container);
+        }
+    }
+
+
+    /**
      * @param BodyContainer $container
      */
     protected function renderCard(BodyContainer $container): void
@@ -502,6 +535,41 @@ abstract class AbstractIntent implements IntentInterface
                 'mediumBackgroundImage'     => $image->getMediumBackgroundImage(),
                 'largeBackgroundImage'      => $image->getLargeBackgroundImage(),
                 'extraLargeBackgroundImage' => $image->getExtraLargeBackgroundImage(),
+            ];
+        }
+
+        $renderDocument = new RenderDocument($container->getAplDocument(), $token, $datasources);
+
+        $this->getAlexaResponse()->addDirective($renderDocument);
+    }
+
+    protected function renderAplListTemplate(ListContainer $container)
+    {
+        $token = $container->hasToken() ? $container->getToken() : 'token';
+
+        $datasources = [
+            'content' => [
+                'properties' => [
+                    'imageContent'     => [
+                        'logoIcon' => $container->getLogoIcon(),
+                    ],
+                    'textContent' => [
+                        'title' => $container->getDisplayTitle(),
+                        'hintText' => $container->getHintText()
+                    ],
+                    'listContent' => [],
+                ]
+            ],
+        ];
+
+        /** @var ListItemContainer $item */
+        foreach ($container->getListItems() as $item) {
+            $datasources['content']['properties']['listContent'][] = [
+               'token' => $item->getToken(),
+                'title'=> $item->getTitle(),
+                'text'  => $item->getText(),
+                'path' => $item->getImagePath(),
+                'ordinalNumber' => $item->getOrdinalNumber(),
             ];
         }
 
