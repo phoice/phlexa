@@ -342,6 +342,8 @@ abstract class AbstractIntent implements IntentInterface
         }
 
         if ($container->hasDisplay() && $container->hasDisplayTemplate() && $this->isDisplaySupported()) {
+            $container->setDisplayTemplate(RenderTemplate::TYPE_LIST_TEMPLATE_1);
+
             $this->renderDisplayTemplate($container);
         } elseif ($container->hasCard()) {
             $this->renderCard($container);
@@ -543,6 +545,9 @@ abstract class AbstractIntent implements IntentInterface
         $this->getAlexaResponse()->addDirective($renderDocument);
     }
 
+    /**
+     * @param ListContainer $container
+     */
     protected function renderAplListTemplate(ListContainer $container)
     {
         $token = $container->hasToken() ? $container->getToken() : 'token';
@@ -550,14 +555,14 @@ abstract class AbstractIntent implements IntentInterface
         $datasources = [
             'content' => [
                 'properties' => [
-                    'imageContent'     => [
+                    'imageContent' => [
                         'logoIcon' => $container->getLogoIcon(),
                     ],
-                    'textContent' => [
-                        'title' => $container->getDisplayTitle(),
+                    'textContent'  => [
+                        'title'    => $container->getDisplayTitle(),
                         'hintText' => $container->getHintText()
                     ],
-                    'listContent' => [],
+                    'listContent'  => [],
                 ]
             ],
         ];
@@ -565,10 +570,10 @@ abstract class AbstractIntent implements IntentInterface
         /** @var ListItemContainer $item */
         foreach ($container->getListItems() as $item) {
             $datasources['content']['properties']['listContent'][] = [
-               'token' => $item->getToken(),
-                'title'=> $item->getTitle(),
-                'text'  => $item->getText(),
-                'path' => $item->getImagePath(),
+                'token'         => $item->getToken(),
+                'title'         => $item->getTitle(),
+                'text'          => $item->getText(),
+                'path'          => $item->getImagePath(),
                 'ordinalNumber' => $item->getOrdinalNumber(),
             ];
         }

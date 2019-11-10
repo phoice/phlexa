@@ -2,8 +2,7 @@
 /**
  * Build voice applications for Amazon Alexa with phlexa and PHP
  *
- * @author     Ralf Eggert <ralf@travello.audio>
- * @author     Meike Ziesecke <m.ziesecke@travello-gmbh.de>
+ * @author     Meike Ziesecke <m.ziesecke@travello.de>
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  * @link       https://github.com/phoice/phlexa
  * @link       https://www.phoice.tech/
@@ -14,6 +13,7 @@ namespace Phlexa\Content;
 
 /**
  * Class ListItemContainer
+ *
  * @package Phlexa\Content
  */
 class ListItemContainer
@@ -45,6 +45,7 @@ class ListItemContainer
 
     /**
      * ListItemContainer constructor.
+     *
      * @param array $content
      */
     public function __construct(array $content = [])
