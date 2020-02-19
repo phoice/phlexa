@@ -68,6 +68,8 @@ class BodyContainer
     /** @var bool */
     private $apl = false;
 
+    private $specialData = [];
+
     /**
      * BodyContainer constructor.
      *
@@ -442,5 +444,21 @@ class BodyContainer
     public function hasApl(): bool
     {
         return $this->apl;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSpecialData(): array
+    {
+        return $this->specialData;
+    }
+
+    /**
+     * @param array $specialData
+     */
+    public function setSpecialData(array $specialData): void
+    {
+        $this->specialData = $specialData;
     }
 }

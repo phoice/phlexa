@@ -236,4 +236,26 @@ class BodyContainerTest extends TestCase
 
         return new APL($import, $resources, $styles, $layouts, $mainTemplate);
     }
+
+    /**
+     * Test the getter methods with only mandatory data
+     */
+    public function testSpecialData(): void
+    {
+        $content = [
+            'output_speech' => 'test output speech',
+        ];
+
+        $specialData = [
+            'foo' => 'bar',
+        ];
+
+        $container = new BodyContainer($content);
+        $container->setSpecialData($specialData);
+
+        $this->assertEquals($content['output_speech'], $container->getOutputSpeech());
+        $this->assertEquals($specialData, $container->getSpecialData());
+    }
+
+
 }
