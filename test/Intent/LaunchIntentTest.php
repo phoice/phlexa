@@ -395,6 +395,7 @@ class LaunchIntentTest extends TestCase
                                     'mediumText' => null,
                                     'hintText'   => 'hintTextFull',
                                 ],
+                                'additionalContent' => [],
                             ],
                         ],
                     ],

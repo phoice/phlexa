@@ -386,6 +386,7 @@ class CancelIntentTest extends TestCase
                                     'mediumText' => null,
                                     'hintText'   => null,
                                 ],
+                                'additionalContent' => [],
                             ],
                         ],
                     ],

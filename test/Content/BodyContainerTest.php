@@ -251,10 +251,10 @@ class BodyContainerTest extends TestCase
         ];
 
         $container = new BodyContainer($content);
-        $container->setSpecialData($specialData);
+        $container->setAdditionalData($specialData);
 
         $this->assertEquals($content['output_speech'], $container->getOutputSpeech());
-        $this->assertEquals($specialData, $container->getSpecialData());
+        $this->assertEquals($specialData, $container->getAdditionalData());
     }
 
 

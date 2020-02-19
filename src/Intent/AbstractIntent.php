@@ -482,7 +482,7 @@ abstract class AbstractIntent implements IntentInterface
 
         $datasources = [
             'content' => [
-                'imageContent' => [
+                'imageContent'      => [
                     'logoIcon'                  => $container->getLogoIcon(),
                     'imageTitle'                => $container->getImage()->getImageTitle(),
                     'smallFrontImage'           => $container->getImage()->getSmallFrontImage(),
@@ -493,7 +493,7 @@ abstract class AbstractIntent implements IntentInterface
                     'largeBackgroundImage'      => $container->getImage()->getLargeBackgroundImage(),
                     'extraLargeBackgroundImage' => $container->getImage()->getExtraLargeBackgroundImage(),
                 ],
-                'textContent'  => [
+                'textContent'       => [
                     'title'      => $container->getDisplayTitle(),
                     'largeText'  => $container->getDisplayLargeText(),
                     'mediumText' => $container->getDisplayMediumText(),
@@ -501,6 +501,7 @@ abstract class AbstractIntent implements IntentInterface
                         ? $this->getTextHelper()->getHintTextFull($container->getHintText())
                         : null,
                 ],
+                'additionalContent' => $container->getAdditionalData(),
             ],
         ];
 

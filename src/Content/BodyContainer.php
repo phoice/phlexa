@@ -68,7 +68,8 @@ class BodyContainer
     /** @var bool */
     private $apl = false;
 
-    private $specialData = [];
+    /** @var array */
+    private $additionalData = [];
 
     /**
      * BodyContainer constructor.
@@ -449,16 +450,16 @@ class BodyContainer
     /**
      * @return array
      */
-    public function getSpecialData(): array
+    public function getAdditionalData(): array
     {
-        return $this->specialData;
+        return $this->additionalData;
     }
 
     /**
-     * @param array $specialData
+     * @param array $additionalData
      */
-    public function setSpecialData(array $specialData): void
+    public function setAdditionalData(array $additionalData): void
     {
-        $this->specialData = $specialData;
+        $this->additionalData = $additionalData;
     }
 }
