@@ -386,6 +386,7 @@ class StopIntentTest extends TestCase
                                     'mediumText' => null,
                                     'hintText'   => null,
                                 ],
+                                'additionalContent' => [],
                             ],
                         ],
                     ],

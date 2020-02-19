@@ -412,6 +412,7 @@ class HelpIntentTest extends TestCase
                                     'mediumText' => null,
                                     'hintText'   => 'hintTextFull',
                                 ],
+                                'additionalContent' => [],
                             ],
                         ],
                     ],
