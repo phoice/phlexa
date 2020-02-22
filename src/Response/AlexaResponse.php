@@ -170,7 +170,7 @@ class AlexaResponse implements AlexaResponseInterface
             'version'           => $this->version,
             'sessionAttributes' => $this->sessionContainer ? $this->sessionContainer->getAttributes() : [],
             'response'          => $response,
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
     }
 }

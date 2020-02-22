@@ -47,7 +47,7 @@ class AlexaResponseTest extends TestCase
             'response'          => [
                 'shouldEndSession' => false,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -94,7 +94,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -169,7 +169,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -196,7 +196,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -216,7 +216,7 @@ class AlexaResponseTest extends TestCase
             'response'          => [
                 'shouldEndSession' => true,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -235,7 +235,7 @@ class AlexaResponseTest extends TestCase
             'response'          => [
                 'shouldEndSession' => false,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -261,7 +261,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -289,7 +289,7 @@ class AlexaResponseTest extends TestCase
                 ],
                 'shouldEndSession' => false,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -327,7 +327,7 @@ class AlexaResponseTest extends TestCase
                     ]
                 ],
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
@@ -369,7 +369,7 @@ class AlexaResponseTest extends TestCase
                     ]
                 ],
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());

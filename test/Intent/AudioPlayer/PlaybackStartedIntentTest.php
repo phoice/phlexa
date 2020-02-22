@@ -124,7 +124,7 @@ class PlaybackStartedIntentTest extends TestCase
                 ],
                 'shouldEndSession' => true,
             ],
-            'userAgent'         => 'phlexa-2.0 framework'
+            'userAgent'         => 'phlexa-3.0 framework'
         ];
 
         $this->assertEquals($expected, $alexaResponse->toArray());
