@@ -17,7 +17,6 @@ use DateTime;
 use Phlexa\Request\AlexaRequestInterface;
 use Phlexa\Request\Exception\BadRequest;
 use URL\Normalizer;
-use Zend\Diactoros\Uri;
 
 /**
  * Class CertificateValidator
@@ -157,17 +156,17 @@ class CertificateValidator implements CertificateValidatorInterface
     {
         $urlNormalizer = new Normalizer($this->certificateUrl);
 
-        $certificateUrl = new Uri($urlNormalizer->normalize());
+        $certificateUrl = parse_url($urlNormalizer->normalize());
 
         $allowedPorts = [self::ALLOWED_PORT, null];
 
-        if ($certificateUrl->getScheme() !== self::ALLOWED_SCHEME) {
+        if (isset($certificateUrl['scheme']) && $certificateUrl['scheme'] !== self::ALLOWED_SCHEME) {
             throw new BadRequest('Invalid certificate url scheme');
-        } elseif ($certificateUrl->getHost() !== self::ALLOWED_HOST) {
+        } elseif (isset($certificateUrl['host']) && $certificateUrl['host'] !== self::ALLOWED_HOST) {
             throw new BadRequest('Invalid certificate url host');
-        } elseif (!in_array($certificateUrl->getPort(), $allowedPorts)) {
+        } elseif (isset($certificateUrl['port']) && !in_array($certificateUrl['port'], $allowedPorts)) {
             throw new BadRequest('Invalid certificate url port');
-        } elseif (dirname($certificateUrl->getPath()) !== self::ALLOWED_PATH) {
+        } elseif (isset($certificateUrl['path']) && dirname($certificateUrl['path']) !== self::ALLOWED_PATH) {
             throw new BadRequest('Invalid certificate url path');
         }
     }
