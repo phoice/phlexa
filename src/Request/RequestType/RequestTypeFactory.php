@@ -26,6 +26,7 @@ use Phlexa\Request\RequestType\AudioPlayer\CurrentPlaybackState;
 use Phlexa\Request\RequestType\Cause\Cause;
 use Phlexa\Request\RequestType\Error\Error;
 use Phlexa\Request\RequestType\Intent\Intent;
+use Phlexa\Request\RequestType\UserEvent\UserEvent;
 use Phlexa\Request\Session\Application as SessionApplication;
 use Phlexa\Request\Session\Session;
 use Phlexa\Request\Session\User as SessionUser;
@@ -309,6 +310,19 @@ class RequestTypeFactory
                     $cause
                 );
 
+                break;
+            case 'Alexa.Presentation.APL.UserEvent':
+                $userEvent = new UserEvent(
+                    $data['request']['arguments'],
+                    $data['request']['token'],
+                    $data['request']['components'] ?? []
+                );
+                $request = new UserEventRequestType(
+                    $data['request']['requestId'],
+                    $data['request']['timestamp'],
+                    $data['request']['locale'],
+                    $userEvent
+                );
                 break;
 
             case 'IntentRequest':
