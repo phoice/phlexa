@@ -49,6 +49,9 @@ class AlexaResponse implements AlexaResponseInterface
     /** @var string */
     private $version = '1.0';
 
+    /** @var bool  */
+    private $undefinedEndSession = false;
+
     /**
      * Add a directive
      *
@@ -104,6 +107,16 @@ class AlexaResponse implements AlexaResponseInterface
     {
         $this->shouldEndSession = true;
     }
+
+    /**
+     *
+     */
+    public function setUndefinedEndSession()
+    {
+        $this->undefinedEndSession = true;
+    }
+
+
 
     /**
      * @param bool $isEmpty
@@ -164,7 +177,10 @@ class AlexaResponse implements AlexaResponseInterface
             }
         }
 
-        $response['shouldEndSession'] = $this->shouldEndSession;
+        if($this->undefinedEndSession != true)
+        {
+            $response['shouldEndSession'] = $this->shouldEndSession;
+        }
 
         return [
             'version'           => $this->version,

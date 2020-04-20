@@ -26,7 +26,7 @@ class APL implements DirectivesInterface
     public const DIRECTIVE_TYPE = 'APL';
 
     /** @var string */
-    private $version = '1.0';
+    private $version = '1.3';
 
     /**
      * @var string
@@ -58,6 +58,34 @@ class APL implements DirectivesInterface
      */
     private $mainTemplate = [];
 
+    /** @var string|array */
+    private $background;
+
+    /** @var array  */
+    private $commands = [];
+
+    /** @var array  */
+    private $export = [];
+
+    /** @var string */
+    private $description;
+
+    /** @var array */
+    private $graphics = [];
+
+    /** @var array  */
+    private $handleKeyDown = [];
+
+    /** @var array  */
+    private $handleKeyUp = [];
+
+    /** @var array  */
+    private $onMount = [];
+
+    /** @var array  */
+    private $settings = [];
+
+
     /**
      * APL constructor.
      *
@@ -74,7 +102,16 @@ class APL implements DirectivesInterface
         array $styles,
         array $layouts,
         array $mainTemplate,
-        string $theme = 'dark'
+        string $theme = 'dark',
+        string $background = '',
+        array $commands = [],
+        array $export = [],
+        string $description = '',
+        array $graphics = [],
+        array $handleKeyDown = [],
+        array $handleKeyUp = [],
+        array $onMount = [],
+        array $settings = []
     ) {
         $this->import       = $import;
         $this->theme        = $theme;
@@ -82,6 +119,15 @@ class APL implements DirectivesInterface
         $this->styles       = $styles;
         $this->layouts      = $layouts;
         $this->mainTemplate = $mainTemplate;
+        $this->background   = $background;
+        $this->commands     = $commands;
+        $this->export       = $export;
+        $this->description  = $description;
+        $this->graphics     = $graphics;
+        $this->handleKeyDown = $handleKeyDown;
+        $this->handleKeyUp  = $handleKeyUp;
+        $this->onMount      = $onMount;
+        $this->settings     = $settings;
     }
 
     /**
@@ -99,8 +145,17 @@ class APL implements DirectivesInterface
         $styles       = $aplData['styles'] ?? [];
         $layouts      = $aplData['layouts'] ?? [];
         $mainTemplate = $aplData['mainTemplate'] ?? [];
+        $background   = $aplData['background'] ?? '';
+        $commands     = $aplData['commands'] ?? [];
+        $export       = $aplData['export'] ?? [];
+        $description  = $aplData['description'] ?? '';
+        $graphics     = $aplData['graphics'] ?? [];
+        $handleKeyDown = $aplData['handleKeyDown'] ?? [];
+        $handleKeyUp  = $aplData['handleKeyUp'] ?? [];
+        $onMount      = $aplData['onMount'] ?? [];
+        $settings     = $aplData['settings'] ?? [];
 
-        return new APL($import, $resources, $styles, $layouts, $mainTemplate, $theme);
+        return new APL($import, $resources, $styles, $layouts, $mainTemplate, $theme, $background, $commands, $export, $description, $graphics, $handleKeyDown, $handleKeyUp, $onMount , $settings );
     }
 
     /**
@@ -131,10 +186,14 @@ class APL implements DirectivesInterface
         $data = [
             'type'         => $this->getType(),
             'version'      => $this->version,
+            'settings'     => $this->settings,
             'theme'        => $this->theme,
             'import'       => $this->import,
             'resources'    => $this->resources,
             'styles'       => $this->styles,
+            'onMount'      => $this->onMount,
+            'graphics'     => $this->graphics,
+            'commands'     => $this->commands,
             'layouts'      => $this->layouts,
             'mainTemplate' => $this->mainTemplate,
         ];
