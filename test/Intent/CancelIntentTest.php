@@ -358,18 +358,22 @@ class CancelIntentTest extends TestCase
                         'version'     => '1.0',
                         'document'    => [
                             'type'         => 'APL',
-                            'version'      => '1.0',
+                            'version'      => '1.3',
                             'theme'        => 'dark',
                             'import'       => [],
                             'resources'    => [],
                             'styles'       => [],
                             'layouts'      => [],
                             'mainTemplate' => [],
+                            'settings'     => [],
+                            'onMount'      => [],
+                            'graphics'     => [],
+                            'commands'     => [],
                         ],
                         'token'       => 'cancel',
                         'datasources' => [
                             'content' => [
-                                'imageContent' => [
+                                'imageContent'      => [
                                     'logoIcon'                  => 'https://image.server/icon.png',
                                     'imageTitle'                => 'cancelTitle',
                                     'smallFrontImage'           => 'https://image.server/small.png',
@@ -380,7 +384,7 @@ class CancelIntentTest extends TestCase
                                     'largeBackgroundImage'      => 'https://image.server/large-background.png',
                                     'extraLargeBackgroundImage' => 'https://image.server/extra-large-background.png',
                                 ],
-                                'textContent'  => [
+                                'textContent'       => [
                                     'title'      => 'cancelTitle',
                                     'largeText'  => 'cancelMessage',
                                     'mediumText' => null,

@@ -358,13 +358,17 @@ class StopIntentTest extends TestCase
                         'version'     => '1.0',
                         'document'    => [
                             'type'         => 'APL',
-                            'version'      => '1.0',
+                            'version'      => '1.3',
                             'theme'        => 'dark',
                             'import'       => [],
                             'resources'    => [],
                             'styles'       => [],
                             'layouts'      => [],
                             'mainTemplate' => [],
+                            'settings'     => [],
+                            'onMount'      => [],
+                            'graphics'     => [],
+                            'commands'     => [],
                         ],
                         'token'       => 'stop',
                         'datasources' => [
