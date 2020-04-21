@@ -3,3 +3,4 @@ html
 assets
 vendor
 phpunit.xml
+/.idea
