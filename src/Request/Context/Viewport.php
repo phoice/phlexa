@@ -55,7 +55,7 @@ class Viewport implements ViewportInterface
      */
     public function __construct(
         ExperiencesInterface $experiences = null, string $shape, int $pixelWidth, int $pixelHeight, int $dpi,
-        int $currentPixelWidth, int $currentPixelHeight, array $touch, array $keyboard, VideoInterface $video = null
+        int $currentPixelWidth, int $currentPixelHeight, array $touch, array $keyboard = null, VideoInterface $video = null
     ) {
         $this->experiences        = $experiences;
         $this->shape              = $shape;
@@ -136,7 +136,7 @@ class Viewport implements ViewportInterface
     /**
      * @return array
      */
-    public function getKeyboard(): array
+    public function getKeyboard(): ?array
     {
         return $this->keyboard;
     }

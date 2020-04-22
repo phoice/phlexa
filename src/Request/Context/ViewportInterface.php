@@ -56,7 +56,7 @@ interface ViewportInterface
     /**
      * @return array
      */
-    public function getKeyboard(): array;
+    public function getKeyboard(): ?array;
 
     /**
      * @return VideoInterface
