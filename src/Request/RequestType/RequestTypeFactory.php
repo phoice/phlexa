@@ -22,6 +22,9 @@ use Phlexa\Request\Context\System\Application as ContextApplication;
 use Phlexa\Request\Context\System\Device;
 use Phlexa\Request\Context\System\Person as ContextPerson;
 use Phlexa\Request\Context\System\User as ContextUser;
+use Phlexa\Request\Context\Viewport;
+use Phlexa\Request\Context\Viewport\Experiences as ViewportExperiences;
+use Phlexa\Request\Context\Viewport\Video as ViewportVideo;
 use Phlexa\Request\RequestType\AudioPlayer\CurrentPlaybackState;
 use Phlexa\Request\RequestType\Cause\Cause;
 use Phlexa\Request\RequestType\Error\Error;
@@ -143,6 +146,31 @@ class RequestTypeFactory
                 );
 
                 $context->setSystem($system);
+            }
+            if (isset($data['context']['Viewport'])) {
+
+                if (isset($data['context']['Viewport']['experiences'])) {
+                    $viewportExperiences = new ViewportExperiences();
+                    $viewportExperiences->setExperiences($data['context']['Viewport']['experiences']);
+                }
+                if (isset($data['context']['Viewport']['video'])) {
+                    $viewportVideo = new ViewportVideo();
+                    $viewportVideo->setCodecs($data['context']['Viewport']['video']['codecs']);
+                }
+                $viewport = new Viewport(
+                    $viewportExperiences ?? null,
+                    $data['context']['Viewport']['shape'],
+                    $data['context']['Viewport']['pixelWidth'],
+                    $data['context']['Viewport']['pixelHeight'],
+                    $data['context']['Viewport']['dpi'],
+                    $data['context']['Viewport']['currentPixelWidth'],
+                    $data['context']['Viewport']['currentPixelHeight'],
+                    $data['context']['Viewport']['touch'],
+                    $data['context']['Viewport']['keyboard'] ?? null,
+                    $viewportVideo ?? null
+                );
+
+                $context->setViewport($viewport);
             }
         } else {
             $context = null;

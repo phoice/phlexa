@@ -29,6 +29,9 @@ class Context implements ContextInterface
     /** @var DisplayInterface */
     private $display;
 
+    /** @var ViewportInterface */
+    private $viewport;
+
     /**
      * @param AudioPlayerInterface $audioPlayer
      */
@@ -76,4 +79,22 @@ class Context implements ContextInterface
     {
         return $this->display;
     }
+
+    /**
+     * @return ViewportInterface
+     */
+    public function getViewport(): ?ViewportInterface
+    {
+        return $this->viewport;
+    }
+
+    /**
+     * @param ViewportInterface $viewport
+     */
+    public function setViewport(ViewportInterface $viewport): void
+    {
+        $this->viewport = $viewport;
+    }
+
+
 }

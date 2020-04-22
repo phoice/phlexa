@@ -166,6 +166,27 @@ abstract class AbstractIntent implements IntentInterface
     }
 
     /**
+     * @return bool
+     */
+    protected function isVideoWithAplSupported(): bool
+    {
+        $context = $this->getAlexaRequest()->getContext();
+
+        if (!$context) {
+            return false;
+        }
+
+        if (!$context->getViewport()) {
+            return false;
+        }
+
+        if (!$context->getViewport()->getVideo()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * @param $interface
      *
      * @return bool

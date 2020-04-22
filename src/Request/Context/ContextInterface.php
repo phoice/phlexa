@@ -49,4 +49,14 @@ interface ContextInterface
      * @return DisplayInterface
      */
     public function getDisplay();
+
+    /**
+     * @return ViewportInterface
+     */
+    public function getViewport(): ?ViewportInterface;
+
+    /**
+     * @param ViewportInterface $viewport
+     */
+    public function setViewport(ViewportInterface $viewport): void;
 }
