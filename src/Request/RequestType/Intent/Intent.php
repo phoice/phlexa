@@ -170,4 +170,32 @@ class Intent implements IntentInterface
 
         return false;
     }
+
+    /**
+     * @param string $key
+     *
+     * @return string
+     */
+    public function getSlotId(string $key) : string
+    {
+        if (!isset($this->slots[$key])) {
+            return '';
+        }
+
+        if (isset($this->slots[$key]['resolutions'])) {
+            if (isset($this->slots[$key]['resolutions']['resolutionsPerAuthority'])) {
+                foreach ($this->slots[$key]['resolutions']['resolutionsPerAuthority'] as $resolution) {
+                    if (isset($resolution['values'])) {
+                        foreach ($resolution['values'] as $resolutionValue) {
+                            if (isset($resolutionValue['value']) && isset($resolutionValue['value']['id'])) {
+                                return $resolutionValue['value']['id'];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return '';
+    }
 }
