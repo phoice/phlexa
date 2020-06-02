@@ -54,8 +54,8 @@ class Viewport implements ViewportInterface
      * @param VideoInterface      $video
      */
     public function __construct(
-        ExperiencesInterface $experiences = null, string $shape, int $pixelWidth, int $pixelHeight, int $dpi,
-        int $currentPixelWidth, int $currentPixelHeight, array $touch, array $keyboard = null, VideoInterface $video = null
+        ExperiencesInterface $experiences = null, string $shape, int $pixelWidth = null, int $pixelHeight = null, int $dpi,
+        int $currentPixelWidth = null, int $currentPixelHeight = null, array $touch, array $keyboard = null, VideoInterface $video = null
     ) {
         $this->experiences        = $experiences;
         $this->shape              = $shape;

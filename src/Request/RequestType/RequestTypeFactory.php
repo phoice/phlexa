@@ -157,14 +157,35 @@ class RequestTypeFactory
                     $viewportVideo = new ViewportVideo();
                     $viewportVideo->setCodecs($data['context']['Viewport']['video']['codecs']);
                 }
+                if (isset($data['context']['Viewport']['pixelWidth']) && isset($data['context']['Viewport']['pixelHeight'])) {
+                    $pixelWidth = $data['context']['Viewport']['pixelWidth'];
+                    $pixelHeight = $data['context']['Viewport']['pixelHeight'];
+                    if (isset($data['context']['Viewport']['currentPixelWidth']) && isset($data['context']['Viewport']['currentPixelHeight'])) {
+                        $curPixelWidth = $data['context']['Viewport']['currentPixelWidth'];
+                        $curPixelHeight = $data['context']['Viewport']['currentPixelHeight'];
+                    } else {
+                        $curPixelWidth = $pixelWidth;
+                        $curPixelHeight = $pixelHeight;
+                    }
+                } elseif (isset($data['context']['Viewport']['currentPixelWidth']) && isset($data['context']['Viewport']['currentPixelHeight'])) {
+                    $curPixelWidth  = $data['context']['Viewport']['currentPixelWidth'];
+                    $curPixelHeight = $data['context']['Viewport']['currentPixelHeight'];
+                    $pixelHeight    = $curPixelHeight;
+                    $pixelWidth     = $curPixelWidth;
+                } else {
+                    $curPixelWidth  = null;
+                    $curPixelHeight = null;
+                    $pixelHeight    = $curPixelHeight;
+                    $pixelWidth     = $curPixelWidth;
+                }
                 $viewport = new Viewport(
                     $viewportExperiences ?? null,
                     $data['context']['Viewport']['shape'],
-                    $data['context']['Viewport']['pixelWidth'],
-                    $data['context']['Viewport']['pixelHeight'],
+                    $pixelWidth,
+                    $pixelHeight,
                     $data['context']['Viewport']['dpi'],
-                    $data['context']['Viewport']['currentPixelWidth'],
-                    $data['context']['Viewport']['currentPixelHeight'],
+                    $curPixelWidth,
+                    $curPixelHeight,
                     $data['context']['Viewport']['touch'],
                     $data['context']['Viewport']['keyboard'] ?? null,
                     $viewportVideo ?? null
