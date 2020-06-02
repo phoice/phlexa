@@ -147,27 +147,34 @@ class RequestTypeFactory
 
                 $context->setSystem($system);
             }
+
             if (isset($data['context']['Viewport'])) {
 
                 if (isset($data['context']['Viewport']['experiences'])) {
                     $viewportExperiences = new ViewportExperiences();
                     $viewportExperiences->setExperiences($data['context']['Viewport']['experiences']);
                 }
+
                 if (isset($data['context']['Viewport']['video'])) {
                     $viewportVideo = new ViewportVideo();
                     $viewportVideo->setCodecs($data['context']['Viewport']['video']['codecs']);
                 }
-                if (isset($data['context']['Viewport']['pixelWidth']) && isset($data['context']['Viewport']['pixelHeight'])) {
-                    $pixelWidth = $data['context']['Viewport']['pixelWidth'];
+
+                if (isset($data['context']['Viewport']['pixelWidth'])
+                    && isset($data['context']['Viewport']['pixelHeight'])) {
+                    $pixelWidth  = $data['context']['Viewport']['pixelWidth'];
                     $pixelHeight = $data['context']['Viewport']['pixelHeight'];
-                    if (isset($data['context']['Viewport']['currentPixelWidth']) && isset($data['context']['Viewport']['currentPixelHeight'])) {
-                        $curPixelWidth = $data['context']['Viewport']['currentPixelWidth'];
+
+                    if (isset($data['context']['Viewport']['currentPixelWidth'])
+                        && isset($data['context']['Viewport']['currentPixelHeight'])) {
+                        $curPixelWidth  = $data['context']['Viewport']['currentPixelWidth'];
                         $curPixelHeight = $data['context']['Viewport']['currentPixelHeight'];
                     } else {
-                        $curPixelWidth = $pixelWidth;
+                        $curPixelWidth  = $pixelWidth;
                         $curPixelHeight = $pixelHeight;
                     }
-                } elseif (isset($data['context']['Viewport']['currentPixelWidth']) && isset($data['context']['Viewport']['currentPixelHeight'])) {
+                } elseif (isset($data['context']['Viewport']['currentPixelWidth'])
+                    && isset($data['context']['Viewport']['currentPixelHeight'])) {
                     $curPixelWidth  = $data['context']['Viewport']['currentPixelWidth'];
                     $curPixelHeight = $data['context']['Viewport']['currentPixelHeight'];
                     $pixelHeight    = $curPixelHeight;
@@ -178,6 +185,7 @@ class RequestTypeFactory
                     $pixelHeight    = $curPixelHeight;
                     $pixelWidth     = $curPixelWidth;
                 }
+
                 $viewport = new Viewport(
                     $viewportExperiences ?? null,
                     $data['context']['Viewport']['shape'],
@@ -366,7 +374,7 @@ class RequestTypeFactory
                     $data['request']['token'],
                     $data['request']['components'] ?? []
                 );
-                $request = new UserEventRequestType(
+                $request   = new UserEventRequestType(
                     $data['request']['requestId'],
                     $data['request']['timestamp'],
                     $data['request']['locale'],
