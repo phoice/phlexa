@@ -579,6 +579,14 @@ abstract class AbstractIntent implements IntentInterface
                 'properties' => [
                     'imageContent' => [
                         'logoIcon' => $container->getLogoIcon(),
+                        'imageTitle'                => $container->getImage()->getImageTitle(),
+                        'smallFrontImage'           => $container->getImage()->getSmallFrontImage(),
+                        'largeFrontImage'           => $container->getImage()->getLargeFrontImage(),
+                        'roundBackgroundImage'      => $container->getImage()->getRoundBackgroundImage(),
+                        'smallBackgroundImage'      => $container->getImage()->getSmallBackgroundImage(),
+                        'mediumBackgroundImage'     => $container->getImage()->getMediumBackgroundImage(),
+                        'largeBackgroundImage'      => $container->getImage()->getLargeBackgroundImage(),
+                        'extraLargeBackgroundImage' => $container->getImage()->getExtraLargeBackgroundImage(),
                     ],
                     'textContent'  => [
                         'title'    => $container->getDisplayTitle(),
