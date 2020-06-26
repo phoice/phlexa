@@ -590,6 +590,8 @@ abstract class AbstractIntent implements IntentInterface
                     ],
                     'textContent'  => [
                         'title'    => $container->getDisplayTitle(),
+                        'largeText'  => $container->getDisplayLargeText(),
+                        'mediumText' => $container->getDisplayMediumText(),
                         'hintText' => $container->getHintText()
                     ],
                     'listContent'  => [],
