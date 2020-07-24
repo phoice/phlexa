@@ -1,9 +1,25 @@
 <?php
+/**
+ * Build voice applications for Amazon Alexa with phlexa and PHP
+ *
+ * @author     Meike Ziesecke <m.ziesecke@travello.audio>
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @link       https://github.com/phoice/phlexa
+ * @link       https://www.phoice.tech/
+ * @link       https://www.travello.audio/
+ */
+
+declare(strict_types=1);
 
 namespace Phlexa\Response\Directives\Alexa\Presentation\APLA\Document;
 
 use Phlexa\Response\Directives\DirectivesInterface;
 
+/**
+ * Class APLA
+ *
+ * @package Phlexa\Response\Directives\Alexa\Presentation\APLA\Document
+ */
 class APLA implements DirectivesInterface
 {
     /** Type of directive */
@@ -11,18 +27,14 @@ class APLA implements DirectivesInterface
 
     /** @var string */
     private $version = '0.8';
-    
-    /**
-     * @var array
-     */
-    private $mainTemplate = [];
-    
 
+    /** @var array */
+    private $mainTemplate = [];
 
     /**
      * APLA constructor.
      *
-     * @param array  $mainTemplate
+     * @param array $mainTemplate
      */
     public function __construct(
         array $mainTemplate
@@ -38,16 +50,16 @@ class APLA implements DirectivesInterface
     public static function createFromString(string $aplaJson): APLA
     {
         $aplaData = json_decode($aplaJson, true);
-        
+
         $mainTemplate = $aplaData['mainTemplate'] ?? [];
 
         return new APLA($mainTemplate);
     }
 
     /**
-     * @param string $aplFile
+     * @param string $aplaFile
      *
-     * @return APL
+     * @return APLA
      */
     public static function createFromFile(string $aplaFile): APLA
     {
@@ -77,5 +89,4 @@ class APLA implements DirectivesInterface
 
         return $data;
     }
-
 }
