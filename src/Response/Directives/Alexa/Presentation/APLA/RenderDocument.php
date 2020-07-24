@@ -9,9 +9,6 @@ class RenderDocument implements DirectivesInterface
     /** Type of directive */
     public const DIRECTIVE_TYPE = 'Alexa.Presentation.APLA.RenderDocument';
 
-    /** @var string */
-    /*private $version = '0.2';*/
-
     /** @var APLA */
     private $document;
 
