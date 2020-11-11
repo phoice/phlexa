@@ -217,6 +217,30 @@ abstract class AbstractIntent implements IntentInterface
     }
 
     /**
+     * @return bool
+     */
+    protected function isSmartMotionSupported(): bool
+    {
+        $context = $this->getAlexaRequest()->getContext();
+
+        if (!$context) {
+            return false;
+        }
+
+        $supportedExtensions= $context->getExtensions();
+        if (!$supportedExtensions) {
+            return false;
+        }
+
+        $availableExtensions = $supportedExtensions->getAvailable();
+        if (!$availableExtensions) {
+            return false;
+        }
+
+        return isset($availableExtensions['alexaext:smartmotion:10']);
+    }
+
+    /**
      * @param string      $template
      * @param TextContent $textContent
      * @param string      $token

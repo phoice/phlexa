@@ -26,7 +26,7 @@ class APL implements DirectivesInterface
     public const DIRECTIVE_TYPE = 'APL';
 
     /** @var string */
-    private $version = '1.3';
+    private $version = '1.4';
 
     /**
      * @var string
@@ -85,6 +85,9 @@ class APL implements DirectivesInterface
     /** @var array  */
     private $settings = [];
 
+    /** @var array  */
+    private $extensions = [];
+
 
     /**
      * APL constructor.
@@ -111,7 +114,8 @@ class APL implements DirectivesInterface
         array $handleKeyDown = [],
         array $handleKeyUp = [],
         array $onMount = [],
-        array $settings = []
+        array $settings = [],
+        array $extensions = []
     ) {
         $this->import       = $import;
         $this->theme        = $theme;
@@ -128,6 +132,7 @@ class APL implements DirectivesInterface
         $this->handleKeyUp  = $handleKeyUp;
         $this->onMount      = $onMount;
         $this->settings     = $settings;
+        $this->extensions   = $extensions;
     }
 
     /**
@@ -154,8 +159,9 @@ class APL implements DirectivesInterface
         $handleKeyUp  = $aplData['handleKeyUp'] ?? [];
         $onMount      = $aplData['onMount'] ?? [];
         $settings     = $aplData['settings'] ?? [];
+        $extensions   = $aplData['extensions'] ?? [];
 
-        return new APL($import, $resources, $styles, $layouts, $mainTemplate, $theme, $background, $commands, $export, $description, $graphics, $handleKeyDown, $handleKeyUp, $onMount , $settings );
+        return new APL($import, $resources, $styles, $layouts, $mainTemplate, $theme, $background, $commands, $export, $description, $graphics, $handleKeyDown, $handleKeyUp, $onMount , $settings, $extensions );
     }
 
     /**
@@ -186,6 +192,7 @@ class APL implements DirectivesInterface
         $data = [
             'type'         => $this->getType(),
             'version'      => $this->version,
+            'extensions'   => $this->extensions,
             'settings'     => $this->settings,
             'theme'        => $this->theme,
             'import'       => $this->import,

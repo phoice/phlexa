@@ -59,4 +59,14 @@ interface ContextInterface
      * @param ViewportInterface $viewport
      */
     public function setViewport(ViewportInterface $viewport): void;
+
+    /**
+     * @return ExtensionsInterface
+     */
+    public function getExtensions(): ?ExtensionsInterface;
+
+    /**
+     * @param ExtensionsInterface $extensions
+     */
+    public function setExtensions(ExtensionsInterface $extensions): void;
 }
