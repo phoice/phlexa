@@ -1,7 +1,7 @@
 <?php
 return [
     'type'         => 'APL',
-    'version'      => '1.3',
+    'version'      => '1.4',
     'theme'        => 'dark',
     'import'       =>
         [
@@ -239,4 +239,5 @@ return [
     'onMount'      => [],
     'graphics'     => [],
     'commands'     => [],
+    'extensions'   => [],
 ];

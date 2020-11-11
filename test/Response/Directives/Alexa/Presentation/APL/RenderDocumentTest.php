@@ -71,7 +71,7 @@ class RenderDocumentTest extends TestCase
             'type'        => 'Alexa.Presentation.APL.RenderDocument',
             'document'    => [
                 'type'         => 'APL',
-                'version'      => '1.3',
+                'version'      => '1.4',
                 'theme'        => 'dark',
                 'import'       => $import,
                 'resources'    => $resources,
@@ -82,6 +82,7 @@ class RenderDocumentTest extends TestCase
                 'onMount'      => [],
                 'graphics'     => [],
                 'commands'     => [],
+                'extensions'   => [],
             ],
             'version'     => '1.0',
             'token'       => 'my-token',

@@ -64,7 +64,7 @@ class APLTest extends TestCase
 
         $expected = [
             'type'         => 'APL',
-            'version'      => '1.3',
+            'version'      => '1.4',
             'theme'        => 'dark',
             'import'       => $import,
             'resources'    => $resources,
@@ -75,6 +75,7 @@ class APLTest extends TestCase
             'onMount'      => [],
             'graphics'     => [],
             'commands'     => [],
+            'extensions'   => [],
         ];
 
         $this->assertEquals($expected, $aplDocument->toArray());

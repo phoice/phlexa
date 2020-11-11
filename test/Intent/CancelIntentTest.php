@@ -358,7 +358,7 @@ class CancelIntentTest extends TestCase
                         'version'     => '1.0',
                         'document'    => [
                             'type'         => 'APL',
-                            'version'      => '1.3',
+                            'version'      => '1.4',
                             'theme'        => 'dark',
                             'import'       => [],
                             'resources'    => [],
@@ -369,6 +369,7 @@ class CancelIntentTest extends TestCase
                             'onMount'      => [],
                             'graphics'     => [],
                             'commands'     => [],
+                            'extensions'   => [],
                         ],
                         'token'       => 'cancel',
                         'datasources' => [

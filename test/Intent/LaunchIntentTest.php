@@ -367,7 +367,7 @@ class LaunchIntentTest extends TestCase
                         'version'     => '1.0',
                         'document'    => [
                             'type'         => 'APL',
-                            'version'      => '1.3',
+                            'version'      => '1.4',
                             'theme'        => 'dark',
                             'import'       => [],
                             'resources'    => [],
@@ -378,6 +378,7 @@ class LaunchIntentTest extends TestCase
                             'onMount'      => [],
                             'graphics'     => [],
                             'commands'     => [],
+                            'extensions'   => [],
                         ],
                         'token'       => 'launch',
                         'datasources' => [
