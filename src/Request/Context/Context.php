@@ -32,6 +32,9 @@ class Context implements ContextInterface
     /** @var ViewportInterface */
     private $viewport;
 
+    /** @var ExtensionsInterface */
+    private $extensions;
+
     /**
      * @param AudioPlayerInterface $audioPlayer
      */
@@ -95,6 +98,23 @@ class Context implements ContextInterface
     {
         $this->viewport = $viewport;
     }
+
+    /**
+     * @return ExtensionsInterface
+     */
+    public function getExtensions(): ?ExtensionsInterface
+    {
+        return $this->extensions;
+    }
+
+    /**
+     * @param ExtensionsInterface $extensions
+     */
+    public function setExtensions(ExtensionsInterface $extensions): void
+    {
+        $this->extensions = $extensions;
+    }
+
 
 
 }
