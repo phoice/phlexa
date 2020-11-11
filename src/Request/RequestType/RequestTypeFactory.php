@@ -17,6 +17,7 @@ use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Context\AudioPlayer;
 use Phlexa\Request\Context\Context;
 use Phlexa\Request\Context\Display;
+use Phlexa\Request\Context\Extensions;
 use Phlexa\Request\Context\System;
 use Phlexa\Request\Context\System\Application as ContextApplication;
 use Phlexa\Request\Context\System\Device;
@@ -200,6 +201,13 @@ class RequestTypeFactory
                 );
 
                 $context->setViewport($viewport);
+            }
+
+            if (isset($data['context']['Extensions'])) {
+                if (isset($data['context']['Extensions']['available'])) {
+                    $extensions = new Extensions($data['context']['Extensions']['available']);
+                    $context->setExtensions($extensions);
+                }
             }
         } else {
             $context = null;
