@@ -3,7 +3,6 @@
 
 namespace Phlexa\Request\Context;
 
-
 use Phlexa\Request\Context\Viewport\ExperiencesInterface;
 use Phlexa\Request\Context\Viewport\VideoInterface;
 

@@ -22,6 +22,4 @@ class Experiences implements ExperiencesInterface
     {
         $this->experiences = $experiences;
     }
-
-
 }

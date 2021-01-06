@@ -180,4 +180,3 @@ class ListItemContainer
         return null !== $this->ordinalNumber;
     }
 }
-

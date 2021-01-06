@@ -183,6 +183,7 @@ abstract class AbstractIntent implements IntentInterface
         if (!$context->getViewport()->getVideo()) {
             return false;
         }
+
         return true;
     }
 
@@ -227,7 +228,7 @@ abstract class AbstractIntent implements IntentInterface
             return false;
         }
 
-        $supportedExtensions= $context->getExtensions();
+        $supportedExtensions = $context->getExtensions();
         if (!$supportedExtensions) {
             return false;
         }
@@ -449,7 +450,9 @@ abstract class AbstractIntent implements IntentInterface
         $displayDirective->setBackgroundImage($backgroundImage);
 
         if (in_array(
-            $template, [RenderTemplate::TYPE_BODY_TEMPLATE_2, RenderTemplate::TYPE_BODY_TEMPLATE_3], true
+            $template,
+            [RenderTemplate::TYPE_BODY_TEMPLATE_2, RenderTemplate::TYPE_BODY_TEMPLATE_3],
+            true
         )) {
             $smallImageUrl = $container->getImage()->hasSmallFrontImage()
                 ? $container->getImage()->getSmallFrontImage()
@@ -564,10 +567,11 @@ abstract class AbstractIntent implements IntentInterface
 
         $datasources = [
             'content' => [
-                'imageContent'     => [
+                'imageContent'      => [
                     'logoIcon' => $container->getLogoIcon(),
                 ],
-                'slideShowContent' => [],
+                'slideShowContent'  => [],
+                'additionalContent' => $container->getAdditionalData(),
             ],
         ];
 
@@ -601,8 +605,8 @@ abstract class AbstractIntent implements IntentInterface
         $datasources = [
             'content' => [
                 'properties' => [
-                    'imageContent' => [
-                        'logoIcon' => $container->getLogoIcon(),
+                    'imageContent'      => [
+                        'logoIcon'                  => $container->getLogoIcon(),
                         'imageTitle'                => $container->getImage()->getImageTitle(),
                         'smallFrontImage'           => $container->getImage()->getSmallFrontImage(),
                         'largeFrontImage'           => $container->getImage()->getLargeFrontImage(),
@@ -612,13 +616,14 @@ abstract class AbstractIntent implements IntentInterface
                         'largeBackgroundImage'      => $container->getImage()->getLargeBackgroundImage(),
                         'extraLargeBackgroundImage' => $container->getImage()->getExtraLargeBackgroundImage(),
                     ],
-                    'textContent'  => [
-                        'title'    => $container->getDisplayTitle(),
+                    'textContent'       => [
+                        'title'      => $container->getDisplayTitle(),
                         'largeText'  => $container->getDisplayLargeText(),
                         'mediumText' => $container->getDisplayMediumText(),
-                        'hintText' => $container->getHintText()
+                        'hintText'   => $container->getHintText()
                     ],
-                    'listContent'  => [],
+                    'listContent'       => [],
+                    'additionalContent' => $container->getAdditionalData(),
                 ]
             ],
         ];

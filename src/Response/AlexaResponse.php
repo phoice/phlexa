@@ -177,8 +177,7 @@ class AlexaResponse implements AlexaResponseInterface
             }
         }
 
-        if($this->undefinedEndSession != true)
-        {
+        if ($this->undefinedEndSession != true) {
             $response['shouldEndSession'] = $this->shouldEndSession;
         }
 

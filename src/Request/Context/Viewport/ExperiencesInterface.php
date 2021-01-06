@@ -12,5 +12,4 @@ interface ExperiencesInterface
      * @param array $experiences
      */
     public function setExperiences(array $experiences): void;
-
 }

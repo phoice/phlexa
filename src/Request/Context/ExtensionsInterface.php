@@ -3,7 +3,6 @@
 
 namespace Phlexa\Request\Context;
 
-
 /**
  * Interface ExtensionsInterface
  *

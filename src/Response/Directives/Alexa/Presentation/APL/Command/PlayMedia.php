@@ -3,7 +3,6 @@
 
 namespace Phlexa\Response\Directives\Alexa\Presentation\APL\Command;
 
-
 use Phlexa\Response\Directives\Alexa\Presentation\APL\CommandInterface;
 
 class PlayMedia implements CommandInterface
@@ -91,5 +90,4 @@ class PlayMedia implements CommandInterface
 
         return $data;
     }
-
 }

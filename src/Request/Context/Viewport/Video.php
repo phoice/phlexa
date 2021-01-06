@@ -26,5 +26,4 @@ class Video implements VideoInterface
     {
         $this->codecs = $codecs;
     }
-
 }

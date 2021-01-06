@@ -114,7 +114,4 @@ class Context implements ContextInterface
     {
         $this->extensions = $extensions;
     }
-
-
-
 }

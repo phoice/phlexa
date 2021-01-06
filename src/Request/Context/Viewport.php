@@ -156,6 +156,4 @@ class Viewport implements ViewportInterface
     {
         return $this->video;
     }
-
-
 }

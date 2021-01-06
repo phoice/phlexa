@@ -3,7 +3,6 @@
 
 namespace Phlexa\Request\Context;
 
-
 /**
  * Class Extensions
  *
@@ -40,5 +39,4 @@ class Extensions implements ExtensionsInterface
     {
         $this->available = $available;
     }
-
 }

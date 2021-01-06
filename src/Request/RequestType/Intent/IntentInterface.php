@@ -65,7 +65,7 @@ interface IntentInterface
      * @return bool
      */
     public function hasValidSlotValue(string $key): bool;
-    
+
     /**
      * @param string $key
      *

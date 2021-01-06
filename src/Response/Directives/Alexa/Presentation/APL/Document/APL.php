@@ -161,7 +161,24 @@ class APL implements DirectivesInterface
         $settings     = $aplData['settings'] ?? [];
         $extensions   = $aplData['extensions'] ?? [];
 
-        return new APL($import, $resources, $styles, $layouts, $mainTemplate, $theme, $background, $commands, $export, $description, $graphics, $handleKeyDown, $handleKeyUp, $onMount , $settings, $extensions );
+        return new APL(
+            $import,
+            $resources,
+            $styles,
+            $layouts,
+            $mainTemplate,
+            $theme,
+            $background,
+            $commands,
+            $export,
+            $description,
+            $graphics,
+            $handleKeyDown,
+            $handleKeyUp,
+            $onMount,
+            $settings,
+            $extensions
+        );
     }
 
     /**

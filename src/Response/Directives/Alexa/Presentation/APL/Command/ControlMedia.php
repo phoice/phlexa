@@ -3,7 +3,6 @@
 
 namespace Phlexa\Response\Directives\Alexa\Presentation\APL\Command;
 
-
 use Phlexa\Response\Directives\Alexa\Presentation\APL\CommandInterface;
 
 class ControlMedia implements CommandInterface

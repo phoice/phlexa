@@ -63,8 +63,4 @@ class UserEventRequestType extends AbstractRequestType
     {
         return $this->userEvent;
     }
-
-
-
-    
 }

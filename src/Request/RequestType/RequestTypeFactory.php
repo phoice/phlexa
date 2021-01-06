@@ -150,7 +150,6 @@ class RequestTypeFactory
             }
 
             if (isset($data['context']['Viewport'])) {
-
                 if (isset($data['context']['Viewport']['experiences'])) {
                     $viewportExperiences = new ViewportExperiences();
                     $viewportExperiences->setExperiences($data['context']['Viewport']['experiences']);
