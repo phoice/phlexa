@@ -183,7 +183,7 @@ class AlexaResponse implements AlexaResponseInterface
         }
         if ($this->aplaReprompt) {
             $response['reprompt'] = [
-                'directives' => $this->aplaReprompt->toArray()
+                'directives' => [$this->aplaReprompt->toArray()]
             ];
         }
 
