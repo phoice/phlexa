@@ -52,6 +52,9 @@ class AlexaResponse implements AlexaResponseInterface
     /** @var bool  */
     private $undefinedEndSession = false;
 
+    /** @var DirectivesInterface */
+    private $aplaReprompt;
+
     /**
      * Add a directive
      *
@@ -116,6 +119,16 @@ class AlexaResponse implements AlexaResponseInterface
         $this->undefinedEndSession = true;
     }
 
+    /**
+     * Add a reprompt with APLA
+     *
+     * @param DirectivesInterface $aplaReprompt
+     */
+    public function addAplaReprompt(DirectivesInterface $aplaReprompt)
+    {
+        $this->aplaReprompt = $aplaReprompt;
+    }
+
 
 
     /**
@@ -166,6 +179,11 @@ class AlexaResponse implements AlexaResponseInterface
         if ($this->reprompt) {
             $response['reprompt'] = [
                 'outputSpeech' => $this->reprompt->toArray()
+            ];
+        }
+        if ($this->aplaReprompt) {
+            $response['reprompt'] = [
+                'directives' => [$this->aplaReprompt->toArray()]
             ];
         }
 
