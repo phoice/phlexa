@@ -49,6 +49,9 @@ abstract class AbstractIntent implements IntentInterface
     /** @var SkillConfigurationInterface */
     private $skillConfiguration;
 
+    /** @var bool */
+    private $errorLogFlag = false;
+
     /**
      * AbstractIntent constructor.
      *
@@ -185,6 +188,22 @@ abstract class AbstractIntent implements IntentInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isErrorLogFlag(): bool
+    {
+        return $this->errorLogFlag;
+    }
+
+    /**
+     * @param bool $errorLogFlag
+     */
+    public function setErrorLogFlag(bool $errorLogFlag = true): void
+    {
+        $this->errorLogFlag = $errorLogFlag;
     }
 
     /**
@@ -567,10 +586,10 @@ abstract class AbstractIntent implements IntentInterface
 
         $datasources = [
             'content' => [
-                'imageContent'      => [
+                'imageContent'     => [
                     'logoIcon' => $container->getLogoIcon(),
                 ],
-                'slideShowContent'  => [],
+                'slideShowContent' => [],
                 'additionalContent' => $container->getAdditionalData(),
             ],
         ];
@@ -605,8 +624,8 @@ abstract class AbstractIntent implements IntentInterface
         $datasources = [
             'content' => [
                 'properties' => [
-                    'imageContent'      => [
-                        'logoIcon'                  => $container->getLogoIcon(),
+                    'imageContent' => [
+                        'logoIcon' => $container->getLogoIcon(),
                         'imageTitle'                => $container->getImage()->getImageTitle(),
                         'smallFrontImage'           => $container->getImage()->getSmallFrontImage(),
                         'largeFrontImage'           => $container->getImage()->getLargeFrontImage(),
@@ -616,13 +635,13 @@ abstract class AbstractIntent implements IntentInterface
                         'largeBackgroundImage'      => $container->getImage()->getLargeBackgroundImage(),
                         'extraLargeBackgroundImage' => $container->getImage()->getExtraLargeBackgroundImage(),
                     ],
-                    'textContent'       => [
-                        'title'      => $container->getDisplayTitle(),
+                    'textContent'  => [
+                        'title'    => $container->getDisplayTitle(),
                         'largeText'  => $container->getDisplayLargeText(),
                         'mediumText' => $container->getDisplayMediumText(),
-                        'hintText'   => $container->getHintText()
+                        'hintText' => $container->getHintText()
                     ],
-                    'listContent'       => [],
+                    'listContent'  => [],
                     'additionalContent' => $container->getAdditionalData(),
                 ]
             ],
