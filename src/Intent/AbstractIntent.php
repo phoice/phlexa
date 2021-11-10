@@ -50,7 +50,7 @@ abstract class AbstractIntent implements IntentInterface
     private $skillConfiguration;
 
     /** @var bool */
-    private $errorLogFlag;
+    private $errorLogFlag = false;
 
     /**
      * AbstractIntent constructor.

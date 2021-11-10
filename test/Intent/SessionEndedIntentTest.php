@@ -17,7 +17,6 @@ use Phlexa\Configuration\SkillConfiguration;
 use Phlexa\Intent\AbstractIntent;
 use Phlexa\Intent\IntentInterface;
 use Phlexa\Intent\SessionEndedIntent;
-use Phlexa\Intent\StopIntent;
 use Phlexa\Request\RequestType\RequestTypeFactory;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Session\SessionContainer;
@@ -53,11 +52,10 @@ class SessionEndedIntentTest extends TestCase
                 'requestId' => 'requestId',
                 'timestamp' => '2017-01-27T20:29:59Z',
                 'locale'    => 'en-US',
-                "reason" => "ERROR",
-                "locale" => "string",
-                "error" => [
-                    "type" => "INVALID_RESPONSE",
-                        "message" => "status code: 404, reason phrase: Not Found for requestId amzn1.echo-api.request.61c52ce9-c6c2-4e42-9d05-d425b3a8e3a5"
+                "reason"    => "ERROR",
+                "error"     => [
+                    "type"    => "INVALID_RESPONSE",
+                    "message" => "status code: 404, reason phrase: Not Found for requestId amzn1.echo-api.request.61c52ce9-c6c2-4e42-9d05-d425b3a8e3a5"
                 ]
             ],
             'context' => [
@@ -100,10 +98,9 @@ class SessionEndedIntentTest extends TestCase
                 'requestId' => 'requestId',
                 'timestamp' => '2017-01-27T20:29:59Z',
                 'locale'    => 'en-US',
-                "reason" => "ERROR",
-                "locale" => "string",
-                "error" => [
-                    "type" => "INVALID_RESPONSE",
+                "reason"    => "ERROR",
+                "error"     => [
+                    "type"    => "INVALID_RESPONSE",
                     "message" => "status code: 404, reason phrase: Not Found for requestId amzn1.echo-api.request.61c52ce9-c6c2-4e42-9d05-d425b3a8e3a5"
                 ]
             ],
@@ -183,10 +180,9 @@ class SessionEndedIntentTest extends TestCase
                 'requestId' => 'requestId',
                 'timestamp' => '2017-01-27T20:29:59Z',
                 'locale'    => 'en-US',
-                "reason" => "ERROR",
-                "locale" => "string",
-                "error" => [
-                    "type" => "INVALID_RESPONSE",
+                "reason"    => "ERROR",
+                "error"     => [
+                    "type"    => "INVALID_RESPONSE",
                     "message" => "status code: 404, reason phrase: Not Found for requestId amzn1.echo-api.request.61c52ce9-c6c2-4e42-9d05-d425b3a8e3a5"
                 ]
             ],
@@ -304,10 +300,9 @@ class SessionEndedIntentTest extends TestCase
                 'requestId' => 'requestId',
                 'timestamp' => '2017-01-27T20:29:59Z',
                 'locale'    => 'en-US',
-                "reason" => "ERROR",
-                "locale" => "string",
-                "error" => [
-                    "type" => "INVALID_RESPONSE",
+                "reason"    => "ERROR",
+                "error"     => [
+                    "type"    => "INVALID_RESPONSE",
                     "message" => "status code: 404, reason phrase: Not Found for requestId amzn1.echo-api.request.61c52ce9-c6c2-4e42-9d05-d425b3a8e3a5"
                 ]
             ],
@@ -367,18 +362,23 @@ class SessionEndedIntentTest extends TestCase
                         'version'     => '1.0',
                         'document'    => [
                             'type'         => 'APL',
-                            'version'      => '1.0',
+                            'version'      => '1.4',
                             'theme'        => 'dark',
                             'import'       => [],
                             'resources'    => [],
                             'styles'       => [],
                             'layouts'      => [],
                             'mainTemplate' => [],
+                            'settings'     => [],
+                            'onMount'      => [],
+                            'graphics'     => [],
+                            'commands'     => [],
+                            'extensions'   => [],
                         ],
                         'token'       => 'stop',
                         'datasources' => [
                             'content' => [
-                                'imageContent' => [
+                                'imageContent'      => [
                                     'logoIcon'                  => 'https://image.server/icon.png',
                                     'imageTitle'                => 'stopTitle',
                                     'smallFrontImage'           => 'https://image.server/small.png',
@@ -389,7 +389,7 @@ class SessionEndedIntentTest extends TestCase
                                     'largeBackgroundImage'      => 'https://image.server/large-background.png',
                                     'extraLargeBackgroundImage' => 'https://image.server/extra-large-background.png',
                                 ],
-                                'textContent'  => [
+                                'textContent'       => [
                                     'title'      => 'stopTitle',
                                     'largeText'  => 'stopMessage',
                                     'mediumText' => null,
