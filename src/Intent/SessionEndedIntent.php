@@ -20,7 +20,7 @@ class SessionEndedIntent extends AbstractIntent
         $reason = $this->getAlexaRequest()->getRequest()->getReason();
         $error  = $this->getAlexaRequest()->getRequest()->getError();
 
-        if ($reason != "USER_INITIATED") {
+        if ($reason == "ERROR") {
             if ($this->isErrorLogFlag() == true) {
                 $microtime = explode('.', (string)microtime(true));
 
