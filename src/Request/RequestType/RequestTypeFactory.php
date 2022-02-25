@@ -26,6 +26,7 @@ use Phlexa\Request\Context\System\User as ContextUser;
 use Phlexa\Request\Context\Viewport;
 use Phlexa\Request\Context\Viewport\Experiences as ViewportExperiences;
 use Phlexa\Request\Context\Viewport\Video as ViewportVideo;
+use Phlexa\Request\Exception\BadRequest;
 use Phlexa\Request\RequestType\AudioPlayer\CurrentPlaybackState;
 use Phlexa\Request\RequestType\Cause\Cause;
 use Phlexa\Request\RequestType\Error\Error;
@@ -54,6 +55,13 @@ class RequestTypeFactory
         $data = json_decode($data, true);
 
         $version = $data['version'] ?? AlexaRequest::DEFAULT_VERSION;
+        
+        if (!isset($data['request'])) {
+            throw new BadRequest('Invalid request');
+        }
+        if (!isset($data['request']['timestamp'])) {
+            throw new BadRequest('Invalid timestamp');
+        }
 
         if (isset($data['session'])) {
             $session = new Session(
