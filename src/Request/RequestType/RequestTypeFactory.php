@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Phlexa\Request\RequestType;
 
+use Laminas\Diactoros\Response\JsonResponse;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Context\AudioPlayer;
 use Phlexa\Request\Context\Context;
@@ -55,13 +56,6 @@ class RequestTypeFactory
         $data = json_decode($data, true);
 
         $version = $data['version'] ?? AlexaRequest::DEFAULT_VERSION;
-        
-        if (!isset($data['request'])) {
-            throw new BadRequest('Invalid request');
-        }
-        if (!isset($data['request']['timestamp'])) {
-            throw new BadRequest('Invalid timestamp');
-        }
 
         if (isset($data['session'])) {
             $session = new Session(
@@ -222,11 +216,18 @@ class RequestTypeFactory
 
         switch ($data['request']['type']) {
             case 'LaunchRequest':
-                $request = new LaunchRequestType(
-                    $data['request']['requestId'],
-                    $data['request']['timestamp'],
-                    $data['request']['locale']
+                if ($data['session']['user']['userId'] == 'alexa-lambda-availability') {
+                    $request = new AvailabilityCheckRequestType(
+                        $data['request']['requestId'],
+                        $data['request']['requestId']
+                    );
+                } else {
+                    $request = new LaunchRequestType(
+                        $data['request']['requestId'],
+                        $data['request']['timestamp'],
+                        $data['request']['requestId'],
                 );
+                }
                 break;
 
             case 'SessionEndedRequest':
