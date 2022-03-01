@@ -304,7 +304,11 @@ class RequestTypeFactory
                     $error = null;
                 }
 
-                if (isset($data['request']['currentPlaybackState'])) {
+                if (isset($data['request']['currentPlaybackState'])
+                    && isset($data['request']['currentPlaybackState']['playerActivity'])
+                    && isset($data['request']['currentPlaybackState']['offsetInMilliseconds'])
+                    && isset($data['request']['currentPlaybackState']['token'])
+                ) {
                     $currentPlaybackState = new CurrentPlaybackState(
                         $data['request']['currentPlaybackState']['playerActivity'],
                         $data['request']['currentPlaybackState']['offsetInMilliseconds'],
