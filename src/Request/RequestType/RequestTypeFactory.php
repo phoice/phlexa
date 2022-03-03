@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Phlexa\Request\RequestType;
 
-use Laminas\Diactoros\Response\JsonResponse;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Context\AudioPlayer;
 use Phlexa\Request\Context\Context;
@@ -27,7 +26,6 @@ use Phlexa\Request\Context\System\User as ContextUser;
 use Phlexa\Request\Context\Viewport;
 use Phlexa\Request\Context\Viewport\Experiences as ViewportExperiences;
 use Phlexa\Request\Context\Viewport\Video as ViewportVideo;
-use Phlexa\Request\Exception\BadRequest;
 use Phlexa\Request\RequestType\AudioPlayer\CurrentPlaybackState;
 use Phlexa\Request\RequestType\Cause\Cause;
 use Phlexa\Request\RequestType\Error\Error;
@@ -216,19 +214,20 @@ class RequestTypeFactory
 
         switch ($data['request']['type']) {
             case 'LaunchRequest':
-                if ($data['session']['user']['userId'] == 'alexa-lambda-availability') {
+                if ($data['session']['user']['userId'] != 'alexa-lambda-availability') {
+                    $request = new LaunchRequestType(
+                        $data['request']['requestId'],
+                        $data['request']['timestamp'],
+                        $data['request']['locale']
+                    );
+                    break;
+                } else {
                     $request = new AvailabilityCheckRequestType(
                         $data['request']['requestId'],
                         $data['request']['requestId']
                     );
-                } else {
-                    $request = new LaunchRequestType(
-                        $data['request']['requestId'],
-                        $data['request']['timestamp'],
-                        $data['request']['requestId'],
-                );
+                    break;
                 }
-                break;
 
             case 'SessionEndedRequest':
                 if (isset($data['request']['error'])) {
