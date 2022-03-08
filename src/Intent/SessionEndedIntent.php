@@ -25,9 +25,10 @@ class SessionEndedIntent extends AbstractIntent
                 $microtime = explode('.', (string)microtime(true));
 
                 $random = date('Y-m-d-H-i-s-') . $microtime[1];
+                $endpoint = $this->getSkillConfiguration()->getSkillTitle();
 
                 file_put_contents(
-                    PROJECT_ROOT . '/data/SessionEndedRequest-' . $random . '.txt',
+                    PROJECT_ROOT . '/data/' . $endpoint . '-SessionEndedRequest-' . $random . '.txt',
                     $error->getType() . ": " . $error->getMessage()
                 );
             }
