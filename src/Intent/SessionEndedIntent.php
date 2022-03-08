@@ -26,10 +26,24 @@ class SessionEndedIntent extends AbstractIntent
 
                 $random = date('Y-m-d-H-i-s-') . $microtime[1];
                 $endpoint = $this->getSkillConfiguration()->getSkillTitle();
+                $attributes = print_r($this->getAlexaRequest()->getSession()->getAttributes(), true);
+                $audioplayerOffset = $this->getAlexaRequest()->getContext()->getAudioPlayer()->getOffsetInMilliseconds();
+                $audioplayerActivity = $this->getAlexaRequest()->getContext()->getAudioPlayer()->getPlayerActivity();
+                $audioplayerToken = $this->getAlexaRequest()->getContext()->getAudioPlayer()->getToken();
+                $data = $error->getType() . ": " . $error->getMessage() . PHP_EOL .' Attributes: ' . $attributes . PHP_EOL . 'Audioplayer:' . PHP_EOL;
+                if ($audioplayerActivity != null) {
+                    $data .= 'Activity: ' . $audioplayerActivity . PHP_EOL;
+                }
+                if ($audioplayerOffset != null) {
+                    $data .= 'Offset: ' . $audioplayerOffset . PHP_EOL;
+                }
+                if ($audioplayerToken != null) {
+                    $data .= 'Token: ' . $audioplayerToken . PHP_EOL;
+                }
 
                 file_put_contents(
                     PROJECT_ROOT . '/data/' . $endpoint . '-SessionEndedRequest-' . $random . '.txt',
-                    $error->getType() . ": " . $error->getMessage()
+                    $data
                 );
             }
         }
