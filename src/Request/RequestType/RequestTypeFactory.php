@@ -220,14 +220,13 @@ class RequestTypeFactory
                         $data['request']['timestamp'],
                         $data['request']['locale']
                     );
-                    break;
                 } else {
                     $request = new AvailabilityCheckRequestType(
                         $data['request']['requestId'],
                         $data['request']['requestId']
                     );
-                    break;
                 }
+                break;
 
             case 'SessionEndedRequest':
                 if (isset($data['request']['error'])) {

@@ -8,6 +8,11 @@ use Phlexa\Response\AlexaResponse;
 use Phlexa\Response\Directives\Alexa\Presentation\APL\Document\APL;
 use Phlexa\Response\Directives\Display\RenderTemplate;
 
+/**
+ * Class SessionEndedIntent
+ *
+ * @package Phlexa\Intent
+ */
 class SessionEndedIntent extends AbstractIntent
 {
     public const NAME = "SessionEndedRequest";
@@ -24,19 +29,27 @@ class SessionEndedIntent extends AbstractIntent
             if ($this->isErrorLogFlag() == true) {
                 $microtime = explode('.', (string)microtime(true));
 
-                $random = date('Y-m-d-H-i-s-') . $microtime[1];
-                $endpoint = $this->getSkillConfiguration()->getSkillTitle();
+                $random     = date('Y-m-d-H-i-s-') . $microtime[1];
+                $endpoint   = $this->getSkillConfiguration()->getSkillTitle();
                 $attributes = print_r($this->getAlexaRequest()->getSession()->getAttributes(), true);
-                $audioplayerOffset = $this->getAlexaRequest()->getContext()->getAudioPlayer()->getOffsetInMilliseconds();
-                $audioplayerActivity = $this->getAlexaRequest()->getContext()->getAudioPlayer()->getPlayerActivity();
-                $audioplayerToken = $this->getAlexaRequest()->getContext()->getAudioPlayer()->getToken();
-                $data = $error->getType() . ": " . $error->getMessage() . PHP_EOL .' Attributes: ' . $attributes . PHP_EOL . 'Audioplayer:' . PHP_EOL;
+
+                $audioPlayer = $this->getAlexaRequest()->getContext()->getAudioPlayer();
+
+                $audioplayerOffset   = $audioPlayer->getOffsetInMilliseconds();
+                $audioplayerActivity = $audioPlayer->getPlayerActivity();
+                $audioplayerToken    = $audioPlayer->getToken();
+
+                $data = $error->getType() . ": " . $error->getMessage() . PHP_EOL . ' Attributes: ' . $attributes
+                    . PHP_EOL . 'Audioplayer:' . PHP_EOL;
+
                 if ($audioplayerActivity != null) {
                     $data .= 'Activity: ' . $audioplayerActivity . PHP_EOL;
                 }
+
                 if ($audioplayerOffset != null) {
                     $data .= 'Offset: ' . $audioplayerOffset . PHP_EOL;
                 }
+
                 if ($audioplayerToken != null) {
                     $data .= 'Token: ' . $audioplayerToken . PHP_EOL;
                 }
@@ -47,6 +60,7 @@ class SessionEndedIntent extends AbstractIntent
                 );
             }
         }
+
         $content = [
             'output_speech'      => $this->getTextHelper()->getStopMessage(),
             'token'              => 'stop',
