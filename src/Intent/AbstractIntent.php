@@ -52,6 +52,9 @@ abstract class AbstractIntent implements IntentInterface
     /** @var bool */
     private $errorLogFlag = false;
 
+    /** @var string  */
+    private $errorPath = '';
+
     /**
      * AbstractIntent constructor.
      *
@@ -205,6 +208,24 @@ abstract class AbstractIntent implements IntentInterface
     {
         $this->errorLogFlag = $errorLogFlag;
     }
+
+    /**
+     * @return string
+     */
+    public function getErrorPath(): string
+    {
+        return $this->errorPath;
+    }
+
+    /**
+     * @param string $errorPath
+     */
+    public function setErrorPath(string $errorPath): void
+    {
+        $this->errorPath = $errorPath;
+    }
+
+
 
     /**
      * @param $interface

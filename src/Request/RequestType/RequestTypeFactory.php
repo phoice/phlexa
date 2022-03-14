@@ -229,6 +229,8 @@ class RequestTypeFactory
                     break;
                 }
 
+                break;
+
             case 'SessionEndedRequest':
                 if (isset($data['request']['error'])) {
                     $error = new Error(
