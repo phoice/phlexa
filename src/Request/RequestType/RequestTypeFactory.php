@@ -214,11 +214,21 @@ class RequestTypeFactory
 
         switch ($data['request']['type']) {
             case 'LaunchRequest':
-                $request = new LaunchRequestType(
-                    $data['request']['requestId'],
-                    $data['request']['timestamp'],
-                    $data['request']['locale']
-                );
+                if ($data['session']['user']['userId'] != 'alexa-lambda-availability') {
+                    $request = new LaunchRequestType(
+                        $data['request']['requestId'],
+                        $data['request']['timestamp'],
+                        $data['request']['locale']
+                    );
+                    break;
+                } else {
+                    $request = new AvailabilityCheckRequestType(
+                        $data['request']['requestId'],
+                        $data['request']['requestId']
+                    );
+                    break;
+                }
+
                 break;
 
             case 'SessionEndedRequest':
@@ -295,7 +305,11 @@ class RequestTypeFactory
                     $error = null;
                 }
 
-                if (isset($data['request']['currentPlaybackState'])) {
+                if (isset($data['request']['currentPlaybackState'])
+                    && isset($data['request']['currentPlaybackState']['playerActivity'])
+                    && isset($data['request']['currentPlaybackState']['offsetInMilliseconds'])
+                    && isset($data['request']['currentPlaybackState']['token'])
+                ) {
                     $currentPlaybackState = new CurrentPlaybackState(
                         $data['request']['currentPlaybackState']['playerActivity'],
                         $data['request']['currentPlaybackState']['offsetInMilliseconds'],

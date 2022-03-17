@@ -21,13 +21,13 @@ class SessionEndedIntent extends AbstractIntent
         $error  = $this->getAlexaRequest()->getRequest()->getError();
 
         if ($reason == "ERROR") {
-            if ($this->isErrorLogFlag() == true) {
+            if ($this->isErrorLogFlag() == true && $this->getErrorPath() != '') {
                 $microtime = explode('.', (string)microtime(true));
 
                 $random = date('Y-m-d-H-i-s-') . $microtime[1];
 
                 file_put_contents(
-                    PROJECT_ROOT . '/data/SessionEndedRequest-' . $random . '.txt',
+                    $this->getErrorPath() . '/SessionEndedRequest-' . $random . '.txt',
                     $error->getType() . ": " . $error->getMessage()
                 );
             }
