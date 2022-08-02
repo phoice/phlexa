@@ -115,7 +115,8 @@ class APL implements DirectivesInterface
         array $handleKeyUp = [],
         array $onMount = [],
         array $settings = [],
-        array $extensions = []
+        array $extensions = [],
+        string $version = '1.4'
     ) {
         $this->import       = $import;
         $this->theme        = $theme;
@@ -133,6 +134,7 @@ class APL implements DirectivesInterface
         $this->onMount      = $onMount;
         $this->settings     = $settings;
         $this->extensions   = $extensions;
+        $this->version      = $version;
     }
 
     /**
@@ -160,6 +162,7 @@ class APL implements DirectivesInterface
         $onMount      = $aplData['onMount'] ?? [];
         $settings     = $aplData['settings'] ?? [];
         $extensions   = $aplData['extensions'] ?? [];
+        $version      = $aplData['version'] ?? '1.4';
 
         return new APL(
             $import,
@@ -177,7 +180,8 @@ class APL implements DirectivesInterface
             $handleKeyUp,
             $onMount,
             $settings,
-            $extensions
+            $extensions,
+            $version
         );
     }
 
