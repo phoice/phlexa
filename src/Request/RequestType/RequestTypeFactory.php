@@ -186,7 +186,7 @@ class RequestTypeFactory
                     $data['context']['Viewport']['dpi'],
                     $curPixelWidth,
                     $curPixelHeight,
-                    $data['context']['Viewport']['touch'],
+                    $data['context']['Viewport']['touch'] ?? [],
                     $data['context']['Viewport']['keyboard'] ?? null,
                     $viewportVideo ?? null
                 );
