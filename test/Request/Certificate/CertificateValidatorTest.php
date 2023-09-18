@@ -48,7 +48,7 @@ class CertificateValidatorTest extends TestCase
     /**
      * @var string
      */
-    private $certificateUrl = 'https://s3.amazonaws.com/echo.api/echo-api-cert-10.pem';
+    private $certificateUrl = 'https://s3.amazonaws.com/echo.api/echo-api-cert-12.pem';
 
     /**
      * @var string
@@ -64,11 +64,11 @@ class CertificateValidatorTest extends TestCase
     /**
      * @return array
      */
-    public function provideCertificateUrlData()
+    public static function provideCertificateUrlData()
     {
         return [
             [
-                'https://s3.amazonaws.com/echo.api/echo-api-cert-10.pem',
+                'https://s3.amazonaws.com/echo.api/echo-api-cert-12.pem',
                 false,
                 '',
             ],
@@ -118,7 +118,7 @@ class CertificateValidatorTest extends TestCase
     /**
      * @return array
      */
-    public function provideTimeStampData()
+    public static function provideTimeStampData()
     {
         return [
             [300, true],
@@ -252,25 +252,27 @@ class CertificateValidatorTest extends TestCase
 
         $alexaRequest = $this->createAlexaRequest($timestamp);
 
-        /** @var CertificateLoader|ObjectProphecy $certificateLoader */
-        $certificateLoader = $this->prophesize(CertificateLoader::class);
-
-        /** @var MethodProphecy $loadMethod */
-        $loadMethod = $certificateLoader->load($this->certificateUrl);
+        /** @var CertificateLoader|MockObject $certificateLoader */
+        $certificateLoader = $this->createMock(CertificateLoader::class);
 
         if ($exception) {
-            $loadMethod->shouldNotBeCalled();
+            $certificateLoader->expects($this->never())
+                ->method('load')
+                ->with($this->certificateUrl);
         } else {
-            $loadMethod->shouldBeCalled()->willReturn(
-                $this->getCertificateAsset()
-            );
+            $certificateLoader->expects($this->once())
+                ->method('load')
+                ->with($this->certificateUrl)
+                ->willReturn(
+                    $this->getCertificateAsset()
+                );
         }
 
         $certificate = new CertificateValidator(
             $this->certificateUrl,
             $this->signature,
             $alexaRequest,
-            $certificateLoader->reveal()
+            $certificateLoader
         );
 
         if ($exception) {
@@ -360,6 +362,6 @@ class CertificateValidatorTest extends TestCase
      */
     private function getCertificateAsset()
     {
-        return implode('',file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'));
+        return implode('', file(__DIR__ . '/TestAssets/echo-api-cert-12.pem'));
     }
 }
