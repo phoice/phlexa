@@ -36,8 +36,8 @@ class CertificateLoaderTest extends TestCase
         $loader = new CertificateLoader();
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'),
-            ''
+            '',
+            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem')
         );
 
         $this->assertEquals($expected, $loader->load($this->certificateUrl));
@@ -56,8 +56,8 @@ class CertificateLoaderTest extends TestCase
         $loader = new CertificateLoader(true, '/tmp');
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'),
-            ''
+            '',
+            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem')
         );
 
         $this->assertEquals($expected, $loader->load($this->certificateUrl));
@@ -77,8 +77,8 @@ class CertificateLoaderTest extends TestCase
         $loader = new CertificateLoader(true, '/tmp');
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'),
-            ''
+            '',
+            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem')
         );
 
         $this->assertEquals($expected, $loader->load($this->certificateUrl));

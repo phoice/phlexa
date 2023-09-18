@@ -31,6 +31,7 @@ use Phlexa\Request\RequestType\LaunchRequestType;
 use Phlexa\Request\Session\Application;
 use Phlexa\Request\Session\Session;
 use Phlexa\Request\Session\User;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -141,14 +142,14 @@ class CertificateValidatorTest extends TestCase
 
         $alexaRequest = $this->createAlexaRequest($timestamp);
 
-        /** @var CertificateLoader|ObjectProphecy $certificateLoader */
-        $certificateLoader = $this->prophesize(CertificateLoader::class);
+        /** @var CertificateLoader|MockObject $certificateLoader */
+        $certificateLoader = $this->createMock(CertificateLoader::class);
 
         $certificate = new CertificateValidator(
             $this->certificateUrl,
             $this->signature,
             $alexaRequest,
-            $certificateLoader->reveal()
+            $certificateLoader
         );
 
         $this->assertEquals(
@@ -170,20 +171,21 @@ class CertificateValidatorTest extends TestCase
 
         $alexaRequest = $this->createAlexaRequest($timestamp);
 
-        /** @var CertificateLoader|ObjectProphecy $certificateLoader */
-        $certificateLoader = $this->prophesize(CertificateLoader::class);
+        /** @var CertificateLoader|MockObject $certificateLoader */
+        $certificateLoader = $this->createMock(CertificateLoader::class);
 
-        /** @var MethodProphecy $loadMethod */
-        $loadMethod = $certificateLoader->load($this->certificateUrl);
-        $loadMethod->shouldBeCalled()->willReturn(
-            $this->getCertificateAsset()
-        );
+        $certificateLoader->expects($this->once())
+            ->method('load')
+            ->with($this->certificateUrl)
+            ->willReturn(
+                $this->getCertificateAsset()
+            );
 
         $certificate = new CertificateValidator(
             $this->certificateUrl,
             $this->signature,
             $alexaRequest,
-            $certificateLoader->reveal()
+            $certificateLoader
         );
 
         $certificate->validate();
@@ -205,25 +207,27 @@ class CertificateValidatorTest extends TestCase
 
         $alexaRequest = $this->createAlexaRequest($timestamp);
 
-        /** @var CertificateLoader|ObjectProphecy $certificateLoader */
-        $certificateLoader = $this->prophesize(CertificateLoader::class);
-
-        /** @var MethodProphecy $loadMethod */
-        $loadMethod = $certificateLoader->load($certificateUrl);
+        /** @var CertificateLoader|MockObject $certificateLoader */
+        $certificateLoader = $this->createMock(CertificateLoader::class);
 
         if ($exception) {
-            $loadMethod->shouldNotBeCalled();
+            $certificateLoader->expects($this->never())
+                ->method('load')
+                ->with($certificateUrl);
         } else {
-            $loadMethod->shouldBeCalled()->willReturn(
-                $this->getCertificateAsset()
-            );
+            $certificateLoader->expects($this->once())
+                ->method('load')
+                ->with($certificateUrl)
+                ->willReturn(
+                    $this->getCertificateAsset()
+                );
         }
 
         $certificate = new CertificateValidator(
             $certificateUrl,
             $this->signature,
             $alexaRequest,
-            $certificateLoader->reveal()
+            $certificateLoader
         );
 
         if ($exception) {
@@ -356,6 +360,6 @@ class CertificateValidatorTest extends TestCase
      */
     private function getCertificateAsset()
     {
-        return implode(file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'), '');
+        return implode('',file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'));
     }
 }
