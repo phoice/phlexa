@@ -37,9 +37,11 @@ class APLA implements DirectivesInterface
      * @param array $mainTemplate
      */
     public function __construct(
-        array $mainTemplate
+        array $mainTemplate,
+        string $version ='0.9'
     ) {
         $this->mainTemplate = $mainTemplate;
+        $this->version = $version;
     }
 
     /**
@@ -52,8 +54,9 @@ class APLA implements DirectivesInterface
         $aplaData = json_decode($aplaJson, true);
 
         $mainTemplate = $aplaData['mainTemplate'] ?? [];
+        $version = $aplaData['version'] ?? '0.9';
 
-        return new APLA($mainTemplate);
+        return new APLA($mainTemplate, $version);
     }
 
     /**
