@@ -26,7 +26,7 @@ class CertificateLoaderTest extends TestCase
     /**
      * @var string
      */
-    private $certificateUrl = 'https://s3.amazonaws.com/echo.api/echo-api-cert-10.pem';
+    private $certificateUrl = 'https://s3.amazonaws.com/echo.api/echo-api-cert-12.pem';
 
     /**
      *
@@ -36,12 +36,11 @@ class CertificateLoaderTest extends TestCase
         $loader = new CertificateLoader();
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'),
-            ''
+            '',
+            file(__DIR__ . '/TestAssets/echo-api-cert-12.pem')
         );
 
         $this->assertEquals($expected, $loader->load($this->certificateUrl));
-
     }
 
     /**
@@ -56,8 +55,8 @@ class CertificateLoaderTest extends TestCase
         $loader = new CertificateLoader(true, '/tmp');
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'),
-            ''
+            '',
+            file(__DIR__ . '/TestAssets/echo-api-cert-12.pem')
         );
 
         $this->assertEquals($expected, $loader->load($this->certificateUrl));
@@ -72,13 +71,13 @@ class CertificateLoaderTest extends TestCase
             unlink('/tmp/echo-api-cert-6-ats.pem');
         }
 
-        copy(__DIR__ . '/TestAssets/echo-api-cert-10.pem', '/tmp/echo-api-cert-6-ats.pem');
+        copy(__DIR__ . '/TestAssets/echo-api-cert-12.pem', '/tmp/echo-api-cert-6-ats.pem');
 
         $loader = new CertificateLoader(true, '/tmp');
 
         $expected = implode(
-            file(__DIR__ . '/TestAssets/echo-api-cert-10.pem'),
-            ''
+            '',
+            file(__DIR__ . '/TestAssets/echo-api-cert-12.pem')
         );
 
         $this->assertEquals($expected, $loader->load($this->certificateUrl));

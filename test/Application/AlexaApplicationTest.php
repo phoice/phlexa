@@ -25,6 +25,7 @@ use Phlexa\Request\RequestType\SessionEndedRequestType;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Session\SessionContainer;
 use Phlexa\TextHelper\TextHelper;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -78,62 +79,59 @@ class AlexaApplicationTest extends TestCase
         $alexaResponse = new AlexaResponse();
         $alexaResponse->setSessionContainer($sessionContainer);
 
-        /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
-        $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
+        /** @var SkillConfigurationInterface|MockObject $skillConfiguration */
+        $skillConfiguration = $this->createMock(SkillConfigurationInterface::class);
 
         /** @var MethodProphecy $getAplDocumentsMethod */
-        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
-        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
+        $skillConfiguration->expects($this->once())
+            ->method('getAplDocuments')
+            ->willReturn(['normal-body' => '{"type": "APL"}']);
 
-        /** @var MethodProphecy $getSmallIconImageMethod */
-        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
-        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallIconImage')
+            ->willReturn('https://image.server/icon.png');
 
-        /** @var MethodProphecy $getSmallFrontImageMethod */
-        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
-        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallFrontImage')
+            ->willReturn('https://image.server/small.png');
 
-        /** @var MethodProphecy $getLargeFrontImageMethod */
-        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
-        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeFrontImage')
+            ->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getRoundBackgroundImageMethod */
-        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
-        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/round-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getRoundBackgroundImage')
+            ->willReturn('https://image.server/round-background.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallBackgroundImage')
+            ->willReturn('https://image.server/small-background.png');
 
-        /** @var MethodProphecy $getMediumBackgroundImageMethod */
-        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
-        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getMediumBackgroundImage')
+            ->willReturn('https://image.server/medium-background.png');
 
-        /** @var MethodProphecy $getLargeBackgroundImageMethod */
-        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
-        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeBackgroundImage')
+            ->willReturn('https://image.server/large-background.png');
 
-        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
-        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
-            'https://image.server/extra-large-background.png'
-        );
+        $skillConfiguration->expects($this->once())
+            ->method('getExtraLargeBackgroundImage')
+            ->willReturn('https://image.server/extra-large-background.png');
 
-        /** @var ContainerInterface|ObjectProphecy $intentManager */
-        $intentManager = $this->prophesize(ContainerInterface::class);
+        /** @var ContainerInterface|MockObject $intentManager */
+        $intentManager = $this->createMock(ContainerInterface::class);
 
-        /** @var MethodProphecy $hasMethod */
-        $hasMethod = $intentManager->has(HelpIntent::NAME);
-        $hasMethod->shouldBeCalled()->willReturn(true);
+        $intentManager->expects($this->once())->method('has')->willReturn(true);
 
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $intentManager->get(HelpIntent::NAME);
-        $getMethod->shouldBeCalled()->willReturn(
-            new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration->reveal())
+        $intentManager->expects($this->once())->method('get')->with(HelpIntent::NAME)->willReturn(
+            new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration)
         );
 
         $application = new AlexaApplication(
-            $alexaRequest, $alexaResponse, $intentManager->reveal()
+            $alexaRequest,
+            $alexaResponse,
+            $intentManager
         );
 
         $result = $application->execute();
@@ -211,62 +209,71 @@ class AlexaApplicationTest extends TestCase
         $alexaResponse = new AlexaResponse();
         $alexaResponse->setSessionContainer($sessionContainer);
 
-        /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
-        $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
+        /** @var SkillConfigurationInterface|MockObject $skillConfiguration */
+        $skillConfiguration = $this->createMock(SkillConfigurationInterface::class);
 
         /** @var MethodProphecy $getAplDocumentsMethod */
-        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
-        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
+        $skillConfiguration->expects($this->once())
+            ->method('getAplDocuments')
+            ->willReturn(['normal-body' => '{"type": "APL"}']);
 
-        /** @var MethodProphecy $getSmallIconImageMethod */
-        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
-        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallIconImage')
+            ->willReturn('https://image.server/icon.png');
 
-        /** @var MethodProphecy $getSmallFrontImageMethod */
-        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
-        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallFrontImage')
+            ->willReturn('https://image.server/small.png');
 
-        /** @var MethodProphecy $getLargeFrontImageMethod */
-        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
-        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeFrontImage')
+            ->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getRoundBackgroundImageMethod */
-        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
-        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/round-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getRoundBackgroundImage')
+            ->willReturn('https://image.server/round-background.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallBackgroundImage')
+            ->willReturn('https://image.server/small-background.png');
 
-        /** @var MethodProphecy $getMediumBackgroundImageMethod */
-        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
-        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getMediumBackgroundImage')
+            ->willReturn('https://image.server/medium-background.png');
 
-        /** @var MethodProphecy $getLargeBackgroundImageMethod */
-        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
-        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeBackgroundImage')
+            ->willReturn('https://image.server/large-background.png');
 
-        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
-        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
-            'https://image.server/extra-large-background.png'
+        $skillConfiguration->expects($this->once())
+            ->method('getExtraLargeBackgroundImage')
+            ->willReturn('https://image.server/extra-large-background.png');
+
+        $intentManager = $this->createMock(ContainerInterface::class);
+
+        $intentManager->expects($this->once())->method('has')->with('name')->willReturn(false);
+
+        $intentManager->expects($this->once())->method('get')->with(HelpIntent::NAME)->willReturn(
+            new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration)
         );
 
         /** @var ContainerInterface|ObjectProphecy $intentManager */
-        $intentManager = $this->prophesize(ContainerInterface::class);
+//        $intentManager = $this->prophesize(ContainerInterface::class);
 
         /** @var MethodProphecy $hasMethod */
-        $hasMethod = $intentManager->has('name');
-        $hasMethod->shouldBeCalled()->willReturn(false);
-
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $intentManager->get(HelpIntent::NAME);
-        $getMethod->shouldBeCalled()->willReturn(
-            new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration->reveal())
-        );
+//        $hasMethod = $intentManager->has('name');
+//        $hasMethod->shouldBeCalled()->willReturn(false);
+//
+//        /** @var MethodProphecy $getMethod */
+//        $getMethod = $intentManager->get(HelpIntent::NAME);
+//        $getMethod->shouldBeCalled()->willReturn(
+//            new HelpIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration->reveal())
+//        );
 
         $application = new AlexaApplication(
-            $alexaRequest, $alexaResponse, $intentManager->reveal()
+            $alexaRequest,
+            $alexaResponse,
+            $intentManager
         );
 
         $result = $application->execute();
@@ -341,62 +348,63 @@ class AlexaApplicationTest extends TestCase
         $alexaResponse = new AlexaResponse();
         $alexaResponse->setSessionContainer($sessionContainer);
 
-        /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
-        $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
+        /** @var SkillConfigurationInterface|MockObject $skillConfiguration */
+        $skillConfiguration = $this->createMock(SkillConfigurationInterface::class);
 
         /** @var MethodProphecy $getAplDocumentsMethod */
-        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
-        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
+        $skillConfiguration->expects($this->once())
+            ->method('getAplDocuments')
+            ->willReturn(['normal-body' => '{"type": "APL"}']);
 
-        /** @var MethodProphecy $getSmallIconImageMethod */
-        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
-        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallIconImage')
+            ->willReturn('https://image.server/icon.png');
 
-        /** @var MethodProphecy $getSmallFrontImageMethod */
-        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
-        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallFrontImage')
+            ->willReturn('https://image.server/small.png');
 
-        /** @var MethodProphecy $getLargeFrontImageMethod */
-        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
-        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeFrontImage')
+            ->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getRoundBackgroundImageMethod */
-        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
-        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/round-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getRoundBackgroundImage')
+            ->willReturn('https://image.server/round-background.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallBackgroundImage')
+            ->willReturn('https://image.server/small-background.png');
 
-        /** @var MethodProphecy $getMediumBackgroundImageMethod */
-        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
-        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getMediumBackgroundImage')
+            ->willReturn('https://image.server/medium-background.png');
 
-        /** @var MethodProphecy $getLargeBackgroundImageMethod */
-        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
-        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeBackgroundImage')
+            ->willReturn('https://image.server/large-background.png');
 
-        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
-        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
-            'https://image.server/extra-large-background.png'
-        );
+        $skillConfiguration->expects($this->once())
+            ->method('getExtraLargeBackgroundImage')
+            ->willReturn('https://image.server/extra-large-background.png');
 
-        /** @var ContainerInterface|ObjectProphecy $intentManager */
-        $intentManager = $this->prophesize(ContainerInterface::class);
+        $intentManager = $this->createMock(ContainerInterface::class);
 
-        /** @var MethodProphecy $hasMethod */
-        $hasMethod = $intentManager->has(LaunchRequestType::NAME);
-        $hasMethod->shouldBeCalled()->willReturn(true);
+        $intentManager->expects($this->once())
+            ->method('has')
+            ->with(LaunchRequestType::NAME)
+            ->willReturn(true);
 
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $intentManager->get(LaunchRequestType::NAME);
-        $getMethod->shouldBeCalled()->willReturn(
-            new LaunchIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration->reveal())
-        );
+        $intentManager->method('get')
+            ->with(LaunchRequestType::NAME)
+            ->willReturn(
+                new LaunchIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration)
+            );
 
         $application = new AlexaApplication(
-            $alexaRequest, $alexaResponse, $intentManager->reveal()
+            $alexaRequest,
+            $alexaResponse,
+            $intentManager
         );
 
         $result = $application->execute();
@@ -472,62 +480,64 @@ class AlexaApplicationTest extends TestCase
         $alexaResponse = new AlexaResponse();
         $alexaResponse->setSessionContainer($sessionContainer);
 
-        /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
-        $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
+        /** @var SkillConfigurationInterface|MockObject $skillConfiguration */
+        $skillConfiguration = $this->createMock(SkillConfigurationInterface::class);
 
         /** @var MethodProphecy $getAplDocumentsMethod */
-        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
-        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
+        $skillConfiguration->expects($this->once())
+            ->method('getAplDocuments')
+            ->willReturn(['normal-body' => '{"type": "APL"}']);
 
-        /** @var MethodProphecy $getSmallIconImageMethod */
-        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
-        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallIconImage')
+            ->willReturn('https://image.server/icon.png');
 
-        /** @var MethodProphecy $getSmallFrontImageMethod */
-        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
-        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallFrontImage')
+            ->willReturn('https://image.server/small.png');
 
-        /** @var MethodProphecy $getLargeFrontImageMethod */
-        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
-        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeFrontImage')
+            ->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getRoundBackgroundImageMethod */
-        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
-        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/round-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getRoundBackgroundImage')
+            ->willReturn('https://image.server/round-background.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallBackgroundImage')
+            ->willReturn('https://image.server/small-background.png');
 
-        /** @var MethodProphecy $getMediumBackgroundImageMethod */
-        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
-        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getMediumBackgroundImage')
+            ->willReturn('https://image.server/medium-background.png');
 
-        /** @var MethodProphecy $getLargeBackgroundImageMethod */
-        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
-        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeBackgroundImage')
+            ->willReturn('https://image.server/large-background.png');
 
-        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
-        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
-            'https://image.server/extra-large-background.png'
-        );
+        $skillConfiguration->expects($this->once())
+            ->method('getExtraLargeBackgroundImage')
+            ->willReturn('https://image.server/extra-large-background.png');
 
-        /** @var ContainerInterface|ObjectProphecy $intentManager */
-        $intentManager = $this->prophesize(ContainerInterface::class);
+        $intentManager = $this->createMock(ContainerInterface::class);
 
-        /** @var MethodProphecy $hasMethod */
-        $hasMethod = $intentManager->has(SessionEndedRequestType::NAME);
-        $hasMethod->shouldBeCalled()->willReturn(true);
+        $intentManager->expects($this->once())
+            ->method('has')
+            ->with(SessionEndedRequestType::NAME)
+            ->willReturn(true);
 
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $intentManager->get(SessionEndedRequestType::NAME);
-        $getMethod->shouldBeCalled()->willReturn(
-            new StopIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration->reveal())
-        );
+        $intentManager->expects($this->once())
+            ->method('get')
+            ->with(SessionEndedRequestType::NAME)
+            ->willReturn(
+                new StopIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration)
+            );
 
         $application = new AlexaApplication(
-            $alexaRequest, $alexaResponse, $intentManager->reveal()
+            $alexaRequest,
+            $alexaResponse,
+            $intentManager
         );
 
         $result = $application->execute();
@@ -598,62 +608,64 @@ class AlexaApplicationTest extends TestCase
         $alexaResponse = new AlexaResponse();
         $alexaResponse->setSessionContainer($sessionContainer);
 
-        /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
-        $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
+        /** @var SkillConfigurationInterface|MockObject $skillConfiguration */
+        $skillConfiguration = $this->createMock(SkillConfigurationInterface::class);
 
         /** @var MethodProphecy $getAplDocumentsMethod */
-        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
-        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
+        $skillConfiguration->expects($this->once())
+            ->method('getAplDocuments')
+            ->willReturn(['normal-body' => '{"type": "APL"}']);
 
-        /** @var MethodProphecy $getSmallIconImageMethod */
-        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
-        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallIconImage')
+            ->willReturn('https://image.server/icon.png');
 
-        /** @var MethodProphecy $getSmallFrontImageMethod */
-        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
-        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallFrontImage')
+            ->willReturn('https://image.server/small.png');
 
-        /** @var MethodProphecy $getLargeFrontImageMethod */
-        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
-        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeFrontImage')
+            ->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getRoundBackgroundImageMethod */
-        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
-        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/round-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getRoundBackgroundImage')
+            ->willReturn('https://image.server/round-background.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallBackgroundImage')
+            ->willReturn('https://image.server/small-background.png');
 
-        /** @var MethodProphecy $getMediumBackgroundImageMethod */
-        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
-        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getMediumBackgroundImage')
+            ->willReturn('https://image.server/medium-background.png');
 
-        /** @var MethodProphecy $getLargeBackgroundImageMethod */
-        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
-        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeBackgroundImage')
+            ->willReturn('https://image.server/large-background.png');
 
-        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
-        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
-            'https://image.server/extra-large-background.png'
-        );
+        $skillConfiguration->expects($this->once())
+            ->method('getExtraLargeBackgroundImage')
+            ->willReturn('https://image.server/extra-large-background.png');
 
-        /** @var ContainerInterface|ObjectProphecy $intentManager */
-        $intentManager = $this->prophesize(ContainerInterface::class);
+        $intentManager = $this->createMock(ContainerInterface::class);
 
-        /** @var MethodProphecy $hasMethod */
-        $hasMethod = $intentManager->has(StopIntent::NAME);
-        $hasMethod->shouldBeCalled()->willReturn(true);
+        $intentManager->expects($this->once())
+            ->method('has')
+            ->with(StopIntent::NAME)
+            ->willReturn(true);
 
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $intentManager->get(StopIntent::NAME);
-        $getMethod->shouldBeCalled()->willReturn(
-            new StopIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration->reveal())
-        );
+        $intentManager->expects($this->once())
+            ->method('get')
+            ->with(StopIntent::NAME)
+            ->willReturn(
+                new StopIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration)
+            );
 
         $application = new AlexaApplication(
-            $alexaRequest, $alexaResponse, $intentManager->reveal()
+            $alexaRequest,
+            $alexaResponse,
+            $intentManager
         );
 
         $result = $application->execute();
@@ -724,62 +736,64 @@ class AlexaApplicationTest extends TestCase
         $alexaResponse = new AlexaResponse();
         $alexaResponse->setSessionContainer($sessionContainer);
 
-        /** @var SkillConfigurationInterface|ObjectProphecy $skillConfiguration */
-        $skillConfiguration = $this->prophesize(SkillConfigurationInterface::class);
+        /** @var SkillConfigurationInterface|MockObject $skillConfiguration */
+        $skillConfiguration = $this->createMock(SkillConfigurationInterface::class);
 
         /** @var MethodProphecy $getAplDocumentsMethod */
-        $getAplDocumentsMethod = $skillConfiguration->getAplDocuments();
-        $getAplDocumentsMethod->shouldBeCalled()->willReturn(['normal-body' => '{"type": "APL"}']);
+        $skillConfiguration->expects($this->once())
+            ->method('getAplDocuments')
+            ->willReturn(['normal-body' => '{"type": "APL"}']);
 
-        /** @var MethodProphecy $getSmallIconImageMethod */
-        $getSmallIconImageMethod = $skillConfiguration->getSmallIconImage();
-        $getSmallIconImageMethod->shouldBeCalled()->willReturn('https://image.server/icon.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallIconImage')
+            ->willReturn('https://image.server/icon.png');
 
-        /** @var MethodProphecy $getSmallFrontImageMethod */
-        $getSmallFrontImageMethod = $skillConfiguration->getSmallFrontImage();
-        $getSmallFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/small.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallFrontImage')
+            ->willReturn('https://image.server/small.png');
 
-        /** @var MethodProphecy $getLargeFrontImageMethod */
-        $getLargeFrontImageMethod = $skillConfiguration->getLargeFrontImage();
-        $getLargeFrontImageMethod->shouldBeCalled()->willReturn('https://image.server/large.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeFrontImage')
+            ->willReturn('https://image.server/large.png');
 
-        /** @var MethodProphecy $getRoundBackgroundImageMethod */
-        $getRoundBackgroundImageMethod = $skillConfiguration->getRoundBackgroundImage();
-        $getRoundBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/round-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getRoundBackgroundImage')
+            ->willReturn('https://image.server/round-background.png');
 
-        /** @var MethodProphecy $getSmallBackgroundImageMethod */
-        $getSmallBackgroundImageMethod = $skillConfiguration->getSmallBackgroundImage();
-        $getSmallBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/small-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getSmallBackgroundImage')
+            ->willReturn('https://image.server/small-background.png');
 
-        /** @var MethodProphecy $getMediumBackgroundImageMethod */
-        $getMediumBackgroundImageMethod = $skillConfiguration->getMediumBackgroundImage();
-        $getMediumBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/medium-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getMediumBackgroundImage')
+            ->willReturn('https://image.server/medium-background.png');
 
-        /** @var MethodProphecy $getLargeBackgroundImageMethod */
-        $getLargeBackgroundImageMethod = $skillConfiguration->getLargeBackgroundImage();
-        $getLargeBackgroundImageMethod->shouldBeCalled()->willReturn('https://image.server/large-background.png');
+        $skillConfiguration->expects($this->once())
+            ->method('getLargeBackgroundImage')
+            ->willReturn('https://image.server/large-background.png');
 
-        /** @var MethodProphecy $getExtraLargeBackgroundImageMethod */
-        $getExtraLargeBackgroundImageMethod = $skillConfiguration->getExtraLargeBackgroundImage();
-        $getExtraLargeBackgroundImageMethod->shouldBeCalled()->willReturn(
-            'https://image.server/extra-large-background.png'
-        );
+        $skillConfiguration->expects($this->once())
+            ->method('getExtraLargeBackgroundImage')
+            ->willReturn('https://image.server/extra-large-background.png');
 
-        /** @var ContainerInterface|ObjectProphecy $intentManager */
-        $intentManager = $this->prophesize(ContainerInterface::class);
+        $intentManager = $this->createMock(ContainerInterface::class);
 
-        /** @var MethodProphecy $hasMethod */
-        $hasMethod = $intentManager->has(CancelIntent::NAME);
-        $hasMethod->shouldBeCalled()->willReturn(true);
+        $intentManager->expects($this->once())
+            ->method('has')
+            ->with(CancelIntent::NAME)
+            ->willReturn(true);
 
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $intentManager->get(CancelIntent::NAME);
-        $getMethod->shouldBeCalled()->willReturn(
-            new CancelIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration->reveal())
-        );
+        $intentManager->expects($this->once())
+            ->method('get')
+            ->with(CancelIntent::NAME)
+            ->willReturn(
+                new CancelIntent($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration)
+            );
 
         $application = new AlexaApplication(
-            $alexaRequest, $alexaResponse, $intentManager->reveal()
+            $alexaRequest,
+            $alexaResponse,
+            $intentManager
         );
 
         $result = $application->execute();

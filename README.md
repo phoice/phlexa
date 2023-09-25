@@ -4,7 +4,7 @@ Build voice applications for Amazon Alexa with phlexa and PHP
 
 ## Dependencies
 
-* PHP 7
+* PHP 8.1
 * PHP Curl Extension
 * cURL class for PHP
 * URL Normalizer from Glen Scott
